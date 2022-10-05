@@ -8,6 +8,12 @@
 * Comment on Item to rate
 * Purchase as guest or user 
 ***      
+## Planning: 
+[] - [Trello]()      
+[] - [ERD]()      
+[] - [CHD]()      
+[] - [WireFrame]()      
+***      
 ### Tech Used:
 * JavaScript:
     * React
