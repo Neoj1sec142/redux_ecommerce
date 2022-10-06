@@ -1,9 +1,20 @@
 import React from 'react'
-
+import ItemCard from '../components/ItemCard'
+import ProductData from '../services/ProductData'
 const Main = () => {
-    return(
-        <div>main</div>
-    )
+    console.log(ProductData)
+    if(ProductData){
+        return(
+            <div className='container-fluid'>
+                <br></br>
+                {ProductData.map((p, i) => (
+                    <div key={i}>
+                        <ItemCard p={p} /> 
+                        <br></br>
+                    </div>))}
+            </div>
+        )
+    }
 }
 
 export default Main

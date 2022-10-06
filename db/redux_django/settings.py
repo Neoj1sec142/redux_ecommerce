@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
-    'users'
+    'users',
+    'cart'
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
