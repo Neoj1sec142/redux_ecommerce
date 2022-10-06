@@ -26,4 +26,8 @@
 * Bootstrap v5
 
 [LinkedIn](https://www.linkedin.com/in/markharmon142)      
-[Twitter](http://www.twitter.com/ManicNeo142)      
+[Twitter](http://www.twitter.com/ManicNeo142)       
+
+psql redux_ecommerce -c "GRANT ALL ON ALL TABLES IN SCHEMA public to reduxuser;"
+psql redux_ecommerce -c "GRANT ALL ON ALL SEQUENCES IN SCHEMA public to reduxuser;"
+psql redux_ecommerce -c "GRANT ALL ON ALL FUNCTIONS IN SCHEMA public to reduxuser;"

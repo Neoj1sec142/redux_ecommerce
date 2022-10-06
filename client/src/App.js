@@ -5,7 +5,12 @@ import { connect } from 'react-redux'
 import LoginContext from './services/LoginContext.jsx'
 import Client from './services/api'
 import { SetLoginStatus, SetAuthStatus } from './store/actions/UserActions.js'
+// PAGES / COMPONENTS //
+import Register from './components/base/Register'
+import Login from './components/base/Login'
+import Logout from './components/base/Logout'
 import Main from './pages/main'
+// STYLES //
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/App.css';
 
@@ -56,12 +61,18 @@ const App = ({manageAuthStats, manageLoginStats}) => {
   }
   return (
     <div>
+      <LoginContext.Provider value={{loginStatus, setLoginStatus, user, setUser, authStatus}}>
       <header>
         
       </header>
       <Routes>
-        <Route path='/' element={<Main/>}/>
+        {loginStatus
+        ? <Route path='/' element={<Main/>}/>
+        : <Route path='/' element={<Login/>}/>}
+        <Route path='/register' element={<Register />}/>
+        <Route path='/logout' element={<Logout />}/>
       </Routes>
+      </LoginContext.Provider>
     </div>
   );
 }
