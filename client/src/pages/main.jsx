@@ -2,7 +2,7 @@ import React from 'react'
 import ItemCard from '../components/ItemCard'
 import ProductData from '../services/ProductData'
 const Main = () => {
-    console.log(ProductData)
+    // console.log(ProductData)
     if(ProductData){
         return(
             <div className='container-fluid'>

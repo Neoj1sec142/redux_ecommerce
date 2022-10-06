@@ -14,6 +14,7 @@ import Main from './pages/main'
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/App.css';
 import CartForm from './components/base/CartForm.jsx'
+import NavB from './components/base/Nav.jsx'
 
 const mapStateToProps = ({ userState }) => {
   return {  userState }
@@ -64,7 +65,8 @@ const App = ({manageAuthStats, manageLoginStats}) => {
     <div>
       <LoginContext.Provider value={{loginStatus, setLoginStatus, user, setUser, authStatus}}>
       <header>
-        <CartForm />
+        {/* <CartForm /> */}
+        <NavB />
       </header>
       <Routes>
         {loginStatus
