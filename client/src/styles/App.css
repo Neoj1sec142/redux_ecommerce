@@ -12,3 +12,10 @@ img#item-img-thmb{
     margin-left: 25%;
     margin-right: 25%;
 }
+
+/* Cart */
+div.card.cart-main{
+    width: 20%;
+    z-index: 5;
+    position: fixed;
+}

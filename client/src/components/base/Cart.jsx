@@ -1,8 +1,15 @@
 import React from 'react'
+import { Collection } from 'usetheform'
+import  CartItem  from './CartItem'
 
-const Cart = () => {
+export function Cart({ items, onRemoveItem }){
     return(
-        <div></div>
+        <Collection object name="cart">
+            <Collection array name="items">
+                {items.map(item => (
+                    <CartItem {...item} onRemoveItem={onRemoveItem} key={item.id}/>
+                ))}
+            </Collection>
+        </Collection>
     )
 }
-export default Cart

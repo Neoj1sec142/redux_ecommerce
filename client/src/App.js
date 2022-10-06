@@ -13,6 +13,7 @@ import Main from './pages/main'
 // STYLES //
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/App.css';
+import CartForm from './components/base/CartForm.jsx'
 
 const mapStateToProps = ({ userState }) => {
   return {  userState }
@@ -63,7 +64,7 @@ const App = ({manageAuthStats, manageLoginStats}) => {
     <div>
       <LoginContext.Provider value={{loginStatus, setLoginStatus, user, setUser, authStatus}}>
       <header>
-        
+        <CartForm />
       </header>
       <Routes>
         {loginStatus
