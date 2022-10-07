@@ -1,4 +1,5 @@
 import React from 'react'
+import { addToCart } from '../services/utils'
 
 const ItemCard = ({p}) => {
 
@@ -8,6 +9,7 @@ const ItemCard = ({p}) => {
             <legend className='card-legend'>{p.title}</legend>
             <h4>{p.price}</h4>
             <a href='#'>Show Description</a>
+            <button onClick={addToCart(p)} className='btn btn-outline-warning'>Add to Cart</button>
         </div>
     )
 }

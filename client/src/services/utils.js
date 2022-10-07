@@ -7,9 +7,37 @@ export function totalCart(items){
     return total
 }
 
-export function addToCart(obj, cart_items_length){
+export function getCart(){
+
+    try{
+        const cart = localStorage.getItem('cart')
+        const ncart = JSON.parse(cart)
+        return ncart
+    }catch(e){
+        console.log(e, 'NO CART FOUND')
+    }
+}
+
+export function removeItem(id){
+    const cart = localStorage.getItem('cart')
+    const ncart = JSON.parse(cart)
+    ncart.filter((item) => item.id !== id)
+    addToCart(ncart)
+}
+
+
+export function addToCart(obj){
     var object = {id: obj.id, price: obj.price}
-    const num = cart_items_length + 1
-    localStorage.setItem(`cart${num}`, JSON.stringify(object))
-    return obj
+    const cart = localStorage.getItem('cart')
+    if(cart){
+        const ncart = JSON.parse(cart)
+        ncart.append(object)
+        localStorage.setItem(`cart`, JSON.stringify(object))
+        return ncart
+    }else{
+        const cart = []
+        cart.append(object)
+        localStorage.setItem(`cart`, JSON.stringify(object))
+        return cart
+    }
 }

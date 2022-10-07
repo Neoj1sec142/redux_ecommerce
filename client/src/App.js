@@ -9,12 +9,13 @@ import { SetLoginStatus, SetAuthStatus } from './store/actions/UserActions.js'
 import Register from './components/base/Register'
 import Login from './components/base/Login'
 import Logout from './components/base/Logout'
+import NavB from './components/base/Nav.jsx'
 import Main from './pages/main'
+import Cart from './components/base/Cart'
 // STYLES //
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/App.css';
-import CartForm from './components/base/CartForm.jsx'
-import NavB from './components/base/Nav.jsx'
+
 
 const mapStateToProps = ({ userState }) => {
   return {  userState }
@@ -65,7 +66,7 @@ const App = ({manageAuthStats, manageLoginStats}) => {
     <div>
       <LoginContext.Provider value={{loginStatus, setLoginStatus, user, setUser, authStatus}}>
       <header>
-        {/* <CartForm /> */}
+        <Cart />
         <NavB />
       </header>
       <Routes>
