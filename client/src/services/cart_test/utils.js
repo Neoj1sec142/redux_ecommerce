@@ -1,13 +1,18 @@
-import {CartData} from './CartData.json'
+// import {CartData} from './CartData.json'
+// const CartData = require()
+const fs = require('fs')
 
-
-const writeToFile = (data) => {
-    JSON.dump(data)
+export const writeToFile = (data) => {
+    
+    const file = require('./CartData.json')
+    fs.writeFile(file, JSON.stringify(data))
 }
-const readFromFile = (file) => {
-    const data = require(file)
+export const readFromFile = () => {
+    const data = require('./CartData.json')
+    // JSON.parse(data)
     return data
 }
+
 
 export function totalItems(){
     

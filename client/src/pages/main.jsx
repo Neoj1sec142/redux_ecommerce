@@ -1,8 +1,18 @@
 import React from 'react'
 import ItemCard from '../components/ItemCard'
 import ProductData from '../services/ProductData'
+import {readFromFile, writeToFile} from '../services/cart_test/utils'
+
 const Main = () => {
-    // console.log(ProductData)
+    // 
+    const data = {
+        "id": 1,
+        "title": "test 2",
+        "content": "texst content 2"
+    }
+    writeToFile(data)
+    console.log(readFromFile())
+
     if(ProductData){
         return(
             <div className='container-fluid'>
