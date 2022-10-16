@@ -26,10 +26,10 @@ export const get_data = () => async dispatch => {
 
 export const total_cart = (cartItems) => async dispatch => {
     let total = 0
-    cartItems.forEach((item) => (
+    cartItems.forEach(item => (
         total = total + (item.price * item.qty)
     ))
-    if(total !== 0){
+    if(total > 0){
         dispatch({
             type: TOTAL_SUCCESS,
             payload: total

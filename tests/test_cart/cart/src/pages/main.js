@@ -16,7 +16,7 @@ const Main = ({
         get_data()
     },[])
     const change = (p, e) => {
-        setItem({id:p.id, price:p.price, qty:e.target.value})
+        setItem({...item, [e.target.name]: e.target.value})
     }
     const submit = (e) => {
         // e.preventDefault()

@@ -13,7 +13,7 @@ import {
 const initialState = {
     products: [],
     cartItems: [{id: 0, price: 0.00, qty: 0}],
-    cartTotal: 0
+    cartTotal: 0.00
 }
 
 export default function(state= initialState, action){
