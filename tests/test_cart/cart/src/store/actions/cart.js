@@ -27,7 +27,7 @@ export const get_data = () => async dispatch => {
 export const total_cart = (cartItems) => async dispatch => {
     let total = 0
     cartItems.forEach((item) => (
-        total += (item.price * item.qty)
+        total = total + (item.price * item.qty)
     ))
     if(total !== 0){
         dispatch({
@@ -44,13 +44,17 @@ export const total_cart = (cartItems) => async dispatch => {
 
 export const add_item = (item, cartItems) => async dispatch => {
     const itemDict = {id: item.id, price: item.price, qty: item.qty}
+    let items = [itemDict]
+    if(cartItems !== undefined){
+        cartItems.forEach((item) => {
+            items.push(item)
+        })
+    }
     try{
-        const res = cartItems.push(itemDict)
-        if(res.length){
-            total_cart(res)
+        if(items.length > 0){
             dispatch({
                 type: ADD_ITEM_SUCCESS,
-                payload: res
+                payload: items
             })
         }else{
             dispatch({

@@ -10,10 +10,9 @@ import {
     LOAD_DATA_FAIL
 } from '../types'
 
-
 const initialState = {
     products: [],
-    cartItems: [],
+    cartItems: [{id: 0, price: 0.00, qty: 0}],
     cartTotal: 0
 }
 
@@ -28,7 +27,7 @@ export default function(state= initialState, action){
         case ADD_ITEM_SUCCESS:
             return{
                 ...state,
-                cartItems: payload.items
+                cartItems: payload
             }
         case LOAD_DATA_SUCCESS:
             return {
@@ -36,9 +35,10 @@ export default function(state= initialState, action){
                 products: payload
             }
         case TOTAL_FAIL:
+        case ADD_ITEM_FAIL:
         case LOAD_DATA_FAIL:
             return {...state}
         default:
-            return state
+            return {...state}
     }
 }
