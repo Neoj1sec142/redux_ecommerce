@@ -5,7 +5,7 @@ import {
     UPDATE_USER_PROFILE_SUCCESS,
     LOAD_USER_PROFILE_SUCCESS, 
     LOAD_USER_PROFILE_FAIL
-} from './types'
+} from '../types'
 
 export const load_user = () => async dispatch => {
     const config = {
