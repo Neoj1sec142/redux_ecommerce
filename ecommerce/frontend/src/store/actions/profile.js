@@ -16,14 +16,14 @@ export const load_user = () => async dispatch => {
     }
     try{
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/profile/user`, config)
-        if(res.data.profile){
+        if(res.data.error){
             dispatch({
-                type: LOAD_USER_PROFILE_SUCCESS,
-                payload: res.data
+                type: LOAD_USER_PROFILE_FAIL
             })
         }else{
             dispatch({
-                type: LOAD_USER_PROFILE_FAIL
+                type: LOAD_USER_PROFILE_SUCCESS,
+                payload: res.data
             })
         }
     }catch(err){

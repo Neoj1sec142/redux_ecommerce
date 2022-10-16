@@ -33,6 +33,7 @@ export const checkAuthenticated = () => async dispatch => {
                 type: AUTHENTICATED_SUCCESS,
                 payload: true
             })
+            dispatch(load_user())
         }else{
             dispatch({
                 type: AUTHENTICATED_FAIL,
