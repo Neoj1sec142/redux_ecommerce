@@ -20,17 +20,22 @@ const initialState = {
 export default function(state= initialState, action){
     const { type, payload } = action
     switch(type){
+        case TOTAL_SUCCESS:
+            return{
+                ...state,
+                cartTotal: payload
+            }
         case ADD_ITEM_SUCCESS:
             return{
                 ...state,
-                cartItems: payload.items,
-                cartTotal: payload.total
+                cartItems: payload.items
             }
         case LOAD_DATA_SUCCESS:
             return {
                 ...state,
                 products: payload
             }
+        case TOTAL_FAIL:
         case LOAD_DATA_FAIL:
             return {...state}
         default:

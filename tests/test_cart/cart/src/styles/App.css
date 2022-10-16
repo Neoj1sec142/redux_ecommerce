@@ -1,0 +1,11 @@
+div.card.cart{
+    left: 0;
+    width: 20%;
+    margin-top: 2%;
+    position: fixed;
+}
+div.app{
+    width: 78%;
+    margin-left: 20%;
+    right:0;
+}
