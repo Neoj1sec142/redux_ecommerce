@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import { connect } from 'react-redux'
 import { checkAuthenticated } from '../store/actions/auth'
 import {load_user} from '../store/actions/profile'
+import CartContainer from '../containers/CartContainer'
 
 const Layout = ({ children, checkAuthenticated, isAuthenticated }) => {
     
@@ -13,6 +14,7 @@ const Layout = ({ children, checkAuthenticated, isAuthenticated }) => {
     return(
         <Fragment>
             <Navbar />
+            <CartContainer />
             {children}
         </Fragment>
     )

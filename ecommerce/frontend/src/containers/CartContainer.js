@@ -4,6 +4,7 @@ const CartContainer = () => {
     
     return(
         <div className='card cart'>
+            <h3>Cart</h3>
             <div className='card items'>
                 <h4>title</h4>
                 <p>qty</p>

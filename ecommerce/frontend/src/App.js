@@ -8,9 +8,11 @@ import Profile from "./containers/Profile"
 import { Provider } from "react-redux"
 import store from './store/store'
 import './styles/App.css';
+import ProductDetail from './components/ProductDetail';
 
 const App = () => {
   return (
+    <div className='app'>
       <Provider store={store}>
         <BrowserRouter>
           <Layout>
@@ -19,12 +21,13 @@ const App = () => {
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/register' element={<Register/>}/>
                 <Route path='/dashboard' element={<Dashboard/>}/>
+                <Route path='/dashboard/:id' element={<ProductDetail />}/>
                 <Route path='/profile' element={<Profile/>}/>
               </Routes>
           </Layout>
         </BrowserRouter>
       </Provider>
-          
+    </div>
   );
 }
 
