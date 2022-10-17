@@ -12,7 +12,7 @@ const Dashboard = ({products, load_products}) => {
             <h2>Dashboard</h2>
             <div className='card items'>
                 {products.items.map(item => (
-                    <div className="card item">
+                    <div className="card item" key={item.id}>
                         <h2>{item.title}</h2>
                         <p>{item.description}</p>
                         <h5>{item.price}</h5>

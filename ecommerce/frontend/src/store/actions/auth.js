@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import { load_user } from './profile'
+import { session_restore } from './cart'
 import { 
     REGISTER_SUCCESS, 
     REGISTER_FAIL, 
@@ -34,6 +35,7 @@ export const checkAuthenticated = () => async dispatch => {
                 payload: true
             })
             dispatch(load_user())
+            dispatch(session_restore())
         }else{
             dispatch({
                 type: AUTHENTICATED_FAIL,
