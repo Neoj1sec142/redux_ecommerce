@@ -9,6 +9,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('profile/', include('user_profile.urls')),
     path('st/', include('products.urls')),
+    path('purchase/', include('purchases.urls'))
 ]
 
 urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]

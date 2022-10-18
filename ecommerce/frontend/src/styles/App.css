@@ -13,3 +13,9 @@ div.card.cart{
 }
 /* div.card.items{} */
 /* div.card.item{} */
+button.cart-button{
+    left: 0;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 93%;
+}

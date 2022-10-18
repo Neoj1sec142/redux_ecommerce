@@ -14,11 +14,14 @@ const Layout = ({ children, checkAuthenticated, isAuthenticated }) => {
     return(
         <Fragment>
             <Navbar />
-            <CartContainer />
+            {isAuthenticated ? <CartContainer/> : null}
             {children}
         </Fragment>
     )
 }
 
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
 
-export default connect(null, {checkAuthenticated, load_user})(Layout)
+export default connect(mapStateToProps, {checkAuthenticated, load_user})(Layout)

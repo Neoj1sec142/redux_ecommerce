@@ -42,7 +42,7 @@ export const total_cart = (cart) => async dispatch => {
 }
 export const session_save = (cart) => async dispatch => {
     try{
-        const res = localStorage.setItem(JSON.stringify({"cart":cart}))
+        const res = localStorage.setItem("cart",JSON.stringify({cart}))
         if(res.error){
             dispatch({
                 type: SESSION_SAVE_FAIL
