@@ -6,22 +6,27 @@ import {
     SESSION_SAVE_FAIL,
     SESSION_SAVE_SUCCESS,
     SESSION_RESTORE_SUCCESS,
-    SESSION_RESTORE_FAIL
+    SESSION_RESTORE_FAIL,
+    FORMAT_SUCCESS,
+    FORMAT_FAIL
 } from '../types'
 
-const format_item = (e) => {
+export const format_item = (e, qty) => {
     const item = {
-        id:e.target.name,
-        price:e.target.value
+        id: e.target.name,
+        price: e.target.value,
+        qty: qty
     }
     return item
 }
+
 export const total_cart = (cart) => async dispatch => {
-    let total_sum = 0.00;
     try{
-        cart.forEach(item => {
-            total_sum = total_sum + (item.price * item.qty)
-        })
+        let total_sum = 0.0
+        for(let i=0; i<cart.length; i++){
+            total_sum += (cart[i].price * cart[i].qty)
+            i++
+        }
         if(total_sum !== 0.00){
             dispatch({
                 type: TOTAL_SUCCESS,
@@ -79,25 +84,50 @@ export const session_restore = () => async dispatch => {
     }
 }
 
-export const add_item = (newItem, oldCart) => async dispatch => {
-    try{
-        const item = format_item(newItem)
-        oldCart.push(item)
-        if(item && oldCart.length){
-            dispatch({
-                type: ADD_ITEM_SUCCESS,
-                payload: oldCart
-            })
-        }else{
+export const add_item = (item, oldCart) => async dispatch => {
+    if(oldCart.length){
+        try{
+            
+            oldCart.push(item)
+            
+            console.log(oldCart, "Cart Add Item")
+            console.log(item, "Cart Item")
+            if(item && oldCart.length){
+                dispatch({
+                    type: ADD_ITEM_SUCCESS,
+                    payload: oldCart
+                })
+            }else{
+                dispatch({
+                    type: ADD_ITEM_FAIL
+                })
+            }
+        }catch(err){
             dispatch({
                 type: ADD_ITEM_FAIL
             })
         }
-    }catch(err){
-        dispatch({
-            type: ADD_ITEM_FAIL
-        })
+    }else{
+        try{
+            const cart = [];
+            cart.push(item)
+            console.log(cart, "Cart Add Item")
+            console.log(item, "Cart Item")
+            if(item && cart.length){
+                dispatch({
+                    type: ADD_ITEM_SUCCESS,
+                    payload: cart
+                })
+            }else{
+                dispatch({
+                    type: ADD_ITEM_FAIL
+                })
+            }
+        }catch(err){
+            dispatch({
+                type: ADD_ITEM_FAIL
+            })
+        }
     }
-    
 }
 export const delete_item = (item) => async dispatch => {}

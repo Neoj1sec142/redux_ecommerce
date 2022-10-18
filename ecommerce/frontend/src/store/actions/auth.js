@@ -35,7 +35,7 @@ export const checkAuthenticated = () => async dispatch => {
                 payload: true
             })
             dispatch(load_user())
-            dispatch(session_restore())
+            // dispatch(session_restore())
         }else{
             dispatch({
                 type: AUTHENTICATED_FAIL,
