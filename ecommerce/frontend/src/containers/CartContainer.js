@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
-
-const CartContainer = () => {
+import { connect } from 'react-redux'
+const CartContainer = ({addedItems, total}) => {
     const [items, setItems] = useState([])
+    
     useEffect(() => {
+        // SESSION RESTORE
         const data = localStorage.getItem('cart')
         try{
             const cart = JSON.parse(data)
@@ -11,6 +13,8 @@ const CartContainer = () => {
             }
         }catch(err){console.log(err)}
     },[])
+    
+
     if(items.length){
         return(
             <div className='card cart'>
@@ -28,6 +32,11 @@ const CartContainer = () => {
             </div>
         )
     }
-
 }
-export default CartContainer
+
+const mapStateToProps = state => ({
+    addedItems:state.cart.addedItems,
+    total: state.cart.total
+})
+
+export default connect(mapStateToProps, {})(CartContainer)

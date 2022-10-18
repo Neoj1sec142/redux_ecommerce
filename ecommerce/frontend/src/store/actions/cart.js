@@ -9,11 +9,10 @@ import {
     SESSION_RESTORE_FAIL
 } from '../types'
 
-const format_item = (newI) => {
+const format_item = (e) => {
     const item = {
-        id:newI.id,
-        price:newI.price,
-        qty:newI.qty
+        id:e.target.name,
+        price:e.target.value
     }
     return item
 }
@@ -42,7 +41,8 @@ export const total_cart = (cart) => async dispatch => {
 }
 export const session_save = (cart) => async dispatch => {
     try{
-        const res = localStorage.setItem("cart",JSON.stringify({cart}))
+        const res = localStorage.setItem("cart",JSON.stringify(cart))
+        console.log(res, "Session Save Cart")
         if(res.error){
             dispatch({
                 type: SESSION_SAVE_FAIL
@@ -61,6 +61,7 @@ export const session_save = (cart) => async dispatch => {
 export const session_restore = () => async dispatch => {
     try{
         const cart = JSON.parse(localStorage.getItem('cart'))
+        console.log(cart, "Session Restore Cart")
         if(cart.length){
             dispatch({
                 type: SESSION_RESTORE_SUCCESS,
@@ -79,17 +80,14 @@ export const session_restore = () => async dispatch => {
 }
 
 export const add_item = (newItem, oldCart) => async dispatch => {
-    const item = format_item(newItem)
-    const cart = [oldCart]
-    cart.push(item)
     try{
-        if(item && cart){
+        const item = format_item(newItem)
+        oldCart.push(item)
+        if(item && oldCart.length){
             dispatch({
                 type: ADD_ITEM_SUCCESS,
-                payload: cart
+                payload: oldCart
             })
-            dispatch(session_save(cart))
-            dispatch(total_cart(cart))
         }else{
             dispatch({
                 type: ADD_ITEM_FAIL
