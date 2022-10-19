@@ -4,6 +4,8 @@ import {
     LOAD_PURCHASE_SUCCESS, LOAD_PURCHASE_FAIL,
     FORMAT_PURCHASE_SUCCESS, FORMAT_PURCHASE_FAIL,
     PROCESS_PURCHASE_SUCCESS, PROCESS_PURCHASE_FAIL,
+    CHECKOUT_SAVE_SUCCESS, CHECKOUT_SAVE_FAIL,
+    CHECKOUT_RESTORE_SUCCESS, CHECKOUT_RESTORE_FAIL
     // EDIT_PURCHASE_SUCCESS, EDIT_PURCHASE_FAIL
 } from '../types'
 
@@ -77,6 +79,41 @@ export const process_purchase = (purchase, total) => async dispatch => {
     }catch(err){
         dispatch({
             type: PROCESS_PURCHASE_FAIL
+        })
+    }
+}
+
+export const checkout_save = (str, total) => async dispatch => {
+    try{
+        const data = {item_qty: str, total: total}
+        localStorage.setItem('purchase', JSON.stringify(data))
+        dispatch({
+            type: CHECKOUT_SAVE_SUCCESS
+        })
+    }catch(err){
+        dispatch({
+            type: CHECKOUT_SAVE_FAIL
+        })
+    }
+}
+
+export const checkout_restore = () => async dispatch => {
+    try{
+        const data = JSON.parse(localStorage.getItem('purchase'))
+        if(data){
+            localStorage.removeItem('cart')
+            dispatch({
+                type: CHECKOUT_RESTORE_SUCCESS,
+                payload: data
+            })
+        }else{
+            dispatch({
+                type: CHECKOUT_RESTORE_FAIL
+            })
+        }
+    }catch(err){
+        dispatch({
+            type: CHECKOUT_RESTORE_FAIL
         })
     }
 }
