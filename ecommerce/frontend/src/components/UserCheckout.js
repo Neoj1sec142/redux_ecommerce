@@ -5,12 +5,12 @@ import React, { useEffect } from 'react'
 
 const UserCheckout = () => {
     useEffect(() => {
-        // load_
+        // load_purchase
     },[])
     useEffect(() => {
-
+        // format purchase
     },[])
-
+    // CHECK UTILS IN HOCS
     return(
         <div>User Checkout</div>
     )
