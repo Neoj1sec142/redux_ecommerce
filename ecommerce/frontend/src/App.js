@@ -9,6 +9,7 @@ import { Provider } from "react-redux"
 import store from './store/store'
 import './styles/App.css';
 import ProductDetail from './components/ProductDetail';
+import Checkout from './components/Checkout';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path='/dashboard' element={<Dashboard/>}/>
                 <Route path='/dashboard/:id' element={<ProductDetail />}/>
                 <Route path='/profile' element={<Profile/>}/>
+                <Route path='/checkout' element={<Checkout/>}/>
               </Routes>
           </Layout>
         </BrowserRouter>

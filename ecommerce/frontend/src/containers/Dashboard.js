@@ -22,6 +22,7 @@ const Dashboard = ({products, load_products, add_item, addedItems}) => {
     }
 
     const handle = (e) => {setQty(e.target.value)}
+    
 
     return(
         <div className='container'>

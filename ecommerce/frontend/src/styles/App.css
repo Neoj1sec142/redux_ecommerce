@@ -3,6 +3,7 @@ div.card.items{
     right: 0;
     margin-left: 22%;
 }
+
 div.card.cart{
     width: 20%;
     position: fixed;
@@ -11,6 +12,7 @@ div.card.cart{
     margin-top: 2%;
     z-index: 10;
 }
+
 /* div.card.items{} */
 /* div.card.item{} */
 button.cart-button{
@@ -18,4 +20,8 @@ button.cart-button{
     margin-top: 3%;
     margin-left: 5%;
     margin-right: 93%;
+}
+i.icon{
+    margin-left: 2%;
+    margin-top: 4%;
 }

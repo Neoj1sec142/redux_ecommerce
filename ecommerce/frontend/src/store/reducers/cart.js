@@ -14,6 +14,7 @@ import {
     SESSION_SAVE_FAIL
 } from '../types'
 
+
 const initialState = {
     addedItems: [],
     total: 0.00,
