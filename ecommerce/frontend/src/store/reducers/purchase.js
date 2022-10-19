@@ -3,7 +3,9 @@ import {
     LOAD_PURCHASE_SUCCESS, LOAD_PURCHASE_FAIL,
     FORMAT_PURCHASE_SUCCESS, FORMAT_PURCHASE_FAIL,
     PROCESS_PURCHASE_SUCCESS, PROCESS_PURCHASE_FAIL,
-    EDIT_PURCHASE_SUCCESS, EDIT_PURCHASE_FAIL
+    EDIT_PURCHASE_SUCCESS, EDIT_PURCHASE_FAIL,
+    HASH_FAIL, HASH_SUCCESS, HTTP_SALE_FAIL, 
+    HTTP_SALE_SUCCESS
 } from '../types'
 
 const initialState = {
@@ -11,7 +13,7 @@ const initialState = {
     total: 0.00,
     purchase: '',
     userInfo: {},
-    userCardInfo: {}
+    processed: {}
 }
 
 export default function(state= initialState, action){
@@ -28,11 +30,17 @@ export default function(state= initialState, action){
                 total: payload.total,
                 purchase: payload.purchase
             }
+        case HASH_SUCCESS:
+            return{
+                ...state,
+                processed: payload
+            }
         case EDIT_PURCHASE_SUCCESS:
             return{
                 ...state,
                 purchaseInit: payload
             }
+        case HASH_FAIL:
         case PROCESS_PURCHASE_SUCCESS:
         case LOAD_PURCHASE_FAIL:
         case FORMAT_PURCHASE_FAIL:
