@@ -9,7 +9,9 @@ import {
 const initialState = {
     purchaseInit: [],
     total: 0.00,
-    purchase: ''
+    purchase: '',
+    userInfo: {},
+    userCardInfo: {}
 }
 
 export default function(state= initialState, action){
