@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import {  total_cart } from '../store/actions/cart'
+import {  total_cart, session_restore, delete_item } from '../store/actions/cart'
 
-const CartContainer = ({addedItems, total, total_cart }) => {
-    const [items, setItems] = useState([])
+const CartContainer = ({addedItems, session_restore, delete_item }) => {
+    const [total, setTotal] = useState(0)
+    const handleTotal = () => {
+        const res = total_cart(addedItems)
+        setTotal(res)
+    }
     useEffect(() => {
-        setItems(addedItems)
-    }, [])
-    
-    
+        session_restore()
+    }, [localStorage])
+    useEffect(() => {
+        handleTotal()
+    },[addedItems])
+
     if(addedItems.length){
         return(
             <div className='card cart'>
@@ -20,7 +26,7 @@ const CartContainer = ({addedItems, total, total_cart }) => {
                 <div className='card items'>
                     <h4>Items: </h4>
                     {addedItems.map(item => (
-                    <p>ID: {item.id} Qty:<input value={item.qty} type='number'/></p>
+                    <p>ID: {item.id} Qty:<input className='form-control' value={item.qty} type='number'/><button onClick={() => delete_item(item, addedItems)} className='btn btn-danger'>❌</button></p>
                     ))}
                 </div>
             </div>
@@ -35,8 +41,8 @@ const CartContainer = ({addedItems, total, total_cart }) => {
 }
 
 const mapStateToProps = state => ({
-    addedItems:state.cart.addedItems,
-    total: state.cart.total
+    addedItems:state.cart.addedItems
+    // total: state.cart.total
 })
 
-export default connect(mapStateToProps, { total_cart})(CartContainer)
+export default connect(mapStateToProps, { session_restore, delete_item })(CartContainer)
