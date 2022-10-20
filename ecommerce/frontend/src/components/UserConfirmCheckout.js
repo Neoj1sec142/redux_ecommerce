@@ -5,7 +5,22 @@ import React from 'react'
 
 const UserConfirmCheckout = () => {
     return(
-        <div></div>
+        <div>
+            <h1>Review Your Order:</h1>
+            <p className='text-muted'>items and qty</p>
+            <h3 className="text">Billing Information:</h3>
+            <article>
+                Billing Info
+            </article>
+            <div className='row'>
+                <div className='col'>
+                    <button className='btn btn-primary'>Submit</button>
+                </div>
+                <div className='col'>
+                    <button className='btn btn-danger'>Cancel</button>
+                </div>
+            </div>
+        </div>
     )
 }
 
