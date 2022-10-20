@@ -29,7 +29,7 @@ export default function(state= initialState, action){
                 ...state,
                 total: payload.total,
                 purchase: payload.purchase
-            }
+            }    
         case HASH_SUCCESS:
             return{
                 ...state,
@@ -40,6 +40,8 @@ export default function(state= initialState, action){
                 ...state,
                 purchaseInit: payload
             }
+        case HTTP_SALE_SUCCESS:
+        case HTTP_SALE_FAIL:
         case HASH_FAIL:
         case PROCESS_PURCHASE_SUCCESS:
         case LOAD_PURCHASE_FAIL:

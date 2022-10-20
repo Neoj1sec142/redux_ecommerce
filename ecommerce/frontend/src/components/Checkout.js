@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {load_purchase} from '../store/actions/purchase'
 import {load_products} from '../store/actions/products'
+import { useNavigate } from 'react-router-dom'
 
 const Checkout = ({
     load_purchase, purchaseInit,
     products, load_products
 }) => {
-    
+    const navigate = useNavigate()
     useEffect(() => {
         load_products()
     }, [])
     useEffect(() => {
         load_purchase()
     },[])
-    
-
 
     if(products.items.length && purchaseInit.length){    
         return(
@@ -28,7 +27,7 @@ const Checkout = ({
                         <h5>QTY: {i.qty} Price: ${products.items[i.id].price}</h5>
                     </div>))}
                 </div>
-                <button className='btn btn-outline-primary'>Proceed to Payment Info</button>
+                <button onClick={() => navigate('/payment')} className='btn btn-outline-primary'>Proceed to Payment Info</button>
             </div>
         )
     }else{

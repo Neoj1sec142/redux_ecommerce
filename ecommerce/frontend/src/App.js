@@ -10,7 +10,7 @@ import ProductDetail from './components/ProductDetail';
 import Profile from "./containers/Profile"
 import Checkout from './components/Checkout';
 import UserCheckout from './components/UserCheckout';
-import ConfirmUserCheckout from './components/ConfirmUserCheckout';
+import ConfirmUserCheckout from './components/UserConfirmCheckout';
 import './styles/App.css';
 
 const App = () => {

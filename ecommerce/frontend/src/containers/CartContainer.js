@@ -23,7 +23,7 @@ const CartContainer = ({addedItems, session_restore, delete_item }) => {
         <div className='card cart'>
             <h3>Cart</h3>
             <button className='btn btn-outline-secondary'>Edit Cart</button>
-            <button onClick={() => naviagte('/checkout')} className='btn btn-outline-secondary'>Check Out</button>
+            <button onClick={() => naviagte('/checkout')} className='btn btn-outline-secondary'>View Order</button>
             <button className='btn btn-outline-danger'>❌</button>
             <h4>Total: ${total}</h4>
             <div className='card items'>

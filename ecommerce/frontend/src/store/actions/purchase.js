@@ -137,7 +137,7 @@ export const confirm_save = (total, purchase, userInfo, processed) => async disp
             dispatch({
                 type: CONFIRM_SAVE_SUCCESS
             })
-        }else if(total, purchase, userInfo, processed){
+        }else if(total && purchase && userInfo && processed){
             localStorage.setItem('purchase', JSON.stringify({total:total, purchase:purchase}))
             localStorage.setItem('userInfo', JSON.stringify(userInfo))
             localStorage.setItem('processed', JSON.stringify(processed))
