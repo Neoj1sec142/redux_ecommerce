@@ -1,7 +1,6 @@
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import { load_user } from './profile'
-import { session_restore } from './cart'
 import { 
     REGISTER_SUCCESS, 
     REGISTER_FAIL, 

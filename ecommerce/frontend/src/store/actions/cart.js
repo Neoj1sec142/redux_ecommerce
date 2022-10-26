@@ -95,7 +95,6 @@ export const add_item = (item, oldCart) => async dispatch => {
             // console.log(oldCart, "Cart Add Item")
             // console.log(item, "Cart Item")
             if(item && oldCart.length){
-                localStorage.removeItem('cart')
                 localStorage.setItem("cart",JSON.stringify(oldCart))
                 dispatch({
                     type: ADD_ITEM_SUCCESS,
@@ -118,7 +117,6 @@ export const add_item = (item, oldCart) => async dispatch => {
             // console.log(cart, "Cart Add Item")
             // console.log(item, "Cart Item")
             if(item && cart.length){
-                localStorage.removeItem('cart')
                 localStorage.setItem("cart",JSON.stringify(cart))
                 dispatch({
                     type: ADD_ITEM_SUCCESS,
@@ -139,7 +137,6 @@ export const add_item = (item, oldCart) => async dispatch => {
 export const delete_item = (item, cart) => async dispatch => {
     try{
         const newCart = cart.filter(c => c.id !== item.id)
-        localStorage.removeItem('cart')
         localStorage.setItem('cart', JSON.stringify(newCart))
         if(newCart){
             dispatch({
