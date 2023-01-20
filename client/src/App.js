@@ -6,6 +6,7 @@ import Layout from './utils/Layout';
 import Authpage from './containers/Authpage'
 import Logout from './components/base/Logout';
 import Dashboard from './containers/Dashboard';
+import Browsing from './containers/Browsing';
 
 
 
@@ -17,8 +18,8 @@ const App = ({isAuthenticated, current_user}) => {
         <Routes>
           {/* Main Base Routes */}
           <Route path='/logout' element={<Logout />}/>
+          <Route path='/' element={<Browsing />}/>
           {/* Protected Routes */}
-          <Route path='/' element={isAuthenticated ? <Dashboard /> : <Authpage />}/>
           <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Authpage />} />
         </Routes>
       </Layout>

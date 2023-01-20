@@ -1,8 +1,9 @@
 import Client from "./api";
+import PubClient from "./public";
 // Product Services
 export const GetProducts = async () => {
     try{
-        const res = await Client.get('store/')
+        const res = await PubClient.get('store/')
         console.log(res, "Products RES")
         return res
     }catch(err){console.log(err)}
@@ -10,7 +11,7 @@ export const GetProducts = async () => {
 
 export const GetProductById = async (id) => {
     try{
-        const res = await Client.get(`store/${id}/`)
+        const res = await PubClient.get(`store/${id}/`)
         return res
     }catch(err){console.log(err)}
 }

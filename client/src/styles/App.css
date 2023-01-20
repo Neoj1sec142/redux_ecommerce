@@ -14,3 +14,6 @@
     z-index: 5;
     box-shadow: 2px 2px rgb(164, 162, 162);;
 }
+.row{
+    border-radius: 13px;
+}
