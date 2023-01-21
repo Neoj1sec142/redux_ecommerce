@@ -7,18 +7,22 @@ import Authpage from './containers/Authpage'
 import Logout from './components/base/Logout';
 import Dashboard from './containers/Dashboard';
 import Browsing from './containers/Browsing';
+import ProductDetail from './components/browsing/ProductDetail';
+import CartContainer from './components/cart/CartContainer';
 
 
 
 const App = ({isAuthenticated, current_user}) => {
   
   return (
-    <div className="App" >
+    <div className="App">
       <Layout>
+        {isAuthenticated ? <CartContainer /> : null}
         <Routes>
           {/* Main Base Routes */}
           <Route path='/logout' element={<Logout />}/>
           <Route path='/' element={<Browsing />}/>
+          <Route path='/product/:id' element={<ProductDetail />}/>
           {/* Protected Routes */}
           <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Authpage />} />
         </Routes>

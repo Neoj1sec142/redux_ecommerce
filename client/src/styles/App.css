@@ -1,5 +1,13 @@
-
-
+/* Sidebar Styles  */
+.sidebar{
+    margin-top: 8%;
+    margin-bottom: 8%;
+    height: 84%;
+}
+.sidebtn{
+    margin-top: 10%;
+    margin-left: 15px;
+}
 /* Custom Styles */
 .link-btn{
     border: none;

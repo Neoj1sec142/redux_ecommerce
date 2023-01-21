@@ -285,7 +285,7 @@ export const load_cart = () => async dispatch => {
     try{
         const items = JSON.parse(localStorage.getItem('cartItems'))
         const total = JSON.parse(localStorage.getItem('cartTotal'))
-        if(items.length){
+        if(items){
             const data = {
                 items: items,
                 total: total

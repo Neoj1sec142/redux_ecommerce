@@ -12,6 +12,7 @@ class ProductList(generics.ListCreateAPIView):
         fields = ('__all__')
 
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (permissions.AllowAny,)
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     
@@ -29,6 +30,7 @@ class PurchaseList(generics.ListCreateAPIView):
 class PurchaseDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Purchase.objects.all()
     serializer_class = PurchaseSerializer
+    
     
 class PurchasesByUser(generics.ListAPIView):
     serializer_class = PurchaseSerializer
