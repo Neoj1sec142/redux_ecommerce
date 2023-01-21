@@ -7,7 +7,11 @@ import {
     LOAD_USERS_SUCCESS, LOAD_USERS_FAIL,
     UPDATE_USER_SUCCESS, UPDATE_USER_FAIL,
     REMOVE_USER_SUCCESS, REMOVE_USER_FAIL,
-    LOAD_USERPROFILE_SUCCESS, LOAD_USERPROFILE_FAIL
+    LOAD_USERPROFILE_SUCCESS, LOAD_USERPROFILE_FAIL,
+    ADD_TO_CART_SUCCESS, ADD_TO_CART_FAIL,
+    LOAD_CART_SUCCESS, LOAD_CART_FAIL,
+    REMOVE_ITEM_SUCCESS, REMOVE_ITEM_FAIL,
+    TOTAL_CART_SUCCESS, TOTAL_CART_FAIL
 } from '../types'
 
 const initialState = {
@@ -17,12 +21,35 @@ const initialState = {
     isAuthenticated: false,
     loading: false,
     users: [],
-    aUser: {}
+    aUser: {},
+    cartItems: localStorage.getItem("cartItems"),
+    cartTotal: localStorage.getItem("cartTotal")
 }
 
 export default function(state = initialState, action){
     const {type, payload} = action;
     switch(type){
+        case LOAD_CART_SUCCESS:
+            localStorage.setItem('cartTotal', JSON.stringify(payload.items))
+            localStorage.setItem('cartItems', JSON.stringify(payload.total))
+            return{
+                ...state,
+                cartItems: payload.items,
+                cartTotal: payload.total
+            }
+        case TOTAL_CART_SUCCESS:
+            localStorage.setItem('cartTotal', JSON.stringify(payload))
+            return{
+                ...state,
+                cartTotal: payload
+            }
+        case REMOVE_ITEM_SUCCESS:
+        case ADD_TO_CART_SUCCESS:
+            localStorage.setItem('cartItems', JSON.stringify(payload))
+            return{
+                ...state,
+                cartItems: payload
+            }
         case UPDATE_USER_SUCCESS:
         case LOAD_CURRENT_SUCCESS:
             localStorage.setItem('user_id', payload.id)
@@ -68,6 +95,10 @@ export default function(state = initialState, action){
                 token: null,
                 loading: false
             }
+        case ADD_TO_CART_FAIL:
+        case LOAD_CART_FAIL:
+        case REMOVE_ITEM_FAIL:
+        case TOTAL_CART_FAIL:
         case LOAD_USERPROFILE_FAIL:
         case UPDATE_USER_FAIL:
         case REMOVE_USER_SUCCESS:

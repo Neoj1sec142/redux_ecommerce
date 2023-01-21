@@ -30,11 +30,15 @@ const Browsing = ({load_products, products}) => {
                 <div className='col w-50'>
                   <div className='form-control'>
                     <input type='radio' className='form-radio' name='cat1' value="cat1" />
+                  </div>
+                  <div className='form-control'>
                     <input type='radio' className='form-radio' name='cat2' value="cat2" />
+                  </div>
+                  <div className='form-control'>
                     <input type='radio' className='form-radio' name='cat3' value="cat3" />
                   </div>
                 </div>
-                <div className='col w-50'>
+                <div className='col w-50 mt-4'>
                   <select className='form-control' name="catSel" value="catSel">
                     <option>Cat1</option>
                     <option>Cat2</option>

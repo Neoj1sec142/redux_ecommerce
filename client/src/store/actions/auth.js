@@ -9,7 +9,11 @@ import {
     LOAD_AUSER_SUCCESS, LOAD_AUSER_FAIL,
     LOAD_USERPROFILE_SUCCESS, LOAD_USERPROFILE_FAIL,
     LOAD_USERS_FAIL, UPDATE_USER_SUCCESS, UPDATE_USER_FAIL,
-    REMOVE_USER_SUCCESS, REMOVE_USER_FAIL
+    REMOVE_USER_SUCCESS, REMOVE_USER_FAIL,
+    ADD_TO_CART_SUCCESS, ADD_TO_CART_FAIL,
+    LOAD_CART_SUCCESS, LOAD_CART_FAIL,
+    REMOVE_ITEM_SUCCESS, REMOVE_ITEM_FAIL,
+    TOTAL_CART_SUCCESS, TOTAL_CART_FAIL
 } from '../types'
 import { GetUsers, UpdateUser, RemoveUser, GetUserDetail, GetAllUserDetail } from '../services/UserServices'
 
@@ -250,6 +254,96 @@ export const destroy_user = (id) => async dispatch => {
         console.log(err, "Error 2")
         dispatch({
             type: REMOVE_USER_FAIL
+        })
+    }
+}
+
+export const add_to_cart = (item) => async dispatch => {
+    try{
+        const data = JSON.parse(localStorage.getItem('cartItems'))
+        if(data.length){
+            const cart = data.push(item)
+            dispatch({
+                type: ADD_TO_CART_SUCCESS,
+                payload: cart
+            })
+        }else{
+            console.log(data, "ERR 1")
+            dispatch({
+                type: ADD_TO_CART_FAIL
+            })
+        }
+    }catch(err){
+        console.log(err, "ERR 2")
+        dispatch({
+            type: ADD_TO_CART_FAIL
+        })
+    }
+}
+
+export const load_cart = () => async dispatch => {
+    try{
+        const items = JSON.parse(localStorage.getItem('cartItems'))
+        const total = JSON.parse(localStorage.getItem('cartTotal'))
+        if(items.length){
+            const data = {
+                items: items,
+                total: total
+            }
+            dispatch({
+                type: LOAD_CART_SUCCESS,
+                payload: data
+            })
+        }else{
+            console.log(items, "ERR 1 items")
+            console.log(total, "ERR 1 total")
+            dispatch({
+                type: LOAD_CART_FAIL
+            })
+        }
+    }catch(err){
+        console.log(err, "ERR 2")
+        dispatch({
+            type: LOAD_CART_FAIL
+        })
+    }
+}
+
+export const remove_item = (id) => async dispatch => {
+    try{
+        const cart = JSON.parse(localStorage.getItem('cartItems'))
+        for(let i=0; i<cart.length; i++){
+            if(cart[i].id === id){
+                cart.pop(i)
+            }
+        }
+        dispatch({
+            type: REMOVE_ITEM_SUCCESS,
+            payload: cart
+        })
+    }catch(err){
+        console.log(err, "ERR")
+        dispatch({
+            type: REMOVE_ITEM_FAIL
+        })
+    }
+}
+
+export const total_cart = () => async dispatch => {
+    try{
+        const cart = JSON.parse(localStorage.getItem('cartItems'))
+        let total = 0;
+        for(let i=0; i<cart.length; i++){
+            total += cart[i].price
+        }
+        dispatch({
+            type: TOTAL_CART_SUCCESS,
+            payload: total
+        })
+    }catch(err){
+        console.log(err, 'ERR')
+        dispatch({
+            type: TOTAL_CART_FAIL
         })
     }
 }
