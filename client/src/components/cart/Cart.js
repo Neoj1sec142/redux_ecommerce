@@ -13,7 +13,7 @@ const Cart = ({load_cart, remove_item, cartItems, cartTotal}) => {
     useEffect(() => { if(loading) fetchCart() },[])
     if(!loading){
         console.log(cartItems, 'cart')
-        console.log(cartTotal, "totla")
+        console.log(cartTotal, "total")
         return (
             <div className='container-fluid'>
                 <div className='border w-100 p-3 text-center'>
@@ -22,7 +22,9 @@ const Cart = ({load_cart, remove_item, cartItems, cartTotal}) => {
                 </div>
                 {cartItems ? (
                 <div className='row border w-100 mt-2'>
-                    
+                    {/* Map Cart Items */}
+                    <p>title </p>
+                    <p>amt = total</p>
                 </div>) : (
                 <div className='row border w-100 mt-2'>
                     <p className='text-center fs-5 mt-2'>No Items In Cart</p>
