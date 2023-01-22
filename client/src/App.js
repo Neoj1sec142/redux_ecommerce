@@ -9,6 +9,7 @@ import Dashboard from './containers/Dashboard';
 import Browsing from './containers/Browsing';
 import ProductDetail from './components/browsing/ProductDetail';
 import CartContainer from './components/cart/CartContainer';
+import Checkout from './components/Checkout';
 
 
 
@@ -23,6 +24,7 @@ const App = ({isAuthenticated, current_user}) => {
           <Route path='/logout' element={<Logout />}/>
           <Route path='/' element={<Browsing />}/>
           <Route path='/product/:id' element={<ProductDetail />}/>
+          <Route path='/checkout' element={<Checkout />}/>
           {/* Protected Routes */}
           <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Authpage />} />
         </Routes>

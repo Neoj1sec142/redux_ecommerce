@@ -319,13 +319,13 @@ export const load_cart = () => async dispatch => {
 }
 
 
-export const remove_item = (id) => async dispatch => {
+export const remove_item = (index) => async dispatch => {
     try{
         const cart = JSON.parse(localStorage.getItem('cartItems'))
         if(cart){
-            id = parseInt(id)
-            if (id > -1) {
-                cart.splice(id, 1);
+            index = parseInt(index)
+            if (index > -1) {
+                cart.splice(index, 1);
             }
             dispatch({
                 type: REMOVE_ITEM_SUCCESS,

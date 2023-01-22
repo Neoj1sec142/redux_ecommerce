@@ -12,7 +12,6 @@ const Cart = ({load_cart, remove_item, total_cart, cartItems, cartTotal, setOpen
         await delay(500)
         setLoading(false)
     }
-    // useEffect(() => ,[cartItems])
     useEffect(() => { if(loading) fetchCart() },[])
     const onClick = async e => {
         e.preventDefault()
@@ -21,8 +20,6 @@ const Cart = ({load_cart, remove_item, total_cart, cartItems, cartTotal, setOpen
         fetchCart()
     }
     if(!loading){
-        console.log(cartItems, 'cart')
-        console.log(cartTotal, "total")
         return (
             <div className='container-fluid'>
                 <div className='border w-100 p-3 text-center'>
@@ -32,14 +29,26 @@ const Cart = ({load_cart, remove_item, total_cart, cartItems, cartTotal, setOpen
                 </div>
                 {(cartItems?.length >= 1) ? (
                     cartItems.map((item, index) => (
-                <div className='row border w-100 mt-2' key={index}>
-                    {/* Map Cart Items */}
-                    <p>{item.title}&nbsp; | &nbsp;{item.price} <button onClick={e=>onClick(e)} name={index} className='btn btn-danger'>❌</button></p>
-                </div>))) : (
-                <div className='row border w-100 mt-2'>
-                    <p className='text-center fs-5 mt-2'>No Items In Cart</p>
+                
+                <div className='d-flex jusitfy-content-center' key={index}>                        
+                    <div className='row border w-100 mt-2 p-1'>
+                        {/* Map Cart Items */}
+                        <p>{item.title}&nbsp; | &nbsp;{item.price} <button onClick={e=>onClick(e)} name={index} className='btn btn-danger'>❌</button></p>
+                    </div>
+                </div>))
+                ) : (
+                <div className='d-flex jusitfy-content-center'>    
+                    <div className='row border w-100 mt-2'>
+                        <p className='text-center fs-5 mt-2'>No Items In Cart</p>
+                    </div>
                 </div>
                 ) }
+                {(cartItems?.length >= 1) ? (
+                <div className='d-flex justify-content-center mt-1'>
+                    <div className='row border m-2 shadow-sm'>
+                        <a href='/checkout' className='btn btn-warning'><i className='fas fa-shopping-cart'></i>&nbsp;Checkout</a>
+                    </div>
+                </div>): null}
             </div>
         )
     }else{ return( <div>Loading....</div> ) }
