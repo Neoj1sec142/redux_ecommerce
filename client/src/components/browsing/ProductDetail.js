@@ -5,7 +5,7 @@ import {load_product_by_id} from '../../store/actions/ecom'
 import {add_to_cart} from '../../store/actions/auth'
 import { delay } from '../../utils/utils';
 
-const ProductDetail = ({load_product_by_id, product}) => {
+const ProductDetail = ({load_product_by_id, add_to_cart, product}) => {
     const {id} = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true)
@@ -18,7 +18,7 @@ const ProductDetail = ({load_product_by_id, product}) => {
     useEffect(() => { if(id) fetchData() },[])
     const addToCart = async e => {
         e.preventDefault()
-        add_to_cart(product)
+        add_to_cart(product, amt)
         await delay(750)
         navigate('/')
     }
@@ -49,4 +49,4 @@ const mapStateToProps = state => ({
     product: state.ecom.product
 })
 
-export default connect(mapStateToProps, {load_product_by_id})(ProductDetail);
+export default connect(mapStateToProps, {load_product_by_id, add_to_cart})(ProductDetail);

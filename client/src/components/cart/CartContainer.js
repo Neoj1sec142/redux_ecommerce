@@ -8,20 +8,16 @@ const CartContainer = () => {
     if(!open){
         return (
         <div className='float-end fixed-top sidebtn'>
-            <button onClick={()=>setOpen(!open)}><i className='fas fa-hamburger'></i></button>
+            <button onClick={()=>setOpen(!open)}><i className='fas fa-shopping-cart'></i></button>
         </div>
         )
     }else{
         return(
         <div className='float-end fixed-top w-25 border sidebar bg-light'>
-            <Cart />
-            <button onClick={()=>setOpen(!open)}><i className='fas fa-exit'></i></button>
+            <Cart setOpen={setOpen}  open={open} />
         </div>
         )
     }
 }
-// const mapStateToProps = state => ({
-//     isAuthenticated: state.auth.isAuthenticated
-// })
 
 export default connect(null, {})(CartContainer)

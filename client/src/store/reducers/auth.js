@@ -30,8 +30,8 @@ export default function(state = initialState, action){
     const {type, payload} = action;
     switch(type){
         case LOAD_CART_SUCCESS:
-            localStorage.setItem('cartTotal', JSON.stringify(payload.items))
-            localStorage.setItem('cartItems', JSON.stringify(payload.total))
+            localStorage.setItem('cartTotal', JSON.stringify(payload.total))
+            localStorage.setItem('cartItems', JSON.stringify(payload.items))
             return{
                 ...state,
                 cartItems: payload.items,

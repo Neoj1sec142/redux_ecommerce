@@ -258,19 +258,28 @@ export const destroy_user = (id) => async dispatch => {
     }
 }
 
-export const add_to_cart = (item) => async dispatch => {
+export const add_to_cart = (item, amt) => async dispatch => {
     try{
         const data = JSON.parse(localStorage.getItem('cartItems'))
-        if(data.length){
-            const cart = data.push(item)
+        let st = amt;
+        let cart = [];
+        if(data?.length){
+            while(st > 0){
+                data.push(item)
+                st--;
+            }
+            dispatch({
+                type: ADD_TO_CART_SUCCESS,
+                payload: data
+            })
+        }else{
+            while(st > 0){
+                cart.push(item)
+                st--;
+            }
             dispatch({
                 type: ADD_TO_CART_SUCCESS,
                 payload: cart
-            })
-        }else{
-            console.log(data, "ERR 1")
-            dispatch({
-                type: ADD_TO_CART_FAIL
             })
         }
     }catch(err){
@@ -309,18 +318,20 @@ export const load_cart = () => async dispatch => {
     }
 }
 
+
 export const remove_item = (id) => async dispatch => {
     try{
         const cart = JSON.parse(localStorage.getItem('cartItems'))
-        for(let i=0; i<cart.length; i++){
-            if(cart[i].id === id){
-                cart.pop(i)
+        if(cart){
+            id = parseInt(id)
+            if (id > -1) {
+                cart.splice(id, 1);
             }
+            dispatch({
+                type: REMOVE_ITEM_SUCCESS,
+                payload: cart
+            })
         }
-        dispatch({
-            type: REMOVE_ITEM_SUCCESS,
-            payload: cart
-        })
     }catch(err){
         console.log(err, "ERR")
         dispatch({
@@ -333,8 +344,11 @@ export const total_cart = () => async dispatch => {
     try{
         const cart = JSON.parse(localStorage.getItem('cartItems'))
         let total = 0;
-        for(let i=0; i<cart.length; i++){
-            total += cart[i].price
+        if(cart && cart.length){
+            console.log("Got to the condition")
+            for(let i=0; i<cart.length; i++){
+                total += cart[i].price
+            }
         }
         dispatch({
             type: TOTAL_CART_SUCCESS,
