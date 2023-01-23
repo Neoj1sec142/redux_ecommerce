@@ -9,7 +9,8 @@ import Dashboard from './containers/Dashboard';
 import Browsing from './containers/Browsing';
 import ProductDetail from './components/browsing/ProductDetail';
 import CartContainer from './components/cart/CartContainer';
-import Checkout from './components/Checkout';
+import Checkout from './containers/Checkout';
+import Err404 from './components/base/Err404';
 
 
 
@@ -21,12 +22,13 @@ const App = ({isAuthenticated, current_user}) => {
         {isAuthenticated ? <CartContainer /> : null}
         <Routes>
           {/* Main Base Routes */}
-          <Route path='/logout' element={<Logout />}/>
           <Route path='/' element={<Browsing />}/>
+          <Route path='/logout' element={<Logout />}/>
           <Route path='/product/:id' element={<ProductDetail />}/>
-          <Route path='/checkout' element={<Checkout />}/>
           {/* Protected Routes */}
+          <Route path='/checkout' element={isAuthenticated ? <Checkout /> : <Authpage />}/>
           <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Authpage />} />
+          <Route path="*" element={<Err404 />} />
         </Routes>
       </Layout>
     </div>

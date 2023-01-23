@@ -10,7 +10,7 @@ class Product(models.Model):
 
 class Purchase(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Product, related_name="purchases")
+    products = models.ManyToManyField(Product, related_name="purchased_products")
     total = models.IntegerField()
     date_created = models.DateTimeField(auto_now=True, null=True, blank=True)
     date_modified = models.DateTimeField(auto_now=True, null=True, blank=True)

@@ -15,5 +15,5 @@ class PurchaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Purchase
         fields = '__all__'
-        extra_fields = ('products',)
+        extra_fields = ('product',)
         ordering = ('-date_created')
