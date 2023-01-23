@@ -27,6 +27,7 @@ const App = ({isAuthenticated, current_user}) => {
           <Route path='/product/:id' element={<ProductDetail />}/>
           {/* Protected Routes */}
           <Route path='/checkout' element={isAuthenticated ? <Checkout /> : <Authpage />}/>
+          <Route path='/purchase/:id' element={isAuthenticated ? <Checkout /> : <Authpage />}/>
           <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Authpage />} />
           <Route path="*" element={<Err404 />} />
         </Routes>

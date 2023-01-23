@@ -39,7 +39,9 @@ const Dashboard = ({load_user_purchases, current_user, purchases}) => {
           {(purchases && purchases.length >= 1) ? (
             purchases.map((item, index) => (
           <div className='d-flex justify-content-center mt-2' key={index}>
-            <div className='row w-75 shadow-sm bg-light p-2 border'>
+            
+            <div className='row w-75 shadow-sm bg-light p-2 border position-relative'>
+                <a href={`purchase/${item.id}`} className='streched-link'>View Purchase</a>
                 <p className='fs-4 text-center'>Items:{item.products.length}&nbsp;&nbsp;|&nbsp;&nbsp;${item.total}.00&nbsp;|&nbsp;{item.date_created ? item.date_created.slice(0, 10) : ''}</p>
             </div>
           </div>
