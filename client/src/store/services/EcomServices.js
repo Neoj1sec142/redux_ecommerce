@@ -46,13 +46,13 @@ export const GetProductById = async (id) => {
 // }
 
 // Purchase Services
-export const GetPurchases = async () => {
-    try{
-        const res = await Client.get('store/purchase/')
-        console.log(res, "Purchase RES")
-        return res
-    }catch(err){console.log(err)}
-}
+// export const GetPurchases = async () => {
+//     try{
+//         const res = await Client.get('store/purchase/')
+//         console.log(res, "Purchase RES")
+//         return res
+//     }catch(err){console.log(err)}
+// }
 
 export const GetPurchaseById = async (id) => {
     try{

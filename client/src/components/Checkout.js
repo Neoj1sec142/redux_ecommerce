@@ -3,27 +3,30 @@ import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { load_cart, remove_item } from '../store/actions/auth'
 import { delay } from '../utils/utils'
+import {confirm_purchase} from '../store/actions/ecom'
 
 
-const Checkout = ({load_cart, cartItems, cartTotal, current_user}) => {
+const Checkout = ({load_cart, confirm_purchase, cartItems, cartTotal, current_user}) => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true)
     const [formData, setFormData] = useState({
-        customer: null,
+        customer: 0,
         products: [],
         total: 0
     })
+    const {customer, products, total} = formData;
     const fetchCart = async () => {
         load_cart()
-        await delay(750)
+        await delay(1000)
         setFormData({
-            customer: current_user.id,
             products: cartItems,
-            total: cartTotal
+            total: cartTotal,
+            customer: current_user.id
         })
+        await delay(250)
         setLoading(false)
     }
-    useEffect(() => { if(loading) fetchCart() },[])
+    useEffect(() => { if(loading && current_user) fetchCart() },[])
     const onRemove = async e => {
         e.preventDefault()
         remove_item(e.target.name)
@@ -32,12 +35,15 @@ const Checkout = ({load_cart, cartItems, cartTotal, current_user}) => {
     }
     const onSubmit = async e => {
         e.preventDefault()
-        // submit purchase
+        formData.customer = current_user.id;
+        confirm_purchase(formData)
         await delay(750)
+        localStorage.removeItem('cartItems')
+        localStorage.removeItem('cartTotal')
         navigate('/')
     }
-
-    if(!loading){
+    console.log(current_user, "USER")
+    if(!loading && current_user){
         return (
             <div className='container-fluid'>
                 <div className='d-flex justify-content-center mt-3'>
@@ -62,9 +68,9 @@ const Checkout = ({load_cart, cartItems, cartTotal, current_user}) => {
                     </div>
                 </div>
                 <form onSubmit={e=>onSubmit(e)}>
-                <input hidden name="" value="" />
-                <input hidden name="" value="" />
-                <input hidden name="" value="" />
+                <input hidden name="customer" value={customer} />
+                <input hidden name="products" value={products} />
+                <input hidden name="total" value={total} />
                 <div className='d-flex justify-content-center mt-2'>
                     <div className='row w-75 bg-light shadow-sm border m-1 p-3'>
                         <button type='Submit' className='btn btn-outline-primary w-50'>Confirm Order</button>
@@ -83,4 +89,4 @@ const mapStateToProps = state => ({
     current_user: state.auth.current_user
 })
 
-export default connect(mapStateToProps, {load_cart})(Checkout);
+export default connect(mapStateToProps, {load_cart, confirm_purchase})(Checkout);
