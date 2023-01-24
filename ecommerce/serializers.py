@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Purchase
+from .models import Product, Purchase, Review
 from users.models import User
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -16,4 +16,16 @@ class PurchaseSerializer(serializers.ModelSerializer):
         model = Purchase
         fields = '__all__'
         extra_fields = ('product',)
+        ordering = ('-date_created')
+        
+class ReviewSerializer(serializers.ModelSerializer):
+    author = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all()
+    )
+    product = serializers.PrimaryKeyRelatedField(
+        queryset=Product.objects.all()
+    )
+    class Meta:
+        model = Review
+        fields = '__all__'
         ordering = ('-date_created')

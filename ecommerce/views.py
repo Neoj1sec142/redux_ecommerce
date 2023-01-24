@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions
-from .models import Product, Purchase
-from .serializers import ProductSerializer, PurchaseSerializer
+from .models import Product, Purchase, Review
+from .serializers import ProductSerializer, PurchaseSerializer, ReviewSerializer
 
 class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
@@ -39,3 +39,25 @@ class PurchasesByUser(generics.ListAPIView):
         customer = self.kwargs['user_pk']
         queryset = Purchase.objects.filter(customer=customer)
         return queryset
+   
+class CreateReview(generics.CreateAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+    permission_classes = (permissions.AllowAny,)
+    
+    class Meta:
+        model = Review
+        fields = ('__all__')
+        ordering = ('-date_created')
+    
+class ReviewListByProduct(generics.ListCreateAPIView):
+    serializer_class = ReviewSerializer
+    permission_classes = (permissions.AllowAny,)
+    def get_queryset(self):
+        product = self.kwargs['product_pk']
+        queryset = Review.objects.filter(product=product)
+        return queryset
+    
+class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer

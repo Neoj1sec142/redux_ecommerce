@@ -96,3 +96,47 @@ export const UpdatePurchase = async (id, purDetails) => {
         return res
       } catch (err) {console.log(err)}
 }
+
+// Review Services
+export const GetReviewById = async (id) => {
+    try{
+        const res = await Client.get(`store/reviews/${id}/`)
+        return res
+    }catch(err){console.log(err)}
+}
+export const GetReviewsByProduct = async (id) => {
+    try{
+        const res = await Client.get(`store/${id}/reviews/`)
+        // console.log(res)
+        return res
+    }catch(err){console.log(err)}
+}
+
+export const CreateReview = async (rev) => {
+    console.log(rev, "BEfore TRY")
+    try {
+        const data = {
+            stars: rev.stars,
+            product: rev.product,
+            comment: rev.comment,
+            author: rev.author
+        }
+        console.log(data, "Before axios")
+        const res = await Client.post(`store/reviews/`, data)
+        return res
+    } catch (err) {console.log(err)}
+}
+    
+export const RemoveReview = async (id) => {
+    try{
+        const res = await Client.delete(`store/reviews/${id}/`)
+        return res
+    } catch (err) {console.log(err)}
+}
+export const UpdateReview = async (id, revDetails) => {
+    try {
+        const res = await Client.put(`store/reviews/${id}/`, revDetails)
+        console.log(res, "UPDATE RES")
+        return res
+      } catch (err) {console.log(err)}
+}
