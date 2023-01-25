@@ -5,25 +5,25 @@ from users.models import User
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ['title', 'description', 'price']
+        fields = ["__all__"]
         
 class PurchaseSerializer(serializers.ModelSerializer):
     customer = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.all()
     )
-    products = serializers.ListField()
-    # ProductSerializer(many=True, read_only=True)
+    products = ProductSerializer(many=True, read_only=True)
     class Meta:
         model = Purchase
-        fields = '__all__'
-        extra_fields = ('product',)
-        ordering = ('-date_created')
+        fields = ['customer', 'products', 'total', 'date_created']
+        # extra_kwargs = {'purchased_products':{'required': True}}
+        extra_fields = ('products','customer')
+        ordering = ('-date_created',)
         
 class ReviewSerializer(serializers.ModelSerializer):
     author = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.all()
     )
-    product = serializers.PrimaryKeyRelatedField(
+    products = serializers.PrimaryKeyRelatedField(
         queryset=Product.objects.all()
     )
     class Meta:

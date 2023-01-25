@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, viewsets
 from .models import Product, Purchase, Review
 from .serializers import ProductSerializer, PurchaseSerializer, ReviewSerializer
 
@@ -31,6 +31,14 @@ class PurchaseDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Purchase.objects.all()
     serializer_class = PurchaseSerializer
     
+    
+class PurchaseItems(generics.ListAPIView):
+    serializer_class = ProductSerializer
+    def get_queryset(self):
+        pk = self.kwargs['purchase_pk']
+        purchase = Purchase.objects.get(pk=pk)
+        queryset = purchase.products.all()
+        return queryset
     
 class PurchasesByUser(generics.ListAPIView):
     serializer_class = PurchaseSerializer

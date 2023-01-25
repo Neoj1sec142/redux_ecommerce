@@ -8,12 +8,14 @@ import {
     LOAD_REVIEW_SUCCESS, LOAD_REVIEW_FAIL,
     LOAD_REVIEWS_SUCCESS, LOAD_REVIEWS_FAIL,
     REMOVE_REVIEW_SUCCESS, REMOVE_REVIEW_FAIL,
-    UPLOAD_REVIEW_SUCCESS, UPLOAD_REVIEW_FAIL
+    UPLOAD_REVIEW_SUCCESS, UPLOAD_REVIEW_FAIL,
+    LOAD_PURCHASEITEMS_SUCCESS, LOAD_PURCHASEITEMS_FAIL
 } from '../types'
 import {
     GetProducts, GetProductById, GetPurchaseById,
     GetPurchasesByUser, CreatePurchase, RemovePurchase,
-    GetReviewById, GetReviewsByProduct, CreateReview, RemoveReview
+    GetReviewById, GetReviewsByProduct, CreateReview, 
+    RemoveReview, GetPurchaseItems
 } from '../services/EcomServices'
 import { setAlert } from './alert'
 // Product Actions
@@ -80,6 +82,27 @@ export const load_purchase_by_id = (id) => async dispatch => {
         console.log(err, 'error 2')
         dispatch({
             type: LOAD_PURCHASE_FAIL
+        })
+    }
+}
+export const load_purchase_items = (purchase_pk) => async dispatch => {
+    try{
+        const res = await GetPurchaseItems(purchase_pk)
+        if(res.status === 200){
+            dispatch({
+                type: LOAD_PURCHASEITEMS_SUCCESS,
+                payload: res.data
+            })
+        }else{
+            console.log(res, 'error 1')
+            dispatch({
+                type: LOAD_PURCHASEITEMS_FAIL
+            })
+        }
+    }catch(err){
+        console.log(err, 'error 2')
+        dispatch({
+            type: LOAD_PURCHASEITEMS_FAIL
         })
     }
 }

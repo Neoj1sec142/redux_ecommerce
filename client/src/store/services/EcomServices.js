@@ -60,6 +60,14 @@ export const GetPurchaseById = async (id) => {
         return res
     }catch(err){console.log(err)}
 }
+export const GetPurchaseItems = async (purchase_pk) => {
+    try{
+        const res = await Client.get(`store/purchase/${purchase_pk}/items/`)
+        console.log(res, "RESSSSS")
+        return res
+    }catch(err){console.log(err)}
+}
+
 export const GetPurchasesByUser = async (id) => {
     try{
         const res = await Client.get(`store/user/purchase/${id}/`)

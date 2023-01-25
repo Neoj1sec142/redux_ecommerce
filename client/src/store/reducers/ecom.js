@@ -9,13 +9,15 @@ import {
     LOAD_REVIEW_SUCCESS, LOAD_REVIEW_FAIL,
     LOAD_REVIEWS_SUCCESS, LOAD_REVIEWS_FAIL,
     REMOVE_REVIEW_SUCCESS, REMOVE_REVIEW_FAIL,
-    UPLOAD_REVIEW_SUCCESS, UPLOAD_REVIEW_FAIL
+    UPLOAD_REVIEW_SUCCESS, UPLOAD_REVIEW_FAIL,
+    LOAD_PURCHASEITEMS_SUCCESS, LOAD_PURCHASEITEMS_FAIL
 } from '../types'
 
 const initialState = {
     product: {},
     products: [],
     purchase: {},
+    purchaseItems: [],
     purchases: [],
     reviews: [],
     review: {}
@@ -24,6 +26,11 @@ const initialState = {
 export default function(state = initialState, action){
     const {type, payload} = action;
     switch(type){
+        case LOAD_PURCHASEITEMS_SUCCESS:
+            return{
+                ...state,
+                purchaseItems: payload
+            }
         case LOAD_REVIEWS_SUCCESS:
             return{
                 ...state,
@@ -54,6 +61,7 @@ export default function(state = initialState, action){
                 ...state,
                 products: payload
             }
+        case LOAD_PURCHASEITEMS_FAIL:
         case LOAD_REVIEW_FAIL:
         case LOAD_REVIEWS_FAIL:
         case REMOVE_REVIEW_SUCCESS:

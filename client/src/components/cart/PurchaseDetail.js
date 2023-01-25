@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { delay } from '../../utils/utils'
-import {load_purchase_by_id} from '../../store/actions/ecom'
+import {load_purchase_by_id, load_purchase_items} from '../../store/actions/ecom'
 import { useParams } from 'react-router-dom'
 
-const PurchaseDetail = ({load_purchase_by_id, purchase, current_user}) => {
+const PurchaseDetail = ({load_purchase_by_id, load_purchase_items, purchase, current_user, purchaseItems}) => {
     const [loading, setLoading] = useState(true)
     const {id} = useParams();
     const fetchPurchase = async () => {
@@ -13,9 +13,9 @@ const PurchaseDetail = ({load_purchase_by_id, purchase, current_user}) => {
         setLoading(false)
     }
     useEffect(() => {if(id && loading) fetchPurchase()},[])
-
+    useEffect(() => {if(id) load_purchase_items(id)},[])
     if(!loading && purchase){
-        const {total, products, date_created} = purchase;
+        const {total, date_created} = purchase;
         console.log(purchase, "PUrcase")
         return (
             <div className='container-fluid'>
@@ -49,7 +49,8 @@ const PurchaseDetail = ({load_purchase_by_id, purchase, current_user}) => {
 
 const mapStateToProps = state => ({
     current_user: state.auth.current_user,
-    purchase: state.ecom.purchase
+    purchase: state.ecom.purchase,
+    purchaseItems: state.ecom.purchaseItems
 })
 
-export default connect(mapStateToProps, {load_purchase_by_id})(PurchaseDetail);
+export default connect(mapStateToProps, {load_purchase_by_id, load_purchase_items})(PurchaseDetail);
