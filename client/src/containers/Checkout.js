@@ -42,7 +42,7 @@ const Checkout = ({load_cart, confirm_purchase, cartItems, cartTotal, current_us
         localStorage.removeItem('cartTotal')
         navigate('/')
     }
-    console.log(current_user, "USER")
+    // console.log(current_user, "USER")
     if(!loading && current_user){
         return (
             <div className='container-fluid'>
@@ -64,7 +64,7 @@ const Checkout = ({load_cart, confirm_purchase, cartItems, cartTotal, current_us
                 <div className='d-flex justify-content-center mt-2'>
                     <div className='row w-75 bg-light shadow-sm border m-1 p-3'>
                         <p className='fs-3 text-center p-1'>Order Total: ${cartTotal}.00</p>
-                        <p className='fs-3 text-center p-1'>Items: {cartItems.length}</p>
+                        <p className='fs-3 text-center p-1'>Items: {cartItems?.length}</p>
                     </div>
                 </div>
                 <form onSubmit={e=>onSubmit(e)}>

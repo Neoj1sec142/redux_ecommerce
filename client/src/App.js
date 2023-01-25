@@ -11,6 +11,7 @@ import ProductDetail from './components/browsing/ProductDetail';
 import CartContainer from './components/cart/CartContainer';
 import Checkout from './containers/Checkout';
 import Err404 from './components/base/Err404';
+import PurchaseDetail from './components/cart/PurchaseDetail';
 
 
 
@@ -27,7 +28,7 @@ const App = ({isAuthenticated, current_user}) => {
           <Route path='/product/:id' element={<ProductDetail />}/>
           {/* Protected Routes */}
           <Route path='/checkout' element={isAuthenticated ? <Checkout /> : <Authpage />}/>
-          <Route path='/purchase/:id' element={isAuthenticated ? <Checkout /> : <Authpage />}/>
+          <Route path='/purchase/:id' element={isAuthenticated ? <PurchaseDetail /> : <Authpage />}/>
           <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Authpage />} />
           <Route path="*" element={<Err404 />} />
         </Routes>

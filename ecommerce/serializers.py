@@ -5,13 +5,14 @@ from users.models import User
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['title', 'description', 'price']
         
 class PurchaseSerializer(serializers.ModelSerializer):
     customer = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.all()
     )
-    products = ProductSerializer(many=True, read_only=True)
+    products = serializers.ListField()
+    # ProductSerializer(many=True, read_only=True)
     class Meta:
         model = Purchase
         fields = '__all__'

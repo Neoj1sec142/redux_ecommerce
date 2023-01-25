@@ -2,9 +2,14 @@ from django.db import models
 from users.models import User
 
 class Product(models.Model):
+    # class Category(models.TextChoices):
+    #     ELECTRONICS = 'House'
+    #     MEDIA = 'Condo'
+    #     HOME = 'Townhouse'  
     title = models.CharField(max_length=150)
     description = models.TextField()
     price = models.IntegerField()
+    # category = models.CharField(max_length=50, choices=Category.choices, default=Category.MEDIA)
     # NEED TO ADD THE REST OF FIELDS VIA IMG CATAGORY >>>
     def __str__(self):
         return self.title
