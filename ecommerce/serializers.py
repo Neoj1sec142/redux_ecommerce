@@ -5,7 +5,7 @@ from users.models import User
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ["__all__"]
+        fields = '__all__'
         
 class PurchaseSerializer(serializers.ModelSerializer):
     customer = serializers.PrimaryKeyRelatedField(
@@ -15,7 +15,6 @@ class PurchaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Purchase
         fields = ['customer', 'products', 'total', 'date_created']
-        # extra_kwargs = {'purchased_products':{'required': True}}
         extra_fields = ('products','customer')
         ordering = ('-date_created',)
         
