@@ -7,6 +7,7 @@ import Authpage from './containers/Authpage'
 import Logout from './components/base/Logout';
 import Dashboard from './containers/Dashboard';
 import BrowsePage from './containers/BrowsePage';
+import ProductDetail from './components/broswing/ProductDetail';
 // import Checkout from './containers/Checkout';
 import Err404 from './components/base/Err404';
 
@@ -18,6 +19,7 @@ const App = ({isAuthenticated, current_user}) => {
         <Routes>
           {/* Main Base Routes */}
           <Route path='/' element={<BrowsePage />}/>
+          <Route path='/product/:id' element={<ProductDetail />}/>
           <Route path='/logout' element={<Logout />}/>
           {/* Protected Routes */}
           <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Authpage />} />

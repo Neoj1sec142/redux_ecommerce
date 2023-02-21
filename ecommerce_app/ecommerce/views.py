@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Product, Purchase, PurchaseProduct, Review
-from .serializers import ProductSerializer, PurchaseSerializer, PurchaseProductSerializer, ReviewSerializer
+from .serializers import ProductSerializer, PurchaseSerializer, PurchaseProductSerializer, ReviewSerializer, BrowseSerializer
 
 class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
@@ -17,9 +17,9 @@ class BrowseList(APIView):
         products = Product.objects.annotate(
             review_count=Count('review'),
             avg_stars=Avg('review__stars')
-        ).values('id', 'name', 'price', 'created_at', 'review_count', 'avg_stars')
+        ).values('id', 'name', 'price', 'category', 'created_at', 'review_count', 'avg_stars')
 
-        serializer = ProductSerializer(products, many=True)
+        serializer = BrowseSerializer(products, many=True)
         return Response(serializer.data)
 
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -28,12 +28,17 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
 
 class ProductReviewList(APIView):
-    def get(self, request, product_id):
+    permission_classes = [AllowAny]
+    def get(self, request, pk):
         try:
-            product = Product.objects.get(pk=product_id)
+            product = Product.objects.get(pk=pk)
             reviews = Review.objects.filter(product=product)
-            serializer = ReviewSerializer(reviews, many=True)
-            return Response(serializer.data)
+            product_serializer = ProductSerializer(product)
+            review_serializer = ReviewSerializer(reviews, many=True)
+            return Response({
+                'product': product_serializer.data,
+                'reviews': review_serializer.data
+            })
         except Product.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 

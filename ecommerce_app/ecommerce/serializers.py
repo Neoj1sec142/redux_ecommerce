@@ -18,7 +18,7 @@ class BrowseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('id', 'name', 'price', 'created_at', 'review_count', 'avg_stars')
+        fields = ('id', 'name', 'price', 'category', 'created_at', 'review_count', 'avg_stars')
     
 class PurchaseProductSerializer(serializers.ModelSerializer):
     class Meta:
