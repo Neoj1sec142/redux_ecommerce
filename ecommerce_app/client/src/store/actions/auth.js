@@ -90,7 +90,7 @@ export const load_current = (username) => async dispatch => {
 }
 
 
-export const signup = ({first_name, last_name, email, username, password, password2}) => async dispatch => {
+export const signup = ({first_name, last_name, email, username, password}) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -259,105 +259,60 @@ export const destroy_user = (id) => async dispatch => {
 }
 
 export const add_to_cart = (item, amt) => async dispatch => {
-    try{
-        const data = JSON.parse(localStorage.getItem('cartItems'))
+    try {
+        let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
         let st = amt;
-        let cart = [];
-        if(data?.length){
-            while(st > 0){
-                data.push(item)
-                st--;
-            }
-            dispatch({
-                type: ADD_TO_CART_SUCCESS,
-                payload: data
-            })
-        }else{
-            while(st > 0){
-                cart.push(item)
-                st--;
-            }
-            dispatch({
-                type: ADD_TO_CART_SUCCESS,
-                payload: cart
-            })
+        while (st > 0) {
+          cart.push(item);
+          st--;
         }
-    }catch(err){
-        console.log(err, "ERR 2")
+        const total = cart.reduce((acc, item) => acc + parseFloat(item.price), 0);
+        const finishedTotal = parseFloat(total.toFixed(2));
+        dispatch({ type: ADD_TO_CART_SUCCESS, payload: cart });
+        dispatch({ type: TOTAL_CART_SUCCESS, payload: finishedTotal });
+      } catch (err) {
+        console.log(err, 'ERR 2');
         dispatch({
-            type: ADD_TO_CART_FAIL
-        })
-    }
+          type: ADD_TO_CART_FAIL
+        });
+      }
 }
 
 export const load_cart = () => async dispatch => {
-    try{
-        const items = JSON.parse(localStorage.getItem('cartItems'))
-        const total = JSON.parse(localStorage.getItem('cartTotal'))
-        if(items){
-            const data = {
-                items: items,
-                total: total
-            }
-            dispatch({
-                type: LOAD_CART_SUCCESS,
-                payload: data
-            })
-        }else{
-            console.log(items, "ERR 1 items")
-            console.log(total, "ERR 1 total")
-            dispatch({
-                type: LOAD_CART_FAIL
-            })
-        }
-    }catch(err){
-        console.log(err, "ERR 2")
-        dispatch({
-            type: LOAD_CART_FAIL
-        })
+    try {
+        const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const total = parseFloat(JSON.parse(localStorage.getItem('cartTotal')) || 0.00);
+        const items = cart.map(item => ({ ...item }));
+        const data = { items, total };
+        dispatch({ type: LOAD_CART_SUCCESS, payload: data });
+        return Promise.resolve();
+    } catch (err) {
+        console.log(err, 'ERR');
+        dispatch({ type: LOAD_CART_FAIL });
+        return Promise.reject(err);
     }
 }
 
 
 export const remove_item = (index) => async dispatch => {
-    try{
-        const cart = JSON.parse(localStorage.getItem('cartItems'))
-        if(cart){
-            index = parseInt(index)
-            if (index > -1) {
-                cart.splice(index, 1);
-            }
-            dispatch({
-                type: REMOVE_ITEM_SUCCESS,
-                payload: cart
-            })
+    try {
+        let newCart;
+        let total;
+        const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        if(cart.length === 1 && cart[0].id === index){
+            newCart = []
+            total = 0.00
+        }else{
+            newCart = cart.filter((_, i) => i !== cart.findIndex((item, j) => i === index && j >= i));
+            total = cart.reduce((acc, item) => acc + parseFloat(item.price), 0);
         }
-    }catch(err){
-        console.log(err, "ERR")
+        const finishedTotal = parseFloat(total.toFixed(2));
+        dispatch({ type: REMOVE_ITEM_SUCCESS, payload: newCart });
+        dispatch({ type: TOTAL_CART_SUCCESS, payload: finishedTotal });
+    } catch (err) {
+        console.log(err, 'ERR');
         dispatch({
             type: REMOVE_ITEM_FAIL
-        })
+        });
     }
-}
-
-export const total_cart = () => async dispatch => {
-    try{
-        const cart = JSON.parse(localStorage.getItem('cartItems'))
-        let total = 0;
-        if(cart && cart.length){
-            console.log("Got to the condition")
-            for(let i=0; i<cart.length; i++){
-                total += cart[i].price
-            }
-        }
-        dispatch({
-            type: TOTAL_CART_SUCCESS,
-            payload: total
-        })
-    }catch(err){
-        console.log(err, 'ERR')
-        dispatch({
-            type: TOTAL_CART_FAIL
-        })
-    }
-}
+};

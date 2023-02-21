@@ -1,18 +1,11 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import {signup} from '../../store/actions/auth'
-import {delay, getLocation} from '../../utils/utils'
-const stateData = require('./stateData.json')
+import {delay} from '../../utils/utils'
+
 
 const Register = ({signup, setPage}) => {
-  const navigate = useNavigate()
-  const [location, setLocation] = useState({
-    state: '',
-    city: '',
-    address: '',
-    zip: null
-  })
+  
   const [formData, setFormData] = useState({
     first_name: '', 
     last_name: '', 
@@ -22,16 +15,22 @@ const Register = ({signup, setPage}) => {
     password: '',
     password2: ''
   })
-  const {state, city, address, zip} = location;
+  
   const {first_name, last_name, email, username, password, password2} = formData;
-  const onLocChange = e => setLocation({...location, [e.target.name]: e.target.value})
+  
   const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
   const onSubmit = async e => {
     e.preventDefault()
-    formData.location = getLocation(location)
-    signup(formData)
-    await delay(750)
-    navigate('/')
+    if(password === password2){
+      const newForm = { ...formData }
+      delete newForm.password2;
+      signup(newForm)
+      await delay(750)
+      setPage('login')
+    }else{
+      alert("Please check your input and try again")
+      setFormData({username: '', password: '', first_name:'',last_name:'',email:''})
+    }
   }
   const cancel = e => {
     e.preventDefault()
@@ -90,42 +89,6 @@ const Register = ({signup, setPage}) => {
                 required />
             </div>
             <div className='form-group m-3'>
-              <select name="state" onChange={e=>onLocChange(e)}>
-                {stateData.map((item, index) => (
-                <option key={index}>{item}</option>))}
-              </select>
-            </div>
-            <div className='form-group m-3'>
-              <input className='form-control'
-                placeholder='City*'
-                maxLength={30}
-                name='city'
-                type='city'
-                value={city}
-                onChange={e=>onChange(e)}
-                required />
-            </div>
-            <div className='form-group m-3'>
-              <input className='form-control'
-                placeholder='Address*'
-                maxLength={125}
-                name='address'
-                type='address'
-                value={address}
-                onChange={e=>onChange(e)}
-                required />
-            </div>
-            <div className='form-group m-3'>
-              <input className='form-control'
-                placeholder='Zipcode*'
-                maxLength={10}
-                name='zip'
-                type='number'
-                value={zip}
-                onChange={e=>onChange(e)}
-                required />
-            </div>
-            <div className='form-group m-3'>
               <input className='form-control'
                   placeholder='Password*'
                   maxLength={100}
@@ -147,7 +110,7 @@ const Register = ({signup, setPage}) => {
             </div>
             <div className='d-flex justify-content-center'>
               <div className='col w-50 m-1'>
-                <button type='Submit' disabled={password === password2} className='btn btn-primary m-1 w-100'>Login</button>
+                <button type='Submit' disabled={password !== password2} className='btn btn-primary m-1 w-100'>Login</button>
               </div>
               <div className='col w-50 m-1'>
                 <button onClick={e=>cancel(e)} className='btn btn-danger m-1 w-100'>Cancel</button>

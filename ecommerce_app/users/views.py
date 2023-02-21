@@ -23,6 +23,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
 
 class UserDetailByUsername(generics.RetrieveAPIView):
+    permission_classes = (permissions.AllowAny,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
     lookup_field = 'username'

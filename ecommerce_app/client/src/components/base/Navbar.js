@@ -1,9 +1,23 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { connect } from 'react-redux';
+import {load_cart, remove_item} from '../../store/actions/auth'
 import Alert from '../../utils/Alert'
+import { delay } from '../../utils/utils';
 
-const Navbar = ({isAuthenticated}) => {
-
+const Navbar = ({load_cart, remove_item, isAuthenticated, cartItems, cartTotal}) => {
+    const [loading, setLoading] = useState(true)
+    const fetchCart = async () => {
+        load_cart()
+        await delay(300)
+        setLoading(false)
+    }
+    useEffect(() => { if(loading) fetchCart() },[])
+    const removeItem = async e => {
+        const item = e;
+        remove_item(item.id)
+        await delay(200)
+        fetchCart()
+    }
     let authBar;
     if(isAuthenticated){
         authBar = (
@@ -17,19 +31,21 @@ const Navbar = ({isAuthenticated}) => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="#!">Home</a>
-                                </li>
-                                <li className="nav-item">
                                     <a className="nav-link" href="/dashboard">Profile</a>
                                 </li>
                                 <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#!" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button className="nav-link dropdown-toggle nobtn" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     Cart Items
-                                </a>
+                                </button>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li className="dropdown-item"></li>
+                                    {cartItems && cartItems.length >=1 ? (
+                                        cartItems.map((item, index) => (
+                                    <li className="dropdown-item" key={index}>
+                                        <p className='w-75'>{item.name} {item.price}</p>
+                                        <button onClick={()=>removeItem(item)} className='btn btn-outline-danger w-25'>❌</button>
+                                    </li>))):(<li className="dropdown-item">No Items in Cart</li>)}
                                     <li><hr className="dropdown-divider"/></li>
-                                    <li className="dropdown-item">Total Items: &nbsp;|&nbsp; Total Price: </li>
+                                    <li className="dropdown-item">Total Items: {cartItems !== null ? cartItems.length : 0} &nbsp;|&nbsp; Total Price: {cartTotal !== null ? `$${cartTotal}` : 0}</li>
                                 </ul>
                                 </li>
                                 <li className="nav-item">
@@ -59,23 +75,6 @@ const Navbar = ({isAuthenticated}) => {
                         <li className="nav-item">
                             <a className="nav-link" href="/dashboard">Login / Register</a>
                         </li>
-                        <li className="nav-item">
-                            <input type='radio' className='form-radio p-2 me-1' />
-                        </li>
-                        {/* <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#!" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a className="dropdown-item" href="#!">Action</a></li>
-                            <li><a className="dropdown-item" href="#!">Another action</a></li>
-                            <li><hr className="dropdown-divider"/></li>
-                            <li><a className="dropdown-item" href="#!">Something else here</a></li>
-                        </ul>
-                        </li> */}
-                        {/* <li className="nav-item">
-                        <a className="nav-link disabled" href="#!" tabIndex="-1" aria-disabled="true">Disabled</a>
-                        </li> */}
                     </ul>
                     <form className="d-flex">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
@@ -87,14 +86,15 @@ const Navbar = ({isAuthenticated}) => {
             <Alert />
         </Fragment>
     )
-
-    return (
-        <>{isAuthenticated ? authBar : publicBar}</>
-    )
+    if(!loading){
+        return ( <>{isAuthenticated ? authBar : publicBar}</> )
+    }else{ return( <div>Loading...</div> ) }
 }
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    cartItems: state.auth.cartItems,
+    cartTotal: state.auth.cartTotal
 })
 
-export default connect(mapStateToProps, {})(Navbar)
+export default connect(mapStateToProps, {load_cart, remove_item})(Navbar)

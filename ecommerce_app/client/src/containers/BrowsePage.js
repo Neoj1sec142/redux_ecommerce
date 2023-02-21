@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {delay, searchByName, filterByCategory } from '../utils/utils'
 import {load_browse} from '../store/actions/product'
+import { add_to_cart, load_cart } from '../store/actions/auth'
 import { connect } from 'react-redux'
-const BrowsePage = ({load_browse, products}) => {
+const BrowsePage = ({load_browse, add_to_cart, products}) => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState({
@@ -33,6 +34,12 @@ const BrowsePage = ({load_browse, products}) => {
     setData([])
     setSearch({filter: '', query: ''})
   }
+  const add = async e => {
+    const item = e;
+    add_to_cart(item, 1)
+    await delay(100)
+    load_cart()
+  }
 
   console.log()
   console.log(data, "DTA")
@@ -58,18 +65,40 @@ const BrowsePage = ({load_browse, products}) => {
         </div>
         <div className='d-flex justify-content-center mt-3'>
           <div className='row w-75 shadow-sm'>
-              <ul className='list-group'>
-              {/* (filter === '' && search === '' && products && products.length >= 1) */}
-                {(data.length >= 1) ? data.map((item, index) => (
-                <li key={index} className='list-group-item mt-1'>
-                  {/* <img src={item.image} /> */}
-                  <p><a href={`/product/${item.id}`}>{item.name} Price:{item.price} Reviews: {item.review_count}</a> Stars: {item.avg_stars}</p>
-                </li>)): (products && products.length >= 1 ? products.map((item, index) => (
-                <li key={index} className='list-group-item mt-1'>
-                {/* <img src={item.image} /> */}
-                <p><a href={`/product/${item.id}`}>{item.name} Price:{item.price} Reviews: {item.review_count}</a> Stars: {item.avg_stars}</p>
-                </li>)): <li>No Items</li>)}
-              </ul>
+            {(data.length >= 1) ? data.map((item, index) => (
+              <div class="col-md-4" key={index}>
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src={item.image} width="100%" height="225" alt="Card cap"/>
+                    <div class="card-body">
+                        <p class="card-text"><strong>{item.name}</strong></p>
+                        <p class="card-text">Price: ${item.price}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href={`/product/${item.id}`} type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                                <button onClick={()=>add(item)} type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                            </div>
+                            <small class="text-muted">Reviews: {item.review_count} Stars: {item.avg_stars}</small>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            )): (products && products.length >= 1 ? products.map((item, index) => (
+              <div class="col-md-4" key={index}>
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src={item.image} width="100%" height="225" alt="Card cap"/>
+                    <div class="card-body">
+                        <p class="card-text"><strong>{item.name}</strong></p>
+                        <p class="card-text">Price: ${item.price}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href={`/product/${item.id}`} type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                                <button onClick={()=>add(item)} type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                            </div>
+                            <small class="text-muted">Reviews: {item.review_count} Stars: {item.avg_stars}</small>
+                        </div>
+                    </div>
+                </div>
+              </div>)): <li>No Items</li>)}
           </div>
         </div>
       </div>
@@ -81,4 +110,4 @@ const mapStateToProps = state => ({
   products: state.product.products
 })
 
-export default connect(mapStateToProps, {load_browse})(BrowsePage)
+export default connect(mapStateToProps, {load_browse, add_to_cart})(BrowsePage)

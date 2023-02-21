@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     products: [],
-    product: {}
+    productDetail: {}
 }
 
 export default function(state = initialState, action){
@@ -15,7 +15,7 @@ export default function(state = initialState, action){
         case LOAD_PRODUCT_SUCCESS:
             return{
                 ...state,
-                product: payload
+                productDetail: payload
             }
         case LOAD_BROWSELIST_SUCCESS:
             return{
