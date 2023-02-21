@@ -11,6 +11,14 @@ class ProductSerializer(serializers.ModelSerializer):
         if value <= 0:
             raise serializers.ValidationError('Price must be greater than 0')
         return value   
+
+class BrowseSerializer(serializers.ModelSerializer):
+    review_count = serializers.IntegerField()
+    avg_stars = serializers.FloatField()
+
+    class Meta:
+        model = Product
+        fields = ('id', 'name', 'price', 'created_at', 'review_count', 'avg_stars')
     
 class PurchaseProductSerializer(serializers.ModelSerializer):
     class Meta:
