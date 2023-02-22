@@ -1,24 +1,24 @@
 [
     {
         "name": "Super Mario Bros.", 
-        "description": "Platform, Nintendo, 1985", 
+        "description": "Super Mario Bros. is a platform game developed and published by Nintendo for the Nintendo Entertainment System (NES). The successor to the 1983 arcade game Mario Bros. and the first game in the Super Mario series, it was first released in 1985 for the Famicom in Japan. Following a limited US release for the NES, it was ported to international arcades for the Nintendo VS. System in early 1986. The NES version received a wide release in North America that year and in PAL regions in 1987. Players control Mario, or his brother Luigi in the multiplayer mode, as they traverse the Mushroom Kingdom to rescue Princess Toadstool from King Koopa (later named Bowser). They traverse side-scrolling stages while avoiding hazards such as enemies and pits with the aid of power-ups such as the Super Mushroom, Fire Flower, and Starman.", 
         "category": "Games", 
-        "price": 29.08,
-        "image":""
+        "price": 9.08,
+        "image": "https://upload.wikimedia.org/wikipedia/en/0/03/Super_Mario_Bros._box.png"
     },
     {
-        "name": "Gran Turismo 3: A-Spec", 
-        "description": "Racing, Sony Computer Entertainment, 2001", 
+        "name": "Elder Scrolls Morrowind", 
+        "description": "The Elder Scrolls III: Morrowind is an open-world action role-playing video game developed by Bethesda Game Studios and published by Bethesda Softworks. It is the third installment in the Elder Scrolls series, following 1996's The Elder Scrolls II: Daggerfall, and was released in 2002 for Microsoft Windows and Xbox. The main story takes place on Vvardenfell, an island in the Dunmer (Dark Elf) province of Morrowind, part of the continent of Tamriel. The central quests concern the demigod Dagoth Ur, housed within the volcanic Red Mountain, who seeks to gain power and break Morrowind free from Imperial reign. Although it is primarily a fantasy game, with many gameplay elements and Western medieval and fantasy fiction tropes inspired by Dungeons & Dragons and previous RPGs, Morrowind also features some steampunk elements, and drew much inspiration from Middle Eastern and East Asian art, architecture and cultures. Morrowind was designed with an open-ended, freeform style of gameplay in mind, with less of an emphasis on the main plot than its predecessors. This choice received mixed reactions, though such feelings were tempered by reviewers' appreciation of Morrowind's expansive, detailed game world.", 
         "category": "Games", 
-        "price": 6.85,
-        "image":""
+        "price": 14.99,
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/53/MorrowindCOVER.jpg"
     },
     {
         "name": "Call of Duty: Modern Warfare 3", 
-        "description": "Shooter, Activision, 2011", 
+        "description": "Call of Duty: Modern Warfare 3 is a 2011 first-person shooter video game, jointly developed by Infinity Ward and Sledgehammer Games and published by Activision. The game was released worldwide in November 2011 for Microsoft Windows, the Xbox 360, PlayStation 3, and Wii.[1] It is the third and final installment in the original Modern Warfare saga, a direct sequel to 2009's Call of Duty: Modern Warfare 2, and the eighth Call of Duty installment overall. A separate version for the Nintendo DS was developed by n-Space, while Treyarch developed the game's Wii port. In Japan, Square Enix published the game with a separate subtitled and dubbed version. The game's campaign follows Modern Warfare 2 and begins right after the events of its final mission. Similar to Modern Warfare 2, it is centered around the Task Force 141, which contains Captain Price, Soap MacTavish, and a newly introduced playable character, Yuri. Alongside the Delta Force and Special Air Service, they hunt Vladimir Makarov (the main antagonist of the trilogy), a Russian terrorist who leads the Russian Ultranationalist party. He leads several terror attacks across Europe, triggering a large-scale war between the Ultranationalists and friendly forces. For the game's multiplayer mode, new mode types and killstreak choices were brought in. Improvements were also made to the mode that solved issues that appeared in Modern Warfare 2.", 
         "category": "Games", 
-        "price": 19.04,
-        "image":""
+        "price": 12.59,
+        "image":"https://upload.wikimedia.org/wikipedia/en/b/bf/Call_of_Duty_Modern_Warfare_3_box_art.png"
     },
     {
         "name": "Pok\u00e9mon Yellow: Special Pikachu Edition", 
