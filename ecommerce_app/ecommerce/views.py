@@ -17,7 +17,7 @@ class BrowseList(APIView):
         products = Product.objects.annotate(
             review_count=Count('review'),
             avg_stars=Avg('review__stars')
-        ).values('id', 'name', 'price', 'category', 'created_at', 'review_count', 'avg_stars')
+        ).values('id', 'name', 'price', 'category', 'image', 'created_at', 'review_count', 'avg_stars')
 
         serializer = BrowseSerializer(products, many=True)
         return Response(serializer.data)

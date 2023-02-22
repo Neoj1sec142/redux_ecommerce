@@ -1,4 +1,17 @@
 
+/* Profile */
+.profile-container{
+  margin-left: 25%;
+  margin-right: 0%;
+  padding: 25px;
+  margin-top: 3%;
+}
+.dash-container{
+  margin-left: 0%;
+  margin-right: 25%;
+  margin-top: 3%;
+}
+
 /* Custom Styles */
 .nolink{
   color: rgb(34, 34, 34);

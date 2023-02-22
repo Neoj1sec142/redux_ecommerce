@@ -18,7 +18,7 @@ const BrowsePage = ({load_browse, add_to_cart, products}) => {
     await delay(750)
     setLoading(false)
   }
-  
+  console.log(products)
   useEffect(() => {if(loading) fetchData()},[])
   const onChange = e => setSearch({...search, [e.target.name]: e.target.value})
   const filterData = (searchObj) => {

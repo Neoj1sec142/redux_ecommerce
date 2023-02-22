@@ -1,24 +1,43 @@
 from rest_framework import serializers
+from django.core.files.base import ContentFile
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from .models import Product, Purchase, Review, PurchaseProduct
 from users.models import User
 
 class ProductSerializer(serializers.ModelSerializer):
+    image = serializers.FileField(required=False)
+    
+    def create(self, validated_data):
+        image = validated_data.get('image')
+        if image:
+            image_file = ContentFile(image.read())
+            validated_data['image'] = InMemoryUploadedFile(
+                image_file,
+                None,
+                image.name,
+                image.content_type,
+                image.size,
+                image.charset
+            )
+        return super().create(validated_data)
+    def validate_price(self, value):
+        if value <= 0:
+            raise serializers.ValidationError('Price must be greater than 0')
+        return value  
     class Meta:
         model = Product
         fields = ['id', 'name', 'description', 'price', 'image', 'category', 'created_at', 'updated_at', 'is_active']
         read_only_fields = ['created_at', 'updated_at']
-    def validate_price(self, value):
-        if value <= 0:
-            raise serializers.ValidationError('Price must be greater than 0')
-        return value   
 
 class BrowseSerializer(serializers.ModelSerializer):
     review_count = serializers.IntegerField()
     avg_stars = serializers.FloatField()
-
+    image = serializers.ImageField()
+    
     class Meta:
         model = Product
-        fields = ('id', 'name', 'price', 'category', 'created_at', 'review_count', 'avg_stars')
+        fields = ('id', 'name', 'price', 'category', 'image', 'created_at', 'review_count', 'avg_stars')
+    
     
 class PurchaseProductSerializer(serializers.ModelSerializer):
     class Meta:

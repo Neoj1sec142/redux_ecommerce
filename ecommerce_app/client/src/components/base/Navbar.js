@@ -37,15 +37,15 @@ const Navbar = ({load_cart, remove_item, isAuthenticated, cartItems, cartTotal})
                                 <button className="nav-link dropdown-toggle nobtn" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-cart-shopping"></i>&nbsp;Cart 
                                 </button>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <ul className="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                                     {cartItems && cartItems.length >=1 ? (
                                         cartItems.map((item, index) => (
                                     <li className="dropdown-item" key={index}>
-                                        <p className='w-75'>{item.name} {item.price}</p>
-                                        <button onClick={()=>removeItem(item)} className='btn btn-outline-danger w-25'>❌</button>
-                                    </li>))):(<li className="dropdown-item">No Items in Cart</li>)}
+                                        <p className='w-75 text-light'>{item.name} {item.price}</p>
+                                        <button onClick={()=>removeItem(item)} className='btn btn-outline-danger w-25 text-light'>❌</button>
+                                    </li>))):(<li className="dropdown-item text-light">No Items in Cart</li>)}
                                     <li><hr className="dropdown-divider"/></li>
-                                    <li className="dropdown-item">Total Items: {cartItems !== null ? cartItems.length : 0} &nbsp;|&nbsp; Total Price: {cartTotal !== null ? `$${cartTotal}` : 0}</li>
+                                    <li className="dropdown-item text-light">Total Items: {cartItems !== null ? cartItems.length : 0} &nbsp;|&nbsp; Total Price: {cartTotal !== null ? `$${cartTotal}` : 0}</li>
                                 </ul>
                                 </li>
                                 <li className="nav-item">

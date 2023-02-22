@@ -1,219 +1,280 @@
 [
     {
-        "name": "Super Mario Bros.", 
-        "description": "Super Mario Bros. is a platform game developed and published by Nintendo for the Nintendo Entertainment System (NES). The successor to the 1983 arcade game Mario Bros. and the first game in the Super Mario series, it was first released in 1985 for the Famicom in Japan. Following a limited US release for the NES, it was ported to international arcades for the Nintendo VS. System in early 1986. The NES version received a wide release in North America that year and in PAL regions in 1987. Players control Mario, or his brother Luigi in the multiplayer mode, as they traverse the Mushroom Kingdom to rescue Princess Toadstool from King Koopa (later named Bowser). They traverse side-scrolling stages while avoiding hazards such as enemies and pits with the aid of power-ups such as the Super Mushroom, Fire Flower, and Starman.", 
-        "category": "Games", 
-        "price": 9.08,
-        "image": "https://upload.wikimedia.org/wikipedia/en/0/03/Super_Mario_Bros._box.png"
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Super Mario Bros.", 
+            "description": "Super Mario Bros. is a platform game developed and published by Nintendo for the Nintendo Entertainment System (NES). The successor to the 1983 arcade game Mario Bros. and the first game in the Super Mario series, it was first released in 1985 for the Famicom in Japan. Following a limited US release for the NES, it was ported to international arcades for the Nintendo VS. System in early 1986. The NES version received a wide release in North America that year and in PAL regions in 1987. Players control Mario, or his brother Luigi in the multiplayer mode, as they traverse the Mushroom Kingdom to rescue Princess Toadstool from King Koopa (later named Bowser). They traverse side-scrolling stages while avoiding hazards such as enemies and pits with the aid of power-ups such as the Super Mushroom, Fire Flower, and Starman.", 
+            "category": "Games", 
+            "price": 9.08,
+            "image": "https://upload.wikimedia.org/wikipedia/en/0/03/Super_Mario_Bros._box.png"
+        }
     },
     {
-        "name": "Elder Scrolls Morrowind", 
-        "description": "The Elder Scrolls III: Morrowind is an open-world action role-playing video game developed by Bethesda Game Studios and published by Bethesda Softworks. It is the third installment in the Elder Scrolls series, following 1996's The Elder Scrolls II: Daggerfall, and was released in 2002 for Microsoft Windows and Xbox. The main story takes place on Vvardenfell, an island in the Dunmer (Dark Elf) province of Morrowind, part of the continent of Tamriel. The central quests concern the demigod Dagoth Ur, housed within the volcanic Red Mountain, who seeks to gain power and break Morrowind free from Imperial reign. Although it is primarily a fantasy game, with many gameplay elements and Western medieval and fantasy fiction tropes inspired by Dungeons & Dragons and previous RPGs, Morrowind also features some steampunk elements, and drew much inspiration from Middle Eastern and East Asian art, architecture and cultures. Morrowind was designed with an open-ended, freeform style of gameplay in mind, with less of an emphasis on the main plot than its predecessors. This choice received mixed reactions, though such feelings were tempered by reviewers' appreciation of Morrowind's expansive, detailed game world.", 
-        "category": "Games", 
-        "price": 14.99,
-        "image": "https://upload.wikimedia.org/wikipedia/en/5/53/MorrowindCOVER.jpg"
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Elder Scrolls Morrowind", 
+            "description": "The Elder Scrolls III: Morrowind is an open-world action role-playing video game developed by Bethesda Game Studios and published by Bethesda Softworks. It is the third installment in the Elder Scrolls series, following 1996's The Elder Scrolls II: Daggerfall, and was released in 2002 for Microsoft Windows and Xbox. The main story takes place on Vvardenfell, an island in the Dunmer (Dark Elf) province of Morrowind, part of the continent of Tamriel. The central quests concern the demigod Dagoth Ur, housed within the volcanic Red Mountain, who seeks to gain power and break Morrowind free from Imperial reign. Although it is primarily a fantasy game, with many gameplay elements and Western medieval and fantasy fiction tropes inspired by Dungeons & Dragons and previous RPGs, Morrowind also features some steampunk elements, and drew much inspiration from Middle Eastern and East Asian art, architecture and cultures. Morrowind was designed with an open-ended, freeform style of gameplay in mind, with less of an emphasis on the main plot than its predecessors. This choice received mixed reactions, though such feelings were tempered by reviewers' appreciation of Morrowind's expansive, detailed game world.", 
+            "category": "Games", 
+            "price": 14.99,
+            "image": "https://upload.wikimedia.org/wikipedia/en/5/53/MorrowindCOVER.jpg"
+        }
+        
     },
     {
-        "name": "Call of Duty: Modern Warfare 3", 
-        "description": "Call of Duty: Modern Warfare 3 is a 2011 first-person shooter video game, jointly developed by Infinity Ward and Sledgehammer Games and published by Activision. The game was released worldwide in November 2011 for Microsoft Windows, the Xbox 360, PlayStation 3, and Wii.[1] It is the third and final installment in the original Modern Warfare saga, a direct sequel to 2009's Call of Duty: Modern Warfare 2, and the eighth Call of Duty installment overall. A separate version for the Nintendo DS was developed by n-Space, while Treyarch developed the game's Wii port. In Japan, Square Enix published the game with a separate subtitled and dubbed version. The game's campaign follows Modern Warfare 2 and begins right after the events of its final mission. Similar to Modern Warfare 2, it is centered around the Task Force 141, which contains Captain Price, Soap MacTavish, and a newly introduced playable character, Yuri. Alongside the Delta Force and Special Air Service, they hunt Vladimir Makarov (the main antagonist of the trilogy), a Russian terrorist who leads the Russian Ultranationalist party. He leads several terror attacks across Europe, triggering a large-scale war between the Ultranationalists and friendly forces. For the game's multiplayer mode, new mode types and killstreak choices were brought in. Improvements were also made to the mode that solved issues that appeared in Modern Warfare 2.", 
-        "category": "Games", 
-        "price": 12.59,
-        "image":"https://upload.wikimedia.org/wikipedia/en/b/bf/Call_of_Duty_Modern_Warfare_3_box_art.png"
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Call of Duty: Modern Warfare 3", 
+            "description": "Call of Duty: Modern Warfare 3 is a 2011 first-person shooter video game, jointly developed by Infinity Ward and Sledgehammer Games and published by Activision. The game was released worldwide in November 2011 for Microsoft Windows, the Xbox 360, PlayStation 3, and Wii.[1] It is the third and final installment in the original Modern Warfare saga, a direct sequel to 2009's Call of Duty: Modern Warfare 2, and the eighth Call of Duty installment overall. A separate version for the Nintendo DS was developed by n-Space, while Treyarch developed the game's Wii port. In Japan, Square Enix published the game with a separate subtitled and dubbed version. The game's campaign follows Modern Warfare 2 and begins right after the events of its final mission. Similar to Modern Warfare 2, it is centered around the Task Force 141, which contains Captain Price, Soap MacTavish, and a newly introduced playable character, Yuri. Alongside the Delta Force and Special Air Service, they hunt Vladimir Makarov (the main antagonist of the trilogy), a Russian terrorist who leads the Russian Ultranationalist party. He leads several terror attacks across Europe, triggering a large-scale war between the Ultranationalists and friendly forces. For the game's multiplayer mode, new mode types and killstreak choices were brought in. Improvements were also made to the mode that solved issues that appeared in Modern Warfare 2.", 
+            "category": "Games", 
+            "price": 12.59,
+            "image":"https://upload.wikimedia.org/wikipedia/en/b/bf/Call_of_Duty_Modern_Warfare_3_box_art.png"
+        }
     },
     {
-        "name": "Pok\u00e9mon Yellow: Special Pikachu Edition", 
-        "description": "Role-Playing, Nintendo, 1998", 
-        "category": "Games", 
-        "price": 5.89,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Pok\u00e9mon Yellow: Special Pikachu Edition", 
+            "description": "Pokémon Red Version and Pokémon Blue Version are 1996 role-playing video games developed by Game Freak and published by Nintendo for the Game Boy. They are the first installments of the Pokémon video game series. They were first released in Japan in 1996 as Pocket Monsters: Red[a] and Pocket Monsters: Green,[b] with the special edition Pocket Monsters: Blue[c] being released in Japan later that same year. The games were later released as Pokémon Red and Pokémon Blue in North America and Australia in 1998 and Europe in 1999. Pokémon Red and Pokémon Blue combined Red/Green/Blue for release outside of Japan. Pokémon Yellow Version: Special Pikachu Edition,[d] often referred to as simply Pokémon Yellow, is an improved version released in Japan in 1998 and in other regions in 1999 and 2000. Remakes of Red and Green, Pokémon FireRed and LeafGreen, were released for the Game Boy Advance in 2004. Red, Blue, and Yellow–in addition to Green in Japan–were re-released on the Nintendo 3DS Virtual Console service on Nintendo eShop as emulated versions of the originals, in 2016 as a commemoration of the franchise's 20th anniversary", 
+            "category": "Games", 
+            "price": 5.89,
+            "image":"https://upload.wikimedia.org/wikipedia/pt/4/43/Pok%C3%A9mon_Yellow_cover.png"
+        }
     },
     {
-        "name": "Call of Duty: Black Ops 3", 
-        "description": "Shooter, Activision, 2010", 
-        "category": "Games", 
-        "price": 29.78,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Call of Duty: Black Ops 3", 
+            "description": "Call of Duty: Black Ops III is a 2015 first-person shooter game developed by Treyarch and published by Activision. It is the twelfth entry in the Call of Duty series and the sequel to the 2012 video game Call of Duty: Black Ops II. It was released on PlayStation 4, Windows, and Xbox One on November 6, 2015. A feature-limited version developed by Beenox and Mercenary Technology that only supports multiplayer modes was released on PlayStation 3 and Xbox 360 and was also the final Call of Duty title released on those platforms. Black Ops III takes place in 2065, 40 years after the events of Black Ops II, in a world facing upheaval from climate change and new technologies. Similar to its predecessors, the story follows a group of black ops soldiers. The game's campaign is designed to support 4-player cooperative gameplay, allowing for bigger, more open level design and less corridor shooting. As the player character is cybernetically enhanced, players have access to various special activities. The game also features a standalone Zombies campaign mode, and a 'Nightmares' mode which replaces all enemies as zombies.", 
+            "category": "Games", 
+            "price": 29.78,
+            "image":"https://upload.wikimedia.org/wikipedia/en/b/b1/Black_Ops_3.jpg"
+        }
     },
     {
-        "name": "Super Smash Bros. Brawl", 
-        "description": "Fighting, Nintendo, 2008", 
-        "category": "Games", 
-        "price": 16.62,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Super Smash Bros. Brawl", 
+            "description": "Super Smash Bros. Brawl[d] is a 2008 crossover fighting video game developed by Sora Ltd. and published by Nintendo for the Wii.[1] The third installment in the Super Smash Bros. series, it was announced at a pre-E3 2005 press conference by Nintendo president Satoru Iwata.[2] Masahiro Sakurai, director of the previous two games in the series, assumed the role of director at Iwata's request.[3] Game development began in October 2005[4] with a creative team that included members from several Nintendo and third-party development teams. After delays due to development problems, the game was released worldwide in 2008.", 
+            "category": "Games", 
+            "price": 16.62,
+            "image":"https://upload.wikimedia.org/wikipedia/en/f/f3/SSBB_Cover.jpg"
+        }
     },
     {
-        "name": "Mario Kart 7", 
-        "description": "Racing, Nintendo, 2011", 
-        "category": "Games", 
-        "price": 9.22,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Mario Kart 7", 
+            "description": "Mario Kart 7[a] is a kart racing video game developed by Nintendo EAD in cooperation with Retro Studios and published by Nintendo for the Nintendo 3DS in 2011. As with the previous games in the Mario Kart series, players participate in racing on various Mario-themed tracks, playing as one of seventeen different Mario characters. While racing, the players make use of power-up items that either assist their character or hinder opposing characters. New additions to the game include hang-gliding attachments for karts, the ability to drive underwater, the ability to drive in first person, and the ability to fully customize the vehicles' builds. The game supports both local and online multiplayer for up to eight players. The game was a critical and commercial success, with it going on to be the best-selling game on the Nintendo 3DS, with approximately 19 million copies sold worldwide.", 
+            "category": "Games", 
+            "price": 9.22,
+            "image":"https://upload.wikimedia.org/wikipedia/en/2/2a/Mario_Kart_7_box_art.jpg"
+        }
     },
     {
-        "name": "Animal Crossing: Wild World", 
-        "description": "Simulation, Nintendo, 2005", 
-        "category": "Games", 
-        "price": 2.51,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Animal Crossing: Wild World", 
+            "description": "Animal Crossing: Wild World[a] is a 2005 social simulation video game developed and published by Nintendo for the Nintendo DS handheld game console. It was released in Japan in November 2005, in North America and Australia in December 2005, and in Europe in March 2006. It is the second installment in the Animal Crossing series, and the sequel to Animal Crossing on the GameCube. Wild World focuses on living in a remote village populated with anthropomorphic animals, where the player character is encouraged to perform any number of tasks, such as collecting and planting. Like all Animal Crossing titles, the game is synced to the console's clock and calendar, allowing the game to be played in real-time, which affects the occurrence of in-game events based on the current time of day or season. Wild World utilized Nintendo Wi-Fi Connection, which allowed players to travel and visit the villages of other players via online play, until the service was shut down in May 2014", 
+            "category": "Games", 
+            "price": 2.51,
+            "image":"https://upload.wikimedia.org/wikipedia/en/5/51/Animal_Crossing_Wild_World_cover.png"
+        }
     },
     {
-        "name": "Halo 3", 
-        "description": "Shooter, Microsoft Game Studios, 2007", 
-        "category": "Games", 
-        "price": 27.97,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Halo 3", 
+            "description": "Halo 3 is a 2007 first-person shooter video game developed by Bungie for the Xbox 360 console. The third installment in the Halo franchise, the game concludes the story arc begun in 2001's Halo: Combat Evolved and continued in 2004's Halo 2. Halo 3's story centers on the interstellar war between twenty-sixth century humanity, a collection of alien races known as the Covenant, and the alien parasite Flood. The player assumes the role of the Master Chief, a cybernetically enhanced supersoldier, as he battles the Covenant and the Flood. The game features vehicles, weapons, and gameplay elements not present in previous titles of the series, as well as the addition of saved gameplay films, file sharing, and the Forge map editor—a utility which allows the player to perform modifications to multiplayer levels.", 
+            "category": "Games", 
+            "price": 27.97,
+            "image":"https://upload.wikimedia.org/wikipedia/en/b/b4/Halo_3_final_boxshot.JPG"
+        }
     },
     {
-        "name": "Super Mario Bros.", 
-        "description": "Platform, Nintendo, 1985", 
-        "category": "Games", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Kingdom Hearts III", 
+            "description": "Kingdom Hearts III[a] is a 2019 action role-playing game developed and published by Square Enix for the PlayStation 4, Xbox One, Windows and Nintendo Switch. It is the twelfth installment in the Kingdom Hearts series, and serves as a conclusion of the 'Dark Seeker Saga' story arc that began with the original game. Set after the events of Kingdom Hearts 3D: Dream Drop Distance, returning protagonist Sora is joined by Donald Duck, Goofy, King Mickey and Riku in their search for seven guardians of light as they attempt to thwart Xehanort's plan to bring about a second Keyblade War. Their journey has them cross paths with characters and visit worlds based on different Disney and Pixar intellectual properties.", 
+            "category": "Games", 
+            "price": 19.08,
+            "image":"https://upload.wikimedia.org/wikipedia/en/5/5c/Kingdom_Hearts_III_box_art.jpg"
+        }
     },
     {
-        "name": "Kingdom Hearts", 
-        "description": "", 
-        "category": "Media", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Paper Mario", 
+            "description": "Paper Mario is a video game series and part of the Mario franchise, developed by Intelligent Systems and produced by Nintendo. It combines elements from the role-playing, action-adventure, and puzzle genres. Players control a paper cutout version of Mario, sometimes with allies, on a quest to defeat the antagonist, primarily Bowser. The series consists of six games and one spin-off; the first, Paper Mario (2000), was released for the Nintendo 64, and the most recent, Paper Mario: The Origami King (2020), for the Nintendo Switch.", 
+            "category": "Games", 
+            "price": 39.72,
+            "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Paper_Mario_Logo.png/1280px-Paper_Mario_Logo.png"
+        }
     },
     {
-        "name": "Legend of Zelda: Ocarina of Time", 
-        "description": "", 
-        "category": "Media", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Legend of Zelda: Ocarina of Time", 
+            "description": "The Legend of Zelda: Ocarina of Time[a] is an action-adventure game developed and published by Nintendo for the Nintendo 64. It was released in Japan and North America in November 1998, and in PAL regions the following month. Ocarina of Time is the first game in The Legend of Zelda series with 3D graphics.", 
+            "category": "Games", 
+            "price": 12.12,
+            "image":"https://upload.wikimedia.org/wikipedia/en/5/57/The_Legend_of_Zelda_Ocarina_of_Time.jpg"
+        }
     },
     {
-        "name": "Donnie Darko", 
-        "description": "", 
-        "category": "Media", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Donnie Darko", 
+            "description": "Donnie Darko is a 2001 American science fiction psychological thriller film written and directed by Richard Kelly and produced by Flower Films. It stars Jake Gyllenhaal, Jena Malone, Maggie Gyllenhaal, Drew Barrymore, Mary McDonnell, Katharine Ross, Patrick Swayze, Noah Wyle, Stu Stone, Daveigh Chase, James Duval, and Seth Rogen. Set in October 1988, the film follows Donnie Darko, an emotionally troubled teenager who inadvertently escapes a bizarre accident by sleepwalking. He has visions of Frank, a mysterious figure in a rabbit costume who informs him that the world will end in just over 28 days.", 
+            "category": "Media", 
+            "price": 29.08,
+            "image":"https://upload.wikimedia.org/wikipedia/en/d/db/Donnie_Darko_poster.jpg"
+        }
     },
     {
         "name": "Game of Thrones: Collection", 
-        "description": "", 
+        "description": "Game of Thrones is an American fantasy drama television series created by David Benioff and D. B. Weiss for HBO. It is an adaptation of A Song of Ice and Fire, a series of fantasy novels by George R. R. Martin, the first of which is A Game of Thrones. The show was shot in the United Kingdom, Canada, Croatia, Iceland, Malta, Morocco, and Spain. It premiered on HBO in the United States on April 17, 2011, and concluded on May 19, 2019, with 73 episodes broadcast over eight seasons.", 
         "category": "Media", 
         "price": 29.08,
-        "image":""
+        "image":"https://upload.wikimedia.org/wikipedia/en/d/d8/Game_of_Thrones_title_card.jpg"
     },
     {
-        "name": "Supernatural: Collection", 
-        "description": "", 
-        "category": "Media", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Supernatural: Collection", 
+            "description": "Supernatural is an American dark fantasy drama television series created by Eric Kripke. It was first broadcast on September 13, 2005, on The WB, and subsequently became part of successor The CW's lineup. Starring Jared Padalecki as Sam Winchester and Jensen Ackles as Dean Winchester, the series follows the two brothers as they hunt demons, ghosts, monsters, and other supernatural beings. The series was produced by Warner Bros. Television, in association with Wonderland Sound and Vision. Along with Kripke, executive producers have been McG, Robert Singer, Phil Sgriccia, Sera Gamble, Jeremy Carver, John Shiban, Ben Edlund, and Adam Glass. Former executive producer and director Kim Manners died of lung cancer during production of the fourth season", 
+            "category": "Media", 
+            "price": 29.08,
+            "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Supernatural_2005_logo.svg/1280px-Supernatural_2005_logo.svg.png"
+        }
     },
     {
-        "name": "Avengers: End Game", 
-        "description": "", 
-        "category": "Media", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Avengers: End Game", 
+            "description": "Avengers: Endgame is a 2019 American superhero film based on the Marvel Comics superhero team the Avengers. Produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures, it is the direct sequel to Avengers: Infinity War (2018) and the 22nd film in the Marvel Cinematic Universe (MCU). Directed by Anthony and Joe Russo and written by Christopher Markus and Stephen McFeely, the film features an ensemble cast including Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, Jeremy Renner, Don Cheadle, Paul Rudd, Brie Larson, Karen Gillan, Danai Gurira, Benedict Wong, Jon Favreau, Bradley Cooper, Gwyneth Paltrow, and Josh Brolin. In the film, the surviving members of the Avengers and their allies attempt to reverse Thanos's actions in Infinity War.", 
+            "category": "Media", 
+            "price": 29.08,
+            "image":"https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
+        }
     },
     {
-        "name": "The Master of Disguise", 
-        "description": "", 
-        "category": "Media", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "The Master of Disguise", 
+            "description": "The Master of Disguise is a 2002 American adventure comedy film directed by Perry Andelin Blake in his directorial debut, written by Dana Carvey and Harris Goldberg, and starring Carvey, Brent Spiner, Jennifer Esposito, Harold Gould and James Brolin. The film was produced by Carvey's fellow Saturday Night Live alumnus, Adam Sandler, through his Happy Madison production company. It tells the story of a man who is trained to become a 'Master of Disguise' by his grandfather when a master criminal kidnaps his parents. The film grossed $43.4 million on a $16 million budget[2] but was panned by critics, having a 1% approval rating on Rotten Tomatoes.[3] Critics have called it one of the worst movies ever made.", 
+            "category": "Media", 
+            "price": 29.08,
+            "image":"https://upload.wikimedia.org/wikipedia/en/c/c0/Masterdisguise.jpg"
+        }
     },
     {
-        "name": "Rick and Morty: Collection", 
-        "description": "", 
-        "category": "Media", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Rick and Morty: Collection", 
+            "description": "Rick and Morty is an American adult animated science-fiction sitcom created by Justin Roiland and Dan Harmon for Cartoon Network's nighttime programming block Adult Swim. It is distributed internationally by Warner Bros. Television Distribution. The series follows the misadventures of Rick Sanchez, a cynical mad scientist, and his good-hearted but fretful grandson Morty Smith, who split their time between domestic life and interdimensional adventures that take place across an infinite number of realities, often traveling to other planets and dimensions through portals and on Rick's flying saucer. The general concept of Rick and Morty relies on two conflicting scenarios: domestic family drama, and an alcoholic grandfather dragging his grandson into hijinks.", 
+            "category": "Media", 
+            "price": 29.08,
+            "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Rick_and_Morty_title_card_%28cropped%29.png/1280px-Rick_and_Morty_title_card_%28cropped%29.png"
+        }
     },
     {
-        "name": "Mr. Robot: Collection", 
-        "description": "", 
-        "category": "Media", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Mr. Robot: Collection", 
+            "description": "Mr. Robot is an American drama thriller television series created by Sam Esmail for USA Network. It stars Rami Malek as Elliot Alderson, a cybersecurity engineer and hacker with social anxiety disorder, clinical depression and dissociative identity disorder. Elliot is recruited by an insurrectionary anarchist known as 'Mr. Robot', played by Christian Slater, to join a group of hacktivists called 'fsociety'.[8] The group aims to destroy all debt records by encrypting the financial data of E Corp, the largest conglomerate in the world.", 
+            "category": "Media", 
+            "price": 29.08,
+            "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Mr._Robot_Logo.svg/1280px-Mr._Robot_Logo.svg.png"
+        }
     },
     {
-        "name": "The Girl with the Dragon Tattoo: Collection", 
-        "description": "", 
-        "category": "Media", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "The Girl with the Dragon Tattoo: Collection", 
+            "description": "The Girl with the Dragon Tattoo is a 2011 neo-noir psychological thriller film based on the 2005 novel by Swedish writer Stieg Larsson. It was directed by David Fincher with a screenplay by Steven Zaillian. Starring Daniel Craig as journalist Mikael Blomkvist and Rooney Mara as Lisbeth Salander, it tells the story of Blomkvist's investigation to find out what happened to a girl from a wealthy family who disappeared 40 years prior. He recruits the help of Salander, a computer hacker.", 
+            "category": "Media", 
+            "price": 29.08,
+            "image":"https://upload.wikimedia.org/wikipedia/en/8/80/The_Girl_with_the_Dragon_Tattoo_Poster.jpg"
+        }
     },
     {
-        "name": "Tim Burton's The Night Before Christmas", 
-        "description": "", 
-        "category": "Media", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Tim Burton's The Night Before Christmas", 
+            "description": "The Nightmare Before Christmas (also known as Tim Burton's The Nightmare Before Christmas) is a 1993 American stop-motion animated musical dark fantasy film directed by Henry Selick (in his feature directorial debut) and produced and conceived by Tim Burton. It tells the story of Jack Skellington, the King of 'Halloween Town', who stumbles upon 'Christmas Town' and schemes to take over the holiday. Danny Elfman wrote the songs and score and provided the singing voice of Jack.[6] The principal voice cast also includes Chris Sarandon, Catherine O'Hara, William Hickey, Ken Page, Paul Reubens, Glenn Shadix, and Ed Ivory.", 
+            "category": "Media", 
+            "price": 29.08,
+            "image":"https://upload.wikimedia.org/wikipedia/en/9/9a/The_nightmare_before_christmas_poster.jpg"
+        }
     },
     {
-        "name": "Nikon z7II", 
-        "description": "", 
-        "category": "Electronics", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Nikon z7II", 
+            "description": "The Nikon Z 7II is a high-end full-frame mirrorless interchangeable-lens camera (MILC) produced by Nikon, and is the successor to the Nikon Z 7.[1][2] The camera was officially announced on October 14, 2020, alongside the Nikon Z 6II, and became available for purchase on November 5. It uses Nikon's Z-mount system", 
+            "category": "Electronics", 
+            "price": 860.04,
+            "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Nikon_Z7ii_%2B_nikkor_z_24-70mm_f2.8_s.jpg/1024px-Nikon_Z7ii_%2B_nikkor_z_24-70mm_f2.8_s.jpg"
+        }
     },
     {
-        "name": "MSI G65 Radier", 
-        "description": "", 
-        "category": "Electronics", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "MSI GE76 Radier", 
+            "description": "GE76 Raider has a unique oblique angled design; it's not only a sturdy and durable design, but also represents a spacecraft soaring swiftly across the universe.", 
+            "category": "Electronics", 
+            "price": 1289.98,
+            "image":"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSwnMzlLhGTDnVk_DYcy8i26FKTGm7O6RsNgg3tzkAKy75dtzXG"
+        }
     },
     {
-        "name": "Ear Pods", 
-        "description": "", 
-        "category": "Electronics", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Ear Pods", 
+            "description": "AirPods Pro take the listening experience to a new level of individuality. Personalized Spatial Audio with dynamic head tracking works with all your devices.", 
+            "category": "Electronics", 
+            "price": 249.00,
+            "image":"https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQd-UImct0husXcHDZ6UCSJOw1HT-UY6iVa8sz4nURwWiSashy3"
+        }
     },
     {
-        "name": "Mac Book Pro", 
-        "description": "", 
-        "category": "Electronics", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Keurig Coffee Machine", 
+            "description": "The Keurig K155 Office PRO Commercial Coffee Maker brews a perfect cup of coffee, tea, hot cocoa or iced beverage in under one minute at the touch of a button.", 
+            "category": "Electronics", 
+            "price": 272.99,
+            "image":"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSzq29WUqXPrG1m4_eMe4AkWp-GiHy_UT28FR-BNPCXnW4BQQz5QJ8w0QExmVtpSCbs0qs0ersnV0ymxfIrUO9SwAfnr4tQ"
+        }
     },
     {
-        "name": "Keurig Coffee Machine", 
-        "description": "", 
-        "category": "Electronics", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Air Frier Ninja", 
+            "description": "Cook foods other air fryers can't with the Ninja Speedi Rapid Cooker & Air Fryer. Make thousands of customizable recipes the whole family will love.", 
+            "category": "Electronics", 
+            "price": 149.71,
+            "image":"https://target.scene7.com/is/image/Target/GUEST_f5cef684-6f6b-43aa-b74e-f2db44eb19d1?wid=325&hei=325&qlt=80&fmt=pjpeg"
+        }
     },
     {
-        "name": "Air Frier", 
-        "description": "", 
-        "category": "Electronics", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Logitech MK270 Wireless Keyboard And Mouse", 
+            "description": "Reliable Plug and Play: The USB receiver provides a reliable wireless connection up to 33 ft (1), so you can forget about drop-outs and delays and you can take it wherever you use your computer", 
+            "category": "Electronics", 
+            "price": 22.99,
+            "image":"https://m.media-amazon.com/images/I/61pUul1oDlL._AC_SX425_.jpg"
+        }
     },
     {
-        "name": "Logitek Wireless Mouse & Keyboard", 
-        "description": "", 
-        "category": "Electronics", 
-        "price": 29.08,
-        "image":""
-    },
-    {
-        "name": "Panda Wireless Adapter", 
-        "description": "", 
-        "category": "Electronics", 
-        "price": 29.08,
-        "image":""
-    },
-    {
-        "name": "Server", 
-        "description": "", 
-        "category": "Electronics", 
-        "price": 29.08,
-        "image":""
-    },
-    {
-        "name": "Ram Upgrade", 
-        "description": "", 
-        "category": "Electronics", 
-        "price": 29.08,
-        "image":""
+        "model": "ecommerce.Product",
+        "fields": {
+            "name": "Panda Wireless PAU09 N600 Dual Band (2.4GHz and 5GHz) Wireless N USB Adapter W/ Dual 5dBi Antennas", 
+            "description": "With this easy to install Wireless-AC/N adapter that is plug and play for Windows and Linux, you'll have a breeze getting your Panda wifi adapter working", 
+            "category": "Electronics", 
+            "price": 64.99,
+            "image":"https://m.media-amazon.com/images/I/31-5gt2ruXL._AC_US40_.jpg"
+        }
     }
 ]
