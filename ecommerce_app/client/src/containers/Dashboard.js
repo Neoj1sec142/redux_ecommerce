@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react'
 
 const Dashboard = () => {
+  
+
   return (
-    <div>Dashboard
-      Should have a switch in useEffect holding the
-      sidebar (payment options, orders, cart, userInfo, nav to browse)
-    </div>
+    <Fragment>
+      <div className='container-fluid w-75 float-end'>Dashboard
+        Should have a switch in useEffect holding the
+        sidebar (payment options, orders, cart, userInfo, nav to browse)
+      </div>
+    </Fragment>
   )
 }
 

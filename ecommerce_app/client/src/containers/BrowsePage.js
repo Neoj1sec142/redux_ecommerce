@@ -3,6 +3,8 @@ import {delay, searchByName, filterByCategory } from '../utils/utils'
 import {load_browse} from '../store/actions/product'
 import { add_to_cart, load_cart } from '../store/actions/auth'
 import { connect } from 'react-redux'
+
+
 const BrowsePage = ({load_browse, add_to_cart, products}) => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)

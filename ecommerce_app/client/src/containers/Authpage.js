@@ -24,7 +24,7 @@ const Authpage = () => {
             <div className='container-fluid'>
                 <div className='d-flex justify-content-center mt-3'>
                     <div className='row w-75 shadow-sm border p-2 bg-light'>
-                        <p className="fs-2 text-center mt-2">Ecommerce</p>
+                        <p className="fs-2 text-center mt-2">ReduxCommerce</p>
                     </div>
                 </div>
                 <div className='d-flex justify-content-center mt-3'>

@@ -31,11 +31,11 @@ const Navbar = ({load_cart, remove_item, isAuthenticated, cartItems, cartTotal})
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/dashboard">Profile</a>
+                                    <a className="nav-link" href="/dashboard"><i class="fa-solid fa-user"></i>&nbsp;Profile</a>
                                 </li>
                                 <li className="nav-item dropdown">
                                 <button className="nav-link dropdown-toggle nobtn" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Cart Items
+                                <i class="fa-solid fa-cart-shopping"></i>&nbsp;Cart 
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                     {cartItems && cartItems.length >=1 ? (
@@ -49,7 +49,7 @@ const Navbar = ({load_cart, remove_item, isAuthenticated, cartItems, cartTotal})
                                 </ul>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/logout" tabIndex="-1">Logout</a>
+                                    <a className="nav-link" href="/logout" tabIndex="-1"><i class="fa fa-hand-paper-o"></i>&nbsp;Logout</a>
                                 </li>
                             </ul>
                         </div>

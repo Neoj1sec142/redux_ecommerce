@@ -1,0 +1,219 @@
+[
+    {
+        "name": "Super Mario Bros.", 
+        "description": "Platform, Nintendo, 1985", 
+        "category": "Games", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Gran Turismo 3: A-Spec", 
+        "description": "Racing, Sony Computer Entertainment, 2001", 
+        "category": "Games", 
+        "price": 6.85,
+        "image":""
+    },
+    {
+        "name": "Call of Duty: Modern Warfare 3", 
+        "description": "Shooter, Activision, 2011", 
+        "category": "Games", 
+        "price": 19.04,
+        "image":""
+    },
+    {
+        "name": "Pok\u00e9mon Yellow: Special Pikachu Edition", 
+        "description": "Role-Playing, Nintendo, 1998", 
+        "category": "Games", 
+        "price": 5.89,
+        "image":""
+    },
+    {
+        "name": "Call of Duty: Black Ops 3", 
+        "description": "Shooter, Activision, 2010", 
+        "category": "Games", 
+        "price": 29.78,
+        "image":""
+    },
+    {
+        "name": "Super Smash Bros. Brawl", 
+        "description": "Fighting, Nintendo, 2008", 
+        "category": "Games", 
+        "price": 16.62,
+        "image":""
+    },
+    {
+        "name": "Mario Kart 7", 
+        "description": "Racing, Nintendo, 2011", 
+        "category": "Games", 
+        "price": 9.22,
+        "image":""
+    },
+    {
+        "name": "Animal Crossing: Wild World", 
+        "description": "Simulation, Nintendo, 2005", 
+        "category": "Games", 
+        "price": 2.51,
+        "image":""
+    },
+    {
+        "name": "Halo 3", 
+        "description": "Shooter, Microsoft Game Studios, 2007", 
+        "category": "Games", 
+        "price": 27.97,
+        "image":""
+    },
+    {
+        "name": "Super Mario Bros.", 
+        "description": "Platform, Nintendo, 1985", 
+        "category": "Games", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Kingdom Hearts", 
+        "description": "", 
+        "category": "Media", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Legend of Zelda: Ocarina of Time", 
+        "description": "", 
+        "category": "Media", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Donnie Darko", 
+        "description": "", 
+        "category": "Media", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Game of Thrones: Collection", 
+        "description": "", 
+        "category": "Media", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Supernatural: Collection", 
+        "description": "", 
+        "category": "Media", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Avengers: End Game", 
+        "description": "", 
+        "category": "Media", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "The Master of Disguise", 
+        "description": "", 
+        "category": "Media", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Rick and Morty: Collection", 
+        "description": "", 
+        "category": "Media", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Mr. Robot: Collection", 
+        "description": "", 
+        "category": "Media", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "The Girl with the Dragon Tattoo: Collection", 
+        "description": "", 
+        "category": "Media", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Tim Burton's The Night Before Christmas", 
+        "description": "", 
+        "category": "Media", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Nikon z7II", 
+        "description": "", 
+        "category": "Electronics", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "MSI G65 Radier", 
+        "description": "", 
+        "category": "Electronics", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Ear Pods", 
+        "description": "", 
+        "category": "Electronics", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Mac Book Pro", 
+        "description": "", 
+        "category": "Electronics", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Keurig Coffee Machine", 
+        "description": "", 
+        "category": "Electronics", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Air Frier", 
+        "description": "", 
+        "category": "Electronics", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Logitek Wireless Mouse & Keyboard", 
+        "description": "", 
+        "category": "Electronics", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Panda Wireless Adapter", 
+        "description": "", 
+        "category": "Electronics", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Server", 
+        "description": "", 
+        "category": "Electronics", 
+        "price": 29.08,
+        "image":""
+    },
+    {
+        "name": "Ram Upgrade", 
+        "description": "", 
+        "category": "Electronics", 
+        "price": 29.08,
+        "image":""
+    }
+]
