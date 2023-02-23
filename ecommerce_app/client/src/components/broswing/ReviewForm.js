@@ -36,14 +36,18 @@ const ReviewForm = ({upload_review, author_id, product_id, setShowForm, fetchDat
                             name="comment" value={comment}/>
                     </div>
                     <div className='form-group'>
-                    <ReactStars
-                        count={5}
-                        value={rate}
-                        size={24}
-                        color1={"#999999"}
-                        color2={"#ffd700"}
-                        onChange={handleRating}
-                    />
+                        <ReactStars
+                            count={5}
+                            value={rate}
+                            size={24}
+                            color1={"#999999"}
+                            color2={"#ffd700"}
+                            onChange={handleRating}
+                        />
+                        <div className='d-flex justify-content-evenly mt-2 mb-5'>
+                            <button className='btn btn-sm btn-success' type='submit'>Submit</button>
+                            <button className='btn btn-sm btn-danger' onClick={()=>setShowForm(false)}>Cancel</button>
+                        </div>
                     </div>
                 </form>
             </div>

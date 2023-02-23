@@ -89,7 +89,7 @@ const BrowsePage = ({
           <div className='row w-75 shadow-sm'>
             {(data.length >= 1) ? data.map((item, index) => (
               <div class="col-md-4" key={index}>
-                <div class="card mb-4 box-shadow">
+                <div class="card mb-2 mt-2 box-shadow">
                     <img class="card-img-top" src={item.image} width="100%" height="225" alt="Card cap"/>
                     <div class="card-body">
                         <p class="card-text"><strong>{item.name}</strong></p>
