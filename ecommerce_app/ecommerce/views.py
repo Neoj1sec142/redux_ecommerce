@@ -42,6 +42,18 @@ class ProductReviewList(APIView):
         except Product.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+    def get(self, request, pk):
+        try:
+            reviews = Review.objects.filter(author=pk)
+            review_serializer = ReviewSerializer(reviews, many=True)
+            return Response({
+                'reviews': review_serializer.data
+            })
+        except Product.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+            
 class ReviewList(generics.ListCreateAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer

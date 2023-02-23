@@ -3,20 +3,20 @@ import Client from './api'
 
 export const GetUsers = async () => {
     try{
-        const res = await Client.get('a142/users/')
+        const res = await Client.get('users/')
         return res
     }catch(err){console.log(err)}
 }
 
 export const GetUserDetail = async (id) => {
     try{
-        const res = await Client.get(`a142/users/${id}/`)
+        const res = await Client.get(`users/${id}/`)
         return res
     }catch(err){console.log(err)}
 }
-export const GetAllUserDetail = async (id) => {
+export const GetUserProfile = async (id) => {
     try{
-        const res = await Client.get(`users/${id}/`)
+        const res = await Client.get(`users/${id}/profile/`)
         return res
     }catch(err){console.log(err)}
 }

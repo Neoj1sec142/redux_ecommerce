@@ -15,7 +15,7 @@ import {
     REMOVE_ITEM_SUCCESS, REMOVE_ITEM_FAIL,
     TOTAL_CART_SUCCESS, TOTAL_CART_FAIL
 } from '../types'
-import { GetUsers, UpdateUser, RemoveUser, GetUserDetail, GetAllUserDetail } from '../services/UserServices'
+import { GetUsers, UpdateUser, RemoveUser, GetUserDetail, GetUserProfile } from '../services/UserServices'
 
 
 export const login = ({username, password}) => async dispatch => {
@@ -196,9 +196,9 @@ export const load_auser = (id) => async dispatch => {
     }
 }
 
-export const load_auser_det = (id) => async dispatch => {
+export const load_userprofile = (id) => async dispatch => {
     try{
-        const res = await GetAllUserDetail(id)
+        const res = await GetUserProfile(id)
         if(res.status === 200){
             dispatch({
                 type: LOAD_USERPROFILE_SUCCESS,

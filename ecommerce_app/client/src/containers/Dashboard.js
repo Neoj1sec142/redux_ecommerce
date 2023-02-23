@@ -13,27 +13,27 @@ const Dashboard = () => {
   useEffect(() => {
     switch(selected){
       case 'orders':
-        setInEffect(<MyOrders />)
+        setInEffect(<MyOrders setSelected={setSelected} />)
         break;
       case 'update':
-        setInEffect(<UpdateProfile />)
+        setInEffect(<UpdateProfile setSelected={setSelected} />)
         break;
       case 'payments':
-        setInEffect(<MyPayments />)
+        setInEffect(<MyPayments setSelected={setSelected} />)
         break;
       default:
-        setInEffect(<ReviewedItems />)
+        setInEffect(<ReviewedItems setSelected={setSelected} />)
         break;
     }
   },[selected])
   if(!loading){
     return (
       <Fragment>
+        <div className='container-fluid w-75 profile-container mt-5 mb-5 overflow-auto' height="200">Dashboard
+          {inEffect}
+        </div>
         <div className='fixed-top mt-5'>
           <Dash setSelected={setSelected} />
-        </div>
-        <div className='container-fluid w-75 profile-container fixed-top mt-5'>Dashboard
-          {inEffect}
         </div>
       </Fragment>
     )
