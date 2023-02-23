@@ -31,3 +31,7 @@
   text-decoration: none;
   border: none;
 }
+.star-icon{
+  width: 10%;
+  max-width: 100px;
+}

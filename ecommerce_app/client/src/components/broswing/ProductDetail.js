@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { delay } from '../../utils/utils'
+import { delay, getStarRating, getAvg } from '../../utils/utils'
 import {load_product_details} from '../../store/actions/product'
 import ReviewForm from './ReviewForm'
 
@@ -15,6 +15,7 @@ const ProductDetail = ({load_product_details, productDetail, current_user}) => {
         await delay(750)
         setLoading(false)
     }
+
     useEffect(() => {if(loading) fetchData()},[])
     console.log(productDetail, "PRoduct")
     if(!loading){
@@ -31,7 +32,7 @@ const ProductDetail = ({load_product_details, productDetail, current_user}) => {
                         <p>{product.description}</p>
                         <p><small>Category: {product.category}</small></p>
                         <h3 className="my-3">Price: ${product.price}</h3>
-                        <p>Reviews: {reviews.length} Stars</p>
+                        <p>Reviews: {reviews.length} Stars {getAvg(reviews)}</p>
                         {!showReviews ? (
                             <Fragment>
                                 {(showForm && current_user.is_active) ? (
@@ -43,7 +44,7 @@ const ProductDetail = ({load_product_details, productDetail, current_user}) => {
                                 />
                                 ):(
                                 <div className='d-flex justify-content-evenly p-3'>
-                                    <button onClick={()=>setShowForm(true)} className='btn btn-sm btn-success w-25'>Comment</button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="top" title="You Need to be Logged In." onClick={()=>setShowForm(true)} className='btn btn-sm btn-success w-25'>Comment</button>
                                     <button onClick={()=>setShowReviews(true)} className='btn btn-sm btn-secondary w-25'>View Comments</button>
                                 </div>)}
                             </Fragment>
@@ -53,7 +54,9 @@ const ProductDetail = ({load_product_details, productDetail, current_user}) => {
                             reviews.map((item, index) => (
                             <li key={index} className='list-group-item'>
                                 <p className='fs-5'>{item.comment}</p>
-                                <p className='fs-7'>Rating: {item.stars}</p>
+                                <div className='row'>
+                                    <p className='fs-7'>Rating: {getStarRating(item.stars)}</p>
+                                </div>
                                 <p className='fs-7'>Commented On: {item.date_created}</p>
                             </li>)))
                             : <li className='list-group-item'>No Reviews</li>}
