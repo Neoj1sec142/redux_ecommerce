@@ -16,7 +16,7 @@ export const GetUserDetail = async (id) => {
 }
 export const GetUserProfile = async (id) => {
     try{
-        const res = await Client.get(`users/${id}/profile/`)
+        const res = await Client.get(`store/user/${id}/profile/`)
         return res
     }catch(err){console.log(err)}
 }

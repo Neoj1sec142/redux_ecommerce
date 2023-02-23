@@ -176,7 +176,7 @@ export const load_all_users = () => async dispatch => {
     }
 }
 
-export const load_auser = (id) => async dispatch => {
+export const load_user_details = (id) => async dispatch => {
     try{
         const res = await GetUserDetail(id)
         if(res.status === 200){

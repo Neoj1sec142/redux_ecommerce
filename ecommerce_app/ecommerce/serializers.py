@@ -65,7 +65,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     author = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.all()
     )
-    products = serializers.PrimaryKeyRelatedField(
+    product = serializers.PrimaryKeyRelatedField(
         queryset=Product.objects.all()
     )
     class Meta:

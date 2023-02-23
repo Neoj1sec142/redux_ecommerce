@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import {delay, searchByName, filterByCategory } from '../utils/utils'
-import {load_browse} from '../store/actions/product'
+import {load_browse, handle_page} from '../store/actions/product'
 import { add_to_cart, load_cart } from '../store/actions/auth'
 import { connect } from 'react-redux'
 
 
-const BrowsePage = ({load_browse, add_to_cart, products}) => {
+const BrowsePage = ({
+  load_browse, handle_page, add_to_cart, 
+  products, previous, next
+}) => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState({
@@ -13,16 +16,34 @@ const BrowsePage = ({load_browse, add_to_cart, products}) => {
     query: ''
   })
   const {filter, query} = search;
-  const fetchData = async () => {
-    load_browse()
-    await delay(750)
-    setLoading(false)
+  const fetchData = async (opt="") => {
+    /*  P - Previous | D - Default | N - Next */
+    switch(opt){
+      case "P":
+        handle_page("P", previous)
+        await delay(750)
+        setLoading(false)
+        break;
+      case "N":
+        handle_page("N", next)
+        await delay(750)
+        setLoading(false)
+        break;
+      default:
+        load_browse()
+        await delay(750)
+        setLoading(false)
+        break;
+    }
+    
   }
   console.log(products)
   useEffect(() => {if(loading) fetchData()},[])
+  
   const onChange = e => setSearch({...search, [e.target.name]: e.target.value})
   const filterData = (searchObj) => {
     const { filter, query } = searchObj;
+    
     if (filter) {
       setData(filterByCategory(products, filter));
     } else if (query) {
@@ -42,8 +63,7 @@ const BrowsePage = ({load_browse, add_to_cart, products}) => {
     await delay(100)
     load_cart()
   }
-
-  console.log()
+  
   console.log(data, "DTA")
   if(!loading){
     return (
@@ -103,13 +123,19 @@ const BrowsePage = ({load_browse, add_to_cart, products}) => {
               </div>)): <li>No Items</li>)}
           </div>
         </div>
+        <div className='d-flex justify-content-evenly mb-5'>
+          <button className='btn btn-sm btn-outline-secondary w-25' onClick={()=>fetchData("P")}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+          <button className='btn btn-sm btn-outline-secondary w-25' onClick={()=>fetchData("N")}><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
       </div>
     )
   }else{ return( <div>Loading....</div> ) }
 }
 
 const mapStateToProps = state => ({
-  products: state.product.products
+  products: state.product.products,
+  previous: state.product.previous,
+  next: state.product.next
 })
 
-export default connect(mapStateToProps, {load_browse, add_to_cart})(BrowsePage)
+export default connect(mapStateToProps, {load_browse, handle_page, add_to_cart})(BrowsePage)

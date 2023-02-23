@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {connect} from 'react-redux'
+import { getTitles } from '../../utils/utils';
 
-const ReviewedItems = () => {
-  return (
-    <div>ReviewedItems</div>
-  )
+const ReviewedItems = ({userProfile}) => {
+  const [reviewData, setReviewData] = useState([])
+  if(userProfile){
+    const {reviews, review_id_title} = userProfile;
+    
+    return (
+      <div className='container-fluid'>
+        
+      </div>
+    )
+  }else{ return( <div>Loading...</div> ) }
 }
 
-export default ReviewedItems
+const mapStateToProps = state => ({
+  userProfile: state.auth.userProfile
+})
+
+export default connect(mapStateToProps, {})(ReviewedItems)

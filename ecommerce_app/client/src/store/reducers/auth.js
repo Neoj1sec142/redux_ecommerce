@@ -21,7 +21,7 @@ const initialState = {
     isAuthenticated: false,
     loading: false,
     users: [],
-    aUser: {},
+    userProfile: {},
     cartItems: localStorage.getItem("cartItems"),
     cartTotal: localStorage.getItem("cartTotal")
 }
@@ -69,7 +69,7 @@ export default function(state = initialState, action){
         case LOAD_AUSER_SUCCESS:
             return{
                 ...state,
-                aUser: payload
+                userProfile: payload
             }
         case LOGIN_SUCCESS:
             localStorage.setItem('access_token', payload.access)
