@@ -10,6 +10,7 @@ import BrowsePage from './containers/BrowsePage';
 import ProductDetail from './components/broswing/ProductDetail';
 // import Checkout from './containers/Checkout';
 import Err404 from './components/base/Err404';
+import ViewCart from './components/checkout/ViewCart';
 
 const App = ({isAuthenticated, current_user}) => {
   
@@ -23,6 +24,7 @@ const App = ({isAuthenticated, current_user}) => {
           <Route path='/logout' element={<Logout />}/>
           {/* Protected Routes */}
           <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Authpage />} />
+          <Route path='/view-cart' element={isAuthenticated ? <ViewCart /> : <Authpage />} />
           <Route path="*" element={<Err404 />} />
         </Routes>
       </Layout>

@@ -12,17 +12,20 @@ class ProductList(generics.ListCreateAPIView):
     serializer_class = ProductSerializer
     permission_classes = [IsAuthenticated]
 
+    def perform_create(self, serializer):
+        serializer.save()
+
 class ProductPagination(PageNumberPagination):
-    page_size = 8
+    page_size = 9
     page_size_query_param = 'page_size'
-    max_page_size = 8
+    max_page_size = 9
 class BrowseList(generics.GenericAPIView):
     permission_classes = [AllowAny]
     serializer_class = BrowseSerializer
     queryset = Product.objects.annotate(
         review_count=Count('review'),
         avg_stars=Avg('review__stars')
-    ).values('id', 'name', 'price', 'category', 'image', 'created_at', 'review_count', 'avg_stars')
+    )
     pagination_class = ProductPagination
 
     def get(self, request):

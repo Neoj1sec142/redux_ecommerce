@@ -9,8 +9,8 @@ import MyOrders from '../components/profile/MyOrders'
 import ReviewedItems from '../components/profile/ReviewedItems'
 
 const Dashboard = ({load_userprofile, userProfile, current_user}) => {
-  const [inEffect, setInEffect] = useState(null)
   const [selected, setSelected] = useState('')
+  const [inEffect, setInEffect] = useState(<ReviewedItems setSelected={setSelected} />)
   const [loading, setLoading] = useState(false)
   console.log(userProfile, "USERPROP")
   
@@ -43,7 +43,9 @@ const Dashboard = ({load_userprofile, userProfile, current_user}) => {
         break;
       default:
         fecthData("reviews")
-        setInEffect(<ReviewedItems setSelected={setSelected} />)
+        setInEffect(<ReviewedItems
+          fecthData={fecthData}
+          setSelected={setSelected} />)
         break;
     }
   },[selected])

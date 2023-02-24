@@ -61,8 +61,10 @@ const ProductDetail = ({load_product_details, productDetail, current_user}) => {
                             </li>)))
                             : <li className='list-group-item'>No Reviews</li>}
                             <div className='d-flex justify-content-evenly p-3'>
-                                <button className='btn btn-sm btn-success w-25'>Comment</button>
-                                <button onClick={()=>setShowReviews(false)} className='btn btn-sm btn-danger w-25'>Close Comments</button>
+                                <button className='btn btn-sm btn-success w-25'>
+                                    <i class="fa-light fa-send-backward"></i>
+                                </button>
+                                <button onClick={()=>setShowReviews(false)} className='btn btn-sm btn-danger w-25'>Close</button>
                             </div>
                         </ul>)}
                     </div>

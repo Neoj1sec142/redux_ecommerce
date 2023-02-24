@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {delay, searchByName, filterByCategory } from '../utils/utils'
+import {delay, searchByName, filterByCategory, getStarRating } from '../utils/utils'
 import {load_browse, handle_page} from '../store/actions/product'
 import { add_to_cart, load_cart } from '../store/actions/auth'
 import { connect } from 'react-redux'
@@ -97,9 +97,11 @@ const BrowsePage = ({
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href={`/product/${item.id}`} type="button" class="btn btn-sm btn-outline-secondary">View</a>
-                                <button onClick={()=>add(item)} type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                <button onClick={()=>add(item)} type="button" class="btn btn-sm btn-outline-secondary">
+                                  <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
                             </div>
-                            <small class="text-muted">Reviews: {item.review_count} Stars: {item.avg_stars}</small>
+                            <small class="text-muted">Reviews: {item.review_count} Stars: {item.avg_stars ? getStarRating(item.avg_stars) : 0}</small>
                         </div>
                     </div>
                 </div>
@@ -112,11 +114,13 @@ const BrowsePage = ({
                         <p class="card-text"><strong>{item.name}</strong></p>
                         <p class="card-text">Price: ${item.price}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
+                            <div class="btn-group me-1">
                                 <a href={`/product/${item.id}`} type="button" class="btn btn-sm btn-outline-secondary">View</a>
-                                <button onClick={()=>add(item)} type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                <button onClick={()=>add(item)} type="button" class="btn btn-sm btn-outline-secondary">
+                                  <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
                             </div>
-                            <small class="text-muted">Reviews: {item.review_count} Stars: {item.avg_stars}</small>
+                            <small class="text-muted">Reviews: {item.review_count} Stars: {item.avg_stars ? getStarRating(item.avg_stars) : 0}</small>
                         </div>
                     </div>
                 </div>
@@ -124,8 +128,14 @@ const BrowsePage = ({
           </div>
         </div>
         <div className='d-flex justify-content-evenly mb-5'>
-          <button className='btn btn-sm btn-outline-secondary w-25' onClick={()=>fetchData("P")}><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-          <button className='btn btn-sm btn-outline-secondary w-25' onClick={()=>fetchData("N")}><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+          <button disabled={!previous} className='btn btn-sm btn-outline-secondary w-25' 
+            onClick={()=>fetchData("P")}>
+              <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          </button>
+          <button disabled={!next} className='btn btn-sm btn-outline-secondary w-25' 
+            onClick={()=>fetchData("N")}>
+              <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     )

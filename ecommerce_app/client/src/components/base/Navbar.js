@@ -40,12 +40,12 @@ const Navbar = ({load_cart, remove_item, isAuthenticated, cartItems, cartTotal})
                                 <ul className="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                                     {cartItems && cartItems.length >=1 ? (
                                         cartItems.map((item, index) => (
-                                    <li className="dropdown-item" key={index}>
+                                    <li className="list-group-item bg-dark text-light" key={index}>
                                         <p className='w-75 text-light'>{item.name} {item.price}</p>
                                         <button onClick={()=>removeItem(item)} className='btn btn-outline-danger w-25 text-light'>❌</button>
                                     </li>))):(<li className="dropdown-item text-light">No Items in Cart</li>)}
                                     <li><hr className="dropdown-divider"/></li>
-                                    <li className="dropdown-item text-light">Total Items: {cartItems !== null ? cartItems.length : 0} &nbsp;|&nbsp; Total Price: {cartTotal !== null ? `$${cartTotal}` : 0}</li>
+                                    <a href='/view-cart'><li className="dropdown-item text-light">Total Items: {cartItems !== null ? cartItems.length : 0} &nbsp;|&nbsp; Total Price: {cartTotal !== null ? `$${cartTotal}` : 0}</li></a>
                                 </ul>
                                 </li>
                                 <li className="nav-item">

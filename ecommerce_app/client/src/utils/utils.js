@@ -10,9 +10,9 @@ export const findById = (arr, id) => arr.find(obj => obj.id === id);
 
 
 export const getTitles = (reviews, reviews_titles) => {
-    const titlesMap = new Map(reviews_titles.map(title => [title.id, title.title]));
+    const titlesMap = new Map(Object.entries(reviews_titles));
     return reviews.map(review => ({ ...review, title: titlesMap.get(review.product) }));
-};
+  };
 
 export const getStarRating = (amt) => {
     const n = parseInt(amt);
