@@ -22,6 +22,7 @@ const Dash = ({setSelected}) => {
                     <li className='list-group-item mt-1'><button onClick={()=>setSelected('orders')}>My Orders</button></li>
                     <li className='list-group-item mt-1'><button onClick={()=>setSelected('update')}>Update User Info</button></li>
                     <li className='list-group-item mt-1'><button onClick={()=>setSelected('payments')}>Payment Option</button></li>
+                    <li className='list-group-item mt-1'><button onClick={()=>setSelected('add-payment')}>Add Payment Option</button></li>
                     <li className='list-group-item mt-1'><button onClick={()=>setSelected('')}>Back to Profile</button></li>
                     <li className='list-group-item mt-1'><a href='/'>Browse Store</a></li>
                     <li className='list-group-item mt-1'><a href='/checkout'>Checkout</a></li>

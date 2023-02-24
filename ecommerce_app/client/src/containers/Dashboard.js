@@ -7,6 +7,7 @@ import UpdateProfile from '../components/profile/UpdateProfile'
 import MyPayments from '../components/profile/MyPayments'
 import MyOrders from '../components/profile/MyOrders'
 import ReviewedItems from '../components/profile/ReviewedItems'
+import NewPaymentMethod from '../components/profile/NewPaymentMethod'
 
 const Dashboard = ({load_userprofile, userProfile, current_user}) => {
   const [selected, setSelected] = useState('')
@@ -40,6 +41,9 @@ const Dashboard = ({load_userprofile, userProfile, current_user}) => {
         break;
       case 'payments':
         setInEffect(<MyPayments setSelected={setSelected} />)
+        break;
+      case 'add-payment':
+        setInEffect(<NewPaymentMethod setSelected={setSelected} />)
         break;
       default:
         fecthData("reviews")

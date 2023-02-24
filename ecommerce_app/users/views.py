@@ -2,8 +2,9 @@ from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import User
-from .serializers import UserSerializer, PublicUserSerializer
+from .models import User, PaymentMethod
+from .serializers import UserSerializer, PublicUserSerializer,\
+    PaymentMethodSerializer, ProtectedPaymentMethodSerializer
 
 class UserList(generics.ListCreateAPIView):
     permission_classes = (permissions.AllowAny,)
@@ -53,3 +54,21 @@ class UserLogout(APIView):
         token = RefreshToken(refresh_token)
         token.blacklist()
         return Response(status=status.HTTP_205_RESET_CONTENT)
+    
+class PaymentMethodList(generics.ListAPIView):
+    serializer_class = ProtectedPaymentMethodSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    def get_queryset(self):
+        card_owner = self.kwargs['user_pk']
+        queryset = PaymentMethod.objects.filter(card_owner=card_owner)
+        return queryset
+class CreatePaymentMethod(generics.CreateAPIView):
+    queryset = PaymentMethod.objects.all()
+    serializer_class = ProtectedPaymentMethodSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    
+class PaymentMethodDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = PaymentMethod.objects.all()
+    serializer_class = PaymentMethodSerializer
+    permission_classes = [permissions.IsAuthenticated]

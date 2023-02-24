@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, PaymentMethod
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -22,3 +22,19 @@ class PublicUserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'email', 'location', 'is_active']
         ordering = ('-date_joined',)
+        
+class PaymentMethodSerializer(serializers.ModelSerializer):
+    card_owner = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all()
+    )
+    class Meta:
+        model = PaymentMethod
+        fields = ['id', 'card_owner', 'description', 'is_active', 'is_credit_card', 'cardholder_name', 'card_number', 'expiration_mon', 'expiration_year', 'cvv']
+        
+class ProtectedPaymentMethodSerializer(serializers.ModelSerializer):
+    card_owner = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all()
+    )
+    class Meta:
+        model = PaymentMethod
+        fields = ['id', 'card_owner', 'description', 'is_active', 'is_credit_card', 'expiration_mon', 'expiration_year']        
