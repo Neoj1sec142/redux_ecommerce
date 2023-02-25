@@ -1,8 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 import {
-    LOAD_PAYMENTMETHOD_SUCCESS, LOAD_PAYMENTMETHOD_FAIL,
-    LOAD_PAYMENTMETHODS_SUCCESS, LOAD_PAYMENTMETHODS_FAIL,
-    UPLOAD_PAYMENTMETHOD_SUCCESS, UPLOAD_PAYMENTMETHOD_FAIL
+    LOAD_PM_SUCCESS, LOAD_PM_FAIL,
+    LOAD_PMS_SUCCESS, LOAD_PMS_FAIL,
+    UPLOAD_PM_SUCCESS, UPLOAD_PM_FAIL,
+    DESTROY_PM_SUCCESS, DESTROY_PM_FAIL
 } from '../types'
 
 const initialState = {
@@ -13,20 +14,22 @@ const initialState = {
 export default function(state = initialState, action){
     const {type, payload} = action;
     switch(type){
-        case LOAD_PAYMENTMETHOD_SUCCESS:
+        case LOAD_PM_SUCCESS:
             return{
                 ...state,
                 methodDetail: payload
             }
-        case LOAD_PAYMENTMETHODS_SUCCESS:
+        case LOAD_PMS_SUCCESS:
             return{
                 ...state,
                 paymentMethods: payload
             }
-        case UPLOAD_PAYMENTMETHOD_FAIL:
-        case UPLOAD_PAYMENTMETHOD_SUCCESS:
-        case LOAD_PAYMENTMETHOD_FAIL:
-        case LOAD_PAYMENTMETHODS_FAIL:
+        case DESTROY_PM_SUCCESS:
+        case DESTROY_PM_FAIL:
+        case UPLOAD_PM_FAIL:
+        case UPLOAD_PM_SUCCESS:
+        case LOAD_PM_FAIL:
+        case LOAD_PMS_FAIL:
             return{...state}
         default:
             return state

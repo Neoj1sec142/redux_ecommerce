@@ -1,11 +1,13 @@
 import {
-    LOAD_PAYMENTMETHOD_SUCCESS, LOAD_PAYMENTMETHOD_FAIL,
-    LOAD_PAYMENTMETHODS_SUCCESS, LOAD_PAYMENTMETHODS_FAIL,
-    UPLOAD_PAYMENTMETHOD_SUCCESS, UPLOAD_PAYMENTMETHOD_FAIL
+    LOAD_PM_SUCCESS, LOAD_PM_FAIL,
+    LOAD_PMS_SUCCESS, LOAD_PMS_FAIL,
+    UPLOAD_PM_SUCCESS, UPLOAD_PM_FAIL,
+    DESTROY_PM_SUCCESS, DESTROY_PM_FAIL
 } from '../types'
 import { decryptData } from '../../utils/utils'
 import { 
-    GetPaymentMethodList, GetPaymentMethodDetails, CreatePaymentMethod 
+    GetPaymentMethodList, GetPaymentMethodDetails, CreatePaymentMethod,
+    RemovePM
 } from '../services/PaymentMethodServices'
 
 export const load_payment_method_by_id = (id) => async dispatch => {
@@ -28,20 +30,20 @@ export const load_payment_method_by_id = (id) => async dispatch => {
                 results.push(data)
             }
             dispatch({
-                type: LOAD_PAYMENTMETHOD_SUCCESS,
+                type: LOAD_PM_SUCCESS,
                 payload: results
             })
         }else{
             console.log(res, "Err 1")
             console.log(res, "results")
             dispatch({
-                type: LOAD_PAYMENTMETHOD_FAIL
+                type: LOAD_PM_FAIL
             })
         }
     }catch(err){
         console.log(err, "Err 2")
         dispatch({
-            type: LOAD_PAYMENTMETHOD_FAIL
+            type: LOAD_PM_FAIL
         })
     }
 }
@@ -64,20 +66,20 @@ export const load_payment_methods = (user_pk) => async dispatch => {
                 results.push(data)
             }
             dispatch({
-                type: LOAD_PAYMENTMETHODS_SUCCESS,
+                type: LOAD_PMS_SUCCESS,
                 payload: results
             })
         }else{
             console.log(res, "Err 1")
             console.log(res, "results")
             dispatch({
-                type: LOAD_PAYMENTMETHODS_FAIL
+                type: LOAD_PMS_FAIL
             })
         }
     }catch(err){
         console.log(err, "Err 2")
         dispatch({
-            type: LOAD_PAYMENTMETHODS_FAIL
+            type: LOAD_PMS_FAIL
         })
     }
 }
@@ -87,18 +89,39 @@ export const upload_payment_method = (pm) => async dispatch => {
         const res = await CreatePaymentMethod(pm)
         if(res.status === 201 || res.statusText === 'Created'){
             dispatch({
-                type: UPLOAD_PAYMENTMETHOD_SUCCESS
+                type: UPLOAD_PM_SUCCESS
             })
         }else{
             console.log(res, "Err 1")
             dispatch({
-                type: UPLOAD_PAYMENTMETHOD_FAIL
+                type: UPLOAD_PM_FAIL
             })
         }
     }catch(err){
         console.log(err, "Err 2")
         dispatch({
-            type: UPLOAD_PAYMENTMETHOD_FAIL
+            type: UPLOAD_PM_FAIL
+        })
+    }
+}
+
+export const destory_pm = (id) => async dispatch => {
+    try{
+        const res = await RemovePM(id)
+        if(res.status === 204 || res.statusText === 'No Content'){
+            dispatch({
+                type: DESTROY_PM_SUCCESS
+            })
+        }else{
+            console.log(res, 'Err 1')
+            dispatch({
+                type: DESTROY_PM_FAIL
+            })
+        }
+    }catch(err){
+        console.log(err, 'Err 2')
+        dispatch({
+            type: DESTROY_PM_FAIL
         })
     }
 }

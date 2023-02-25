@@ -64,7 +64,7 @@ class PaymentMethodList(generics.ListAPIView):
         return queryset
 class CreatePaymentMethod(generics.CreateAPIView):
     queryset = PaymentMethod.objects.all()
-    serializer_class = ProtectedPaymentMethodSerializer
+    serializer_class = PaymentMethodSerializer
     permission_classes = [permissions.IsAuthenticated]
     
     

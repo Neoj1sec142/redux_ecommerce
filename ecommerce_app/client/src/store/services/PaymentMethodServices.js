@@ -35,3 +35,10 @@ export const CreatePaymentMethod = async (pm) => {
         return res
     } catch (err) {console.log(err)}
 }
+
+export const RemovePM = async (id) => {
+    try{
+        const res = await Client.delete(`payment-methods/${id}/`)
+        return res
+    } catch (err) {throw err}
+}

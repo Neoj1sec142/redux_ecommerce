@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { delay, days, months } from '../../utils/utils';
+import { delay, years, months } from '../../utils/utils';
 import {upload_payment_method} from '../../store/actions/paymentMethod'
 
 const NewPaymentMethod = ({upload_payment_method, current_user, setSelected}) => {
@@ -87,7 +87,7 @@ const NewPaymentMethod = ({upload_payment_method, current_user, setSelected}) =>
                             <div className='form-group w-25'>
                                 <label className='form-label' htmlFor='#expYr'>Exp Yr</label>
                                 <select onChange={e=>onChange(e)} id='expYr' name='expiration_year' className='form-control'>
-                                    {days.map((item, index) => (
+                                    {years.map((item, index) => (
                                     <option key={index}>{item}</option>))}
                                 </select>
                             </div>
