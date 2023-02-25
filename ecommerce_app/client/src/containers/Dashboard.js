@@ -13,7 +13,6 @@ const Dashboard = ({load_userprofile, userProfile, current_user}) => {
   const [selected, setSelected] = useState('')
   const [inEffect, setInEffect] = useState(<ReviewedItems setSelected={setSelected} />)
   const [loading, setLoading] = useState(false)
-  console.log(userProfile, "USERPROP")
   
   const fecthData = async (opt="") => {
     const id = current_user.id;

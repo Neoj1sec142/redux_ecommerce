@@ -10,9 +10,7 @@ const ReviewedItems = ({destroy_review, userProfile, current_user, fecthData}) =
       const {reviews, review_id_title} = userProfile;
       if(reviews.length >= 1){
         try{
-          console.log("In FUNC")
           const data = getTitles(reviews, review_id_title)
-          console.log(data, "DATA")
           setReviewData(data)
           setLoading(false) 
         }catch(err){
@@ -35,7 +33,7 @@ const ReviewedItems = ({destroy_review, userProfile, current_user, fecthData}) =
     await delay(400)
     handleData()
   }
-  console.log(userProfile, "HERE")
+  
   useEffect(() => { if(loading && userProfile && userProfile.reviews) handleData() },[userProfile?.reviews])
   if(!loading){
     const {first_name, last_name, is_active, location, username, date_joined} = current_user;
