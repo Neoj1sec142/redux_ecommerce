@@ -41,9 +41,9 @@ const MyPayments = ({load_payment_methods, destory_pm, current_user, paymentMeth
                       <button className='btn btn-sm btn-primary w-25'>
                       <i class="fa-light fa-plus"></i>
                       </button>
-                      <button value={item.id} className='btn btn-sm btn-danger w-25' 
-                        onClick={e=>(e.target.value && handleDelete(e))} >
-                        <i class="fa fa-trash w-75" aria-hidden="true"></i>
+                      <button className='btn btn-sm btn-danger w-25' 
+                        onClick={e=>handleDelete(e)}>
+                        <i value={item.id} class="fa fa-trash w-75" aria-hidden="true"></i>
                       </button>
                     </div>
                   </div>
