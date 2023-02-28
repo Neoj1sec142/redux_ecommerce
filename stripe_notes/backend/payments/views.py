@@ -29,3 +29,5 @@ class StripeCheckoutView(APIView):
                 {'error': f'Something went wrong when creating stripe checkout session {e.with_traceback(None)}'},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
+
+
