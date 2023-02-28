@@ -13,6 +13,8 @@ import Err404 from './components/base/Err404';
 import ViewCart from './components/checkout/ViewCart';
 import NewProduct from './components/admin/NewProduct';
 import Err401 from './components/base/Err401';
+import PostCheckout from './components/checkout/PostCheckout';
+import Checkout from './components/checkout/Checkout';
 
 const App = ({isAuthenticated, current_user}) => {
   
@@ -28,6 +30,8 @@ const App = ({isAuthenticated, current_user}) => {
           {/* Protected Routes */}
           <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Authpage />} />
           <Route path='/view-cart' element={isAuthenticated ? <ViewCart /> : <Authpage />} />
+          <Route path='/order-complete' element={isAuthenticated ? <PostCheckout /> : <Authpage />} />
+          <Route path='/checkout' element={isAuthenticated ? <Checkout /> : <Authpage />} />
           {/* Protected Admin Routes */}
           <Route path='/admin-dash' element={(isAuthenticated && current_user.is_staff) ? <NewProduct /> : <Err401 />} />
         </Routes>
