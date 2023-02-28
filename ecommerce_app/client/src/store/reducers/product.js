@@ -3,7 +3,8 @@ import {
     LOAD_BROWSELIST_SUCCESS, LOAD_BROWSELIST_FAIL,
     LOAD_PRODUCT_SUCCESS, LOAD_PRODUCT_FAIL,
     LOAD_NEXT_SUCCESS, LOAD_NEXT_FAIL, 
-    LOAD_PREV_SUCCESS, LOAD_PREV_FAIL
+    LOAD_PREV_SUCCESS, LOAD_PREV_FAIL,
+    UPLOAD_PRODUCT_FAIL, UPLOAD_PRODUCT_SUCCESS
 } from '../types'
 
 const initialState = {
@@ -30,6 +31,8 @@ export default function(state = initialState, action){
                 next: payload.next,
                 previous: payload.previous
             }
+        case UPLOAD_PRODUCT_SUCCESS:
+        case UPLOAD_PRODUCT_FAIL:
         case LOAD_NEXT_FAIL:
         case LOAD_PREV_FAIL:
         case LOAD_PRODUCT_FAIL:

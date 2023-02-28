@@ -4,7 +4,10 @@ import {load_cart, remove_item} from '../../store/actions/auth'
 import Alert from '../../utils/Alert'
 import { delay } from '../../utils/utils';
 
-const Navbar = ({load_cart, remove_item, isAuthenticated, cartItems, cartTotal}) => {
+const Navbar = ({
+    load_cart, remove_item, isAuthenticated, 
+    cartItems, cartTotal, current_user
+}) => {
     const [loading, setLoading] = useState(true)
     const fetchCart = async () => {
         load_cart()
@@ -33,6 +36,10 @@ const Navbar = ({load_cart, remove_item, isAuthenticated, cartItems, cartTotal})
                                 <li className="nav-item">
                                     <a className="nav-link" href="/dashboard"><i class="fa-solid fa-user"></i>&nbsp;Profile</a>
                                 </li>
+                                {(current_user && current_user.is_staff === true) ? (
+                                <li className="nav-item">
+                                    <a className="nav-link" href="/admin-dash"><i class="fa-solid fa-key"></i>&nbsp;Admin</a>
+                                </li>):null}
                                 <li className="nav-item dropdown">
                                 <button className="nav-link dropdown-toggle nobtn" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-cart-shopping"></i>&nbsp;Cart 
@@ -94,7 +101,8 @@ const Navbar = ({load_cart, remove_item, isAuthenticated, cartItems, cartTotal})
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
     cartItems: state.auth.cartItems,
-    cartTotal: state.auth.cartTotal
+    cartTotal: state.auth.cartTotal,
+    current_user: state.auth.current_user
 })
 
 export default connect(mapStateToProps, {load_cart, remove_item})(Navbar)

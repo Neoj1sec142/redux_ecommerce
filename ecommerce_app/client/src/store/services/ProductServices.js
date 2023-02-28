@@ -20,3 +20,19 @@ export const GetProductDetails = async (id) => {
         return res
     }catch(err){ console.log(err, "Err")}
 }
+
+export const CreateProduct = async (product) => {
+    console.log(product, "BEfore TRY")
+    try {
+        const data = {
+            name: product.name,
+            description: product.description,
+            image: product.image,
+            category: product.category,
+            price: product.price
+        }
+        console.log(data, "Before axios")
+        const res = await Client.post(`store/products/`, data)
+        return res
+    } catch (err) {console.log(err)}
+}

@@ -94,7 +94,7 @@ const NewPaymentMethod = ({upload_payment_method, current_user, setSelected}) =>
                         </div>
                         
                         
-                        <div className='form-group'>
+                        <div className='form-group mb-2'>
                             <label className='form-label' htmlFor='#cvv'>cvv</label>
                             <input className='form-control' 
                                 type='number' name='cvv' 

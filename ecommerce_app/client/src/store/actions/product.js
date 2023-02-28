@@ -2,9 +2,10 @@ import {
     LOAD_BROWSELIST_SUCCESS, LOAD_BROWSELIST_FAIL,
     LOAD_PRODUCT_SUCCESS, LOAD_PRODUCT_FAIL,
     LOAD_NEXT_SUCCESS, LOAD_NEXT_FAIL, 
-    LOAD_PREV_SUCCESS, LOAD_PREV_FAIL
+    LOAD_PREV_SUCCESS, LOAD_PREV_FAIL,
+    UPLOAD_PRODUCT_FAIL, UPLOAD_PRODUCT_SUCCESS
 } from '../types'
-import {GetBrowseList, GetProductDetails, BroswePage} from '../services/ProductServices'
+import {GetBrowseList, GetProductDetails, BroswePage, CreateProduct} from '../services/ProductServices'
 
 export const handle_page = (c, route) => async dispatch => {
     if(c === 'P' || c === 'p'){
@@ -91,6 +92,27 @@ export const load_product_details = (id) => async dispatch => {
         console.log(err, "Err 2")
         dispatch({
             type: LOAD_PRODUCT_FAIL
+        })
+    }
+}
+
+export const upload_product =  (product) => async dispatch => {
+    try{
+        const res = await CreateProduct(product)
+        if(res.status === 201 || res.statusText === 'Created'){
+            dispatch({
+                type: UPLOAD_PRODUCT_SUCCESS
+            })
+        }else{
+            console.log(res, 'Err 1')
+            dispatch({
+                type: UPLOAD_PRODUCT_FAIL
+            })
+        }
+    }catch(err){
+        console.log(err, "Err 2")
+        dispatch({
+            type: UPLOAD_PRODUCT_FAIL
         })
     }
 }

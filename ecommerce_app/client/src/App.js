@@ -11,6 +11,8 @@ import ProductDetail from './components/broswing/ProductDetail';
 // import Checkout from './containers/Checkout';
 import Err404 from './components/base/Err404';
 import ViewCart from './components/checkout/ViewCart';
+import NewProduct from './components/admin/NewProduct';
+import Err401 from './components/base/Err401';
 
 const App = ({isAuthenticated, current_user}) => {
   
@@ -22,10 +24,12 @@ const App = ({isAuthenticated, current_user}) => {
           <Route path='/' element={<BrowsePage />}/>
           <Route path='/product/:id' element={<ProductDetail />}/>
           <Route path='/logout' element={<Logout />}/>
+          <Route path="*" element={<Err404 />} />
           {/* Protected Routes */}
           <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Authpage />} />
           <Route path='/view-cart' element={isAuthenticated ? <ViewCart /> : <Authpage />} />
-          <Route path="*" element={<Err404 />} />
+          {/* Protected Admin Routes */}
+          <Route path='/admin-dash' element={(isAuthenticated && current_user.is_staff) ? <NewProduct /> : <Err401 />} />
         </Routes>
       </Layout>
     </div>

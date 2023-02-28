@@ -35,7 +35,7 @@ const ReviewForm = ({upload_review, author_id, product_id, setShowForm, fetchDat
                             onChange={e=>onChange(e)}
                             name="comment" value={comment}/>
                     </div>
-                    <div className='form-group'>
+                    <div className='form-group mb-2'>
                         <ReactStars
                             count={5}
                             value={rate}
