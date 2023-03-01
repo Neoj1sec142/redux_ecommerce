@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { load_cart } from '../../store/actions/auth'
 import { delay } from '../../utils/utils'
 import {API_URL} from '../../config/index'
-
-const Checkout = ({load_cart, cartItems, cartTotal}) => {
+import axios from 'axios'
+const Checkout = ({load_cart, cartItems, cartTotal, current_user}) => {
   const [loading, setLoading] = useState(true)
   const fetchCart = async () => {
     load_cart()
@@ -14,12 +14,25 @@ const Checkout = ({load_cart, cartItems, cartTotal}) => {
   useEffect(() => {
     if(loading) fetchCart()
   },[])
+  const checkout = async e => {
+    e.preventDefault()
+    try {
+      const response = await axios.post(`${API_URL}/api/stripe/create-checkout-session/`, {
+        cartItems: cartItems,
+        username: current_user.username || 'User'
+      });
+      console.log(response, "RES")
+      window.location.href = response.data.redirect_url;
+    } catch (err) {
+      console.error(err, "Err");
+    }
+  }
   if(!loading){
-    const dictionaryData = {
+    const cart = {
       cartItems: cartItems,
-      cartTotal: cartTotal,
-    };
-    console.log(dictionaryData, "DICT")
+      username: current_user.username || 'User'
+    }
+    
     return (
         <section>
             <div className="product">
@@ -32,8 +45,8 @@ const Checkout = ({load_cart, cartItems, cartTotal}) => {
                 <h5>$20.00</h5>
               </div>
             </div>
-            <form action={`${API_URL}/api/stripe/create-checkout-session/`} method="POST">
-              <input type="hidden" name="dictionary_data" value={JSON.stringify(dictionaryData)} />
+            <form onSubmit={e=>checkout(e)}>
+              <input type="hidden" name="cart" value={JSON.stringify(cart)} />
               <button type="submit">Checkout</button>
             </form>
         </section>
@@ -43,7 +56,8 @@ const Checkout = ({load_cart, cartItems, cartTotal}) => {
 
 const mapStateToProps = state => ({
   cartItems: state.auth.cartItems,
-  cartTotal: state.auth.cartTotal
+  cartTotal: state.auth.cartTotal,
+  current_user: state.auth.current_user
 })
 
 export default connect(mapStateToProps, {load_cart})(Checkout)

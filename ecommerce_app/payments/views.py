@@ -9,59 +9,46 @@ import stripe
 import traceback
 import os
 import json
+import math
+
+def round_price(obj):
+    name = obj['name']
+    price = math.ceil(float(obj['price']))
+    return {'name': name, 'price': price}
 
 stripe.api_key = os.environ.get('STRIPE_SECRET')
 
 class StripeCheckoutView(APIView):
     permission_classes = (permissions.AllowAny, )
-
     def post(self, request):
         try:
-            # Get cart items and cartTotal from the request data
-            dictionary_data = request.data.get('dictionary_data')
-            dictionary = json.loads(dictionary_data)
-            cart_items = dictionary['cartItems']
+            data = request.data['cart']
+            cart_data = json.loads(data)
+            user = cart_data['username']
+            cartItems = cart_data['cartItems']
+            cart_items = []
+            total = 0
+            for item in cartItems:
+                new_item = round_price(item)
+                cart_items.append(new_item['name'])
+                total += int(new_item['price'])
             
-            print(f'cart items: {cart_items}')
+                
             
-            # Create line items based on the cart items
-            line_items = []
-            for item in cart_items:
-                # price_in_cents = round(float(item['price']) * 100)
-                print(f" Items: {round(float(item['price']))}")
-                _price = round(float(item['price']))
-                line_items.append({
-                    'price_data': {
-                        'currency': 'usd',
-                        'unit_amount': int(_price),
-                        'product_data': {
-                            'name': item['name'],
-                            'images': [item['image']],
-                            'metadata': {
-                                'id': item['id'],
-                                'category': item['category'],
-                                'created_at': item['created_at'],
-                                'avg_stars': item['avg_stars'],
-                                'review_count': item['review_count']
-                            }
-                        },
-                    },
-                    'quantity': 1,
-                })
-
-            # Create the checkout session with the line items
+            # Create the checkout session with the line items and other required parameters
             checkout_session = stripe.checkout.Session.create(
-                line_items=line_items,
+                line_items=[{
+                    'name': 'Payment for {}'.format(user),
+                    'price': total,  
+                    'quantity': 1,
+                },],
                 payment_method_types=['card',],
-                mode='payment',
+                mode='payment',  # Assuming that you want to create a subscription
                 success_url=settings.SITE_URL + '/?success=true&session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=settings.SITE_URL + '/?canceled=true',
             )
-
-            # Redirect the user to the checkout page
             return redirect(checkout_session.url)
         except Exception as e:
-            # Format the exception and its traceback using traceback.format_exc()
             tb = traceback.format_exc()
             return Response(
                 {'error': f'Something went wrong when creating stripe checkout session {e}\n{tb}'},
