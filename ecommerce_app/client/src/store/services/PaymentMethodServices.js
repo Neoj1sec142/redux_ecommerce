@@ -42,3 +42,11 @@ export const RemovePM = async (id) => {
         return res
     } catch (err) {throw err}
 }
+
+export const GetOrders = async () => {
+    try{
+        const res = await Client.get('api/stripe/orders/')
+        console.log(res)
+        return res
+    }catch(err){ console.log(err)}
+}

@@ -15,6 +15,7 @@ import NewProduct from './components/admin/NewProduct';
 import Err401 from './components/base/Err401';
 import PostCheckout from './components/checkout/PostCheckout';
 import Checkout from './components/checkout/Checkout';
+import ViewOrders from './components/admin/ViewOrders';
 
 const App = ({isAuthenticated, current_user}) => {
   
@@ -34,6 +35,7 @@ const App = ({isAuthenticated, current_user}) => {
           <Route path='/checkout' element={isAuthenticated ? <Checkout /> : <Authpage />} />
           {/* Protected Admin Routes */}
           <Route path='/admin-dash' element={(isAuthenticated && current_user.is_staff) ? <NewProduct /> : <Err401 />} />
+          <Route path='/view-orders' element={(isAuthenticated && current_user.is_staff) ? <ViewOrders /> : <Authpage />} />
         </Routes>
       </Layout>
     </div>

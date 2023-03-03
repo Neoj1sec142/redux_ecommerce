@@ -2,12 +2,13 @@ import {
     LOAD_PM_SUCCESS, LOAD_PM_FAIL,
     LOAD_PMS_SUCCESS, LOAD_PMS_FAIL,
     UPLOAD_PM_SUCCESS, UPLOAD_PM_FAIL,
-    DESTROY_PM_SUCCESS, DESTROY_PM_FAIL
+    DESTROY_PM_SUCCESS, DESTROY_PM_FAIL, LOAD_ORDERS_SUCCESS, LOAD_ORDERS_FAIL
 } from '../types'
 import { decryptData } from '../../utils/utils'
 import { 
     GetPaymentMethodList, GetPaymentMethodDetails, CreatePaymentMethod,
-    RemovePM
+    RemovePM,
+    GetOrders
 } from '../services/PaymentMethodServices'
 
 export const load_payment_method_by_id = (id) => async dispatch => {
@@ -122,6 +123,28 @@ export const destory_pm = (id) => async dispatch => {
         console.log(err, 'Err 2')
         dispatch({
             type: DESTROY_PM_FAIL
+        })
+    }
+}
+
+export const load_orders = () => async dispatch => {
+    try{
+        const res = await GetOrders()
+        if(res.status === 200){
+            dispatch({
+                type: LOAD_ORDERS_SUCCESS,
+                payload: res.data
+            })
+        }else{
+            console.log(res, "Err 1")
+            dispatch({
+                type: LOAD_ORDERS_FAIL
+            })
+        }
+    }catch(err){
+        console.log(err, "Err 2")
+        dispatch({
+            type: LOAD_ORDERS_FAIL
         })
     }
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { load_cart } from '../../store/actions/auth'
 import { delay } from '../../utils/utils'
 import {API_URL} from '../../config/index'
-import axios from 'axios'
+
 const Checkout = ({load_cart, cartItems, cartTotal, current_user}) => {
   const [loading, setLoading] = useState(true)
   const [finsihed, setFinsihed] = useState(false)
@@ -29,35 +29,38 @@ const Checkout = ({load_cart, cartItems, cartTotal, current_user}) => {
     }
     if(!loading && !finsihed) handleCart()
   },[loading])
-  const checkout = async e => {
-    e.preventDefault()
-    try {
-      const cart = JSON.stringify(cartD)
-      const response = await axios.post(`${API_URL}/api/stripe/create-checkout-session/`, {cart});
-      console.log(response, "RES")
-      window.location.href = response.data.redirect_url;
-    } catch (err) {
-      console.error(err, "Err");
-    }
-  }
+  
   if(finsihed){
-    
     return (
-        <section>
-            <div className="product">
-              <img
-                  src="https://i.imgur.com/EHyR2nP.png"
-                  alt="The cover of Stubborn Attachments"
-              />
-              <div className="description">
-                <h3>Stubborn Attachments</h3>
-                <h5>$20.00</h5>
+        <section className='container-fluid'>
+            <div className="d-flex justify-content-center mt-5">
+              <div className='row w-75 align-items-center overflow-scroll p-1 mt-2'>
+                {cartItems && cartItems.length >= 1 ? (
+                  cartItems.map((item, index) => (
+                <div className='col' key={index}>
+                  <img src={item.image} alt="Not Present"  />
+                  <div className="description">
+                    <h3>{item.name}</h3>
+                    <h5>${item.price}</h5>
+                    <p className='fs-7 text-muted'>{item.category}</p>
+                  </div>
+                </div>)))
+                : <div>
+                    <div className='d-flex justify-content-center'>
+                      <div className='row w-75 shadow-sm p-3'>
+                        <h1 className='text-center mt-2'>No Items in Cart</h1>
+                        <p className='fs-4'><a href='/' className='nolink'>CLICK HERE</a> to return home.</p>
+                      </div>
+                    </div>
+                  </div>}
               </div>
             </div>
-            <form onSubmit={e=>checkout(e)}>
+            <p className='fs-3 text-center text-decoration-undeerline'>Total Price: ${cartTotal}</p>
+            {cartItems && cartItems.length >= 1 ? (
+            <form className='d-flex justify-content-center' action={`${API_URL}/api/stripe/create-checkout-session/`} method="POST">
               <input type="hidden" name="cart" value={JSON.stringify(cartD)} />
-              <button type="submit">Checkout</button>
-            </form>
+              <button className='btn btn-sm btn-primary' type="submit">Checkout</button>
+            </form>):null}
         </section>
     )
   }else{ return( <div>Loading....</div> ) }
