@@ -21,6 +21,7 @@ const Navbar = ({
         await delay(200)
         fetchCart()
     }
+    console.log(cartItems, "Cart Items")
     let authBar;
     if(isAuthenticated){
         authBar = (
@@ -55,6 +56,10 @@ const Navbar = ({
                                     <a href='/view-cart'><li className="dropdown-item text-light">Total Items: {cartItems !== null ? cartItems.length : 0} &nbsp;|&nbsp; Total Price: {cartTotal !== null ? `$${cartTotal}` : 0}</li></a>
                                 </ul>
                                 </li>
+                                {cartItems && cartItems.length >= 1 ? (
+                                <li className="nav-item">
+                                    <a className="nav-link" href="/confirm-order"><i class="fa-solid fa-money"></i>Checkout</a>
+                                </li>):null}
                                 <li className="nav-item">
                                     <a className="nav-link" href="/logout" tabIndex="-1"><i class="fa fa-hand-paper-o"></i>&nbsp;Logout</a>
                                 </li>

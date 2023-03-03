@@ -45,7 +45,6 @@ export const login = ({username, password}) => async dispatch => {
         })
         dispatch(setAlert('Error Autheticating', 'error'))
     }
-    
 }
 export const load_current = (username) => async dispatch => {
     if(username !== null && username !== undefined && username !== ''){

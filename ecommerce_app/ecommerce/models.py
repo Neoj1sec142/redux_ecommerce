@@ -39,7 +39,7 @@ class Purchase(models.Model):
     
 class PurchaseProduct(models.Model):
     purchase = models.ForeignKey(Purchase, on_delete=models.CASCADE)
-    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='purchase_products')
     quantity = models.IntegerField()
 
     def __str__(self):

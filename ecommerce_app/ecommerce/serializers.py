@@ -39,25 +39,29 @@ class BrowseSerializer(serializers.ModelSerializer):
     
     
 class PurchaseProductSerializer(serializers.ModelSerializer):
+    product = serializers.PrimaryKeyRelatedField(queryset=Product.objects.all())
+    
     class Meta:
         model = PurchaseProduct
         fields = ['product', 'quantity']
            
 class PurchaseSerializer(serializers.ModelSerializer):
     products = PurchaseProductSerializer(many=True)
-    customer = serializers.PrimaryKeyRelatedField(
-        queryset=User.objects.all()
-    )
+    customer = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    
     class Meta:
         model = Purchase
-        fields = ['id', 'user', 'products', 'total_amount', 'date_created']
-        read_only_fields = ['date', 'total_amount']
+        fields = ['id', 'customer', 'products', 'total_amount', 'date_created']
+        read_only_fields = ['date_created']
         ordering = ('-date_created',)
+        
     def create(self, validated_data):
         products_data = validated_data.pop('products')
         purchase = Purchase.objects.create(**validated_data)
         for product_data in products_data:
-            PurchaseProduct.objects.create(purchase=purchase, **product_data)
+            product_id = product_data.pop('product')
+            product = Product.objects.get(id=product_id)
+            PurchaseProduct.objects.create(purchase=purchase, product=product, **product_data)
         return purchase
      
 class ReviewSerializer(serializers.ModelSerializer):

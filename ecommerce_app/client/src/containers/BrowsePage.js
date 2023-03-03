@@ -37,7 +37,7 @@ const BrowsePage = ({
     }
     
   }
-  console.log(products)
+  // console.log(products)
   useEffect(() => {if(loading) fetchData()},[])
   
   const onChange = e => setSearch({...search, [e.target.name]: e.target.value})
@@ -64,7 +64,7 @@ const BrowsePage = ({
     load_cart()
   }
   
-  console.log(data, "DTA")
+  // console.log(data, "DTA")
   if(!loading){
     return (
       <div className='container-fluid'>
