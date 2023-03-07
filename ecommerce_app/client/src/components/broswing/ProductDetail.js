@@ -25,7 +25,7 @@ const ProductDetail = ({load_product_details, productDetail, current_user}) => {
                 <h1 className="my-4">Product Overview</h1>
                 <div className="row">
                     <div className="col-md-8">
-                        <img className="img-fluid" src="@Model.Image" alt="" />
+                        <img className="img-fluid" src={product.image} alt="" />
                     </div>
                     <div className="col-md-4">
                         <h3 className="my-3">{product.name}</h3>
@@ -69,7 +69,7 @@ const ProductDetail = ({load_product_details, productDetail, current_user}) => {
                         </ul>)}
                     </div>
                 </div>
-                <h3 className="my-4">Related Projects</h3>
+                <h3 className="my-4">Related Games</h3>
                 <div className="row">
                     <div className="col-md-3 col-sm-6 mb-4">
                         <a href="#">

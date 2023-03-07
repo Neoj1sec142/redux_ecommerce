@@ -53,7 +53,7 @@ const Navbar = ({
                                         <button onClick={()=>removeItem(item)} className='btn btn-outline-danger w-25 text-light'>❌</button>
                                     </li>))):(<li className="dropdown-item text-light">No Items in Cart</li>)}
                                     <li><hr className="dropdown-divider"/></li>
-                                    <a href='/view-cart'><li className="dropdown-item text-light">Total Items: {cartItems !== null ? cartItems.length : 0} &nbsp;|&nbsp; Total Price: {cartTotal !== null ? `$${cartTotal}` : 0}</li></a>
+                                    <a href='/confirm-order'><li className="dropdown-item text-light">Total Items: {cartItems !== null ? cartItems.length : 0} &nbsp;|&nbsp; Total Price: {cartTotal !== null ? `$${cartTotal}` : 0}</li></a>
                                 </ul>
                                 </li>
                                 {cartItems && cartItems.length >= 1 ? (

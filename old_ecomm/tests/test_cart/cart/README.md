@@ -1,1 +1,0 @@
-QTY needs to be moved inside the cart to enable the state to chage according to item. Issue is multiple items running off of the same state is causing the state confiusion.

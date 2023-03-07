@@ -8,9 +8,7 @@ import Logout from './components/base/Logout';
 import Dashboard from './containers/Dashboard';
 import BrowsePage from './containers/BrowsePage';
 import ProductDetail from './components/broswing/ProductDetail';
-// import Checkout from './containers/Checkout';
 import Err404 from './components/base/Err404';
-import ViewCart from './components/checkout/ViewCart';
 import NewProduct from './components/admin/NewProduct';
 import Err401 from './components/base/Err401';
 import PostCheckout from './components/checkout/PostCheckout';
@@ -31,7 +29,6 @@ const App = ({isAuthenticated, current_user}) => {
           <Route path="*" element={<Err404 />} />
           {/* Protected Routes */}
           <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Authpage />} />
-          <Route path='/view-cart' element={isAuthenticated ? <ViewCart /> : <Authpage />} />
           <Route path='/order-complete' element={isAuthenticated ? <PostCheckout /> : <Authpage />} />
           <Route path='/confirm-order' element={isAuthenticated ? <ConfirmCheck /> : <Authpage />} />
           <Route path='/checkout' element={isAuthenticated ? <Checkout /> : <Authpage />} />

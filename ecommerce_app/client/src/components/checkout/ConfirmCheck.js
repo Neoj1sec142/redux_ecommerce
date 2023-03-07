@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { load_cart } from '../../store/actions/auth'
+import { useNavigate } from 'react-router-dom'
+import { load_cart, remove_item } from '../../store/actions/auth'
 import { upload_purchase, load_purchases } from '../../store/actions/purchase'
 import { delay, filterProducts } from '../../utils/utils'
 
 const ConfirmCheck = ({
-    load_cart, upload_purchase, load_purchases,
+    load_cart, remove_item, upload_purchase, load_purchases,
     current_user, cartItems, cartTotal
 }) => {
     const [loading, setLoading] = useState(true)
@@ -14,6 +15,7 @@ const ConfirmCheck = ({
         products: [],
         total_amount: 0
     })
+    const navigate = useNavigate()
     const {customer, products, total_amount} = formData;
     const handleLoad = async () => {
         const products = filterProducts(cartItems)
@@ -33,8 +35,16 @@ const ConfirmCheck = ({
     const onClick = async e => {
         e.preventDefault()
         upload_purchase(formData)
-        // await delay(750)
-        // alert('Here')
+        await delay(750)
+        navigate('/checkout')
+    }
+    const deleteItem = async e => {
+        e.preventDefault()
+        const id = e.target.value;
+        remove_item(id)
+        await delay(750)
+        load_cart()
+        handleLoad()
     }
     console.log(formData, "Form")
     return (
@@ -45,7 +55,8 @@ const ConfirmCheck = ({
                     {cartItems && cartItems.length >= 1 ? (
                         cartItems.map((item, index) => (
                     <ul className='list-group' key={index}>
-                        <li className='list-group-item'>{item.name} {item.price}</li>
+                        <li className='list-group-item'>{item.name} {item.price} 
+                        <button value={item.id} onClick={e=>deleteItem(e)} className='btn btn-danger float-end'><i className='fa-solid fa-trash'></i></button></li>
                     </ul>))):null}
                     <p className='fs-4'>Total: {cartTotal ? cartTotal : 0}</p>
                     <div className='d-flex justify-content-center'>
@@ -64,7 +75,7 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, {
-    load_cart, upload_purchase, load_purchases
+    load_cart, remove_item, upload_purchase, load_purchases
 })(ConfirmCheck)
 
 // import React, { useState } from 'react';
