@@ -1,19 +1,20 @@
 import React, {useEffect} from 'react'
 import { useLocation } from 'react-router-dom';
 import QueryString from 'query-string';
-const PostCheckout = () => {
+import { connect } from 'react-redux';
+import {setAlert} from '../../store/actions/alert'
+const PostCheckout = ({setAlert}) => {
     const location = useLocation();
     useEffect(() => {
         const values = QueryString.parse(location.search);
-        console.log(values)
+    
         if (values.success) {
-        console.log("Order placed! You will receive an email confirmation.");
+        setAlert("Order placed! You will receive an email confirmation.", 'success');
         }
     
         if (values.canceled) {
-            console.log(
-            "Order canceled -- continue to shop around and checkout when you're ready."
-        );
+            setAlert(
+            "Order canceled -- continue to shop around and checkout when you're ready.", 'error');
         }
     }, []);
     return (
@@ -21,4 +22,4 @@ const PostCheckout = () => {
     )
 }
 
-export default PostCheckout
+export default connect(null, {setAlert})(PostCheckout)
