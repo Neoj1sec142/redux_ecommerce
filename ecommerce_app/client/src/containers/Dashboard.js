@@ -5,7 +5,6 @@ import { delay } from '../utils/utils'
 import Dash from '../components/base/DashBar'
 import UpdateProfile from '../components/profile/UpdateProfile'
 import MyPayments from '../components/profile/MyPayments'
-import MyOrders from '../components/profile/MyOrders'
 import ReviewedItems from '../components/profile/ReviewedItems'
 import NewPaymentMethod from '../components/profile/NewPaymentMethod'
 
@@ -22,9 +21,6 @@ const Dashboard = ({load_userprofile, userProfile, current_user}) => {
         await delay(750)
         setLoading(false)
         break;
-      case "orders":
-        setLoading(false)
-        break;
       default:
         setLoading(false)
         break;
@@ -32,9 +28,6 @@ const Dashboard = ({load_userprofile, userProfile, current_user}) => {
   }
   useEffect(() => {
     switch(selected){
-      case 'orders':
-        setInEffect(<MyOrders setSelected={setSelected} />)
-        break;
       case 'update':
         setInEffect(<UpdateProfile setSelected={setSelected} />)
         break;

@@ -17,7 +17,7 @@ const ProductDetail = ({load_product_details, productDetail, current_user}) => {
     }
 
     useEffect(() => {if(loading) fetchData()},[])
-    console.log(productDetail, "PRoduct")
+    
     if(!loading){
         const {product, reviews} = productDetail;
         return (

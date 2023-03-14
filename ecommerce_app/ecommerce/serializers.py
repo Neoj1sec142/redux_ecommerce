@@ -64,6 +64,10 @@ class PurchaseSerializer(serializers.ModelSerializer):
             PurchaseProduct.objects.create(purchase=purchase, product=product, **product_data)
         return purchase
      
+class ReadOnlyProductTitleSerializer(serializers.RelatedField):
+    def to_representation(self, value):
+        return value.name
+
 class ReviewSerializer(serializers.ModelSerializer):
     author = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.all()
@@ -71,6 +75,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     product = serializers.PrimaryKeyRelatedField(
         queryset=Product.objects.all()
     )
+    product_title = ReadOnlyProductTitleSerializer(source='product', read_only=True)
     class Meta:
         model = Review
         fields = '__all__'

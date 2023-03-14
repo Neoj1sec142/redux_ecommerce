@@ -17,7 +17,7 @@ export const GetPaymentMethodDetails = async (id) => {
 }
 
 export const CreatePaymentMethod = async (pm) => {
-    console.log(pm, "BEfore TRY")
+    
     try {
         const data = {
             card_owner: pm.card_owner,
@@ -30,7 +30,7 @@ export const CreatePaymentMethod = async (pm) => {
             expiration_year: encryptData(pm.expiration_year),
             cvv: encryptData(pm.cvv)
         }
-        console.log(data, "Before axios")
+        
         const res = await Client.post(`payment-methods/`, data)
         return res
     } catch (err) {console.log(err)}
@@ -46,7 +46,7 @@ export const RemovePM = async (id) => {
 export const GetOrders = async () => {
     try{
         const res = await Client.get('api/stripe/orders/')
-        console.log(res)
+        
         return res
     }catch(err){ console.log(err)}
 }

@@ -21,7 +21,6 @@ const Navbar = ({
         await delay(200)
         fetchCart()
     }
-    console.log(cartItems, "Cart Items")
     let authBar;
     if(isAuthenticated){
         authBar = (

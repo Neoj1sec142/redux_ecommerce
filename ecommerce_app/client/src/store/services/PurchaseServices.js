@@ -22,14 +22,14 @@ export const GetPurchaseByID = async (id) => {
 }
 
 export const CreatePurchase = async (pur) => {
-    console.log(pur, "BEfore TRY")
+    
     try {
         const data = {
             customer: pur.customer,
             products: pur.products,
             total_amount: pur.total_amount
         }
-        console.log(data, "Before axios")
+        
         const res = await Client.post(`store/purchases/`, data)
         return res
     } catch (err) {console.log(err)}

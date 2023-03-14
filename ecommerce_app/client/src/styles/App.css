@@ -35,3 +35,22 @@
   width: 10%;
   max-width: 100px;
 }
+
+.alert{
+  height: 30px;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+} 
+.alert--success{
+  background-color: rgb(6, 236, 6);
+  color: rgb(31, 30, 30);
+}
+.alert--error{
+  background-color: rgb(236, 6, 6);
+  color: rgb(233, 229, 229);
+}
+.alert--primary{
+  background-color: rgb(33, 6, 236);
+  color: rgb(233, 229, 229);
+}

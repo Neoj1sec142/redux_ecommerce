@@ -23,7 +23,7 @@ export const RemoveReview = async (id) => {
 }
 
 export const CreateReview = async (review) => {
-    console.log(review, "BEfore TRY")
+    
     try {
         const data = {
             stars: review.stars,
@@ -31,7 +31,7 @@ export const CreateReview = async (review) => {
             author: review.author,
             product: review.product
         }
-        console.log(data, "Before axios")
+        
         const res = await Client.post(`store/reviews/`, data)
         return res
     } catch (err) {console.log(err)}

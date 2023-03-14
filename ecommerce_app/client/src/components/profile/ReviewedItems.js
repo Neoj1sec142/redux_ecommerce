@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {connect} from 'react-redux'
-import { getTitles, delay } from '../../utils/utils';
+import { getTitles, delay, getStarRating } from '../../utils/utils';
 import {destroy_review} from '../../store/actions/review'
 
 const ReviewedItems = ({destroy_review, userProfile, current_user, fecthData}) => {
@@ -37,7 +37,7 @@ const ReviewedItems = ({destroy_review, userProfile, current_user, fecthData}) =
   useEffect(() => { if(loading && userProfile && userProfile.reviews) handleData() },[userProfile?.reviews])
   if(!loading){
     const {first_name, last_name, is_active, location, username, date_joined} = current_user;
-    
+    console.log(reviewData, "REVIEW DATA")
     return (
       <div className='container-fluid'>
         <div className='d-flex justify-content-center mt-5 mb-1'>
@@ -50,30 +50,18 @@ const ReviewedItems = ({destroy_review, userProfile, current_user, fecthData}) =
         </div>
         <div className='d-flex justify-content-center mt-5 mb-1'>
           <div className='row w-75 shadow-sm mt-1 mb-1 p-2'>
-            <div className='col w-50'>
-              <p className='fs-4 text-center'><strong>Orders</strong></p>
-              {/* <ul className='list-group p-3'>
-                {orderData && orderData.length >= 1 ? (
-                  orderData.map((item, index) => (
-                <li className='list-group-item mt-1 mb-1' key={index}>
-                  <p className='fs-5 text-center'></p>
-                  <p className='fs-6'>{item.comment}</p>
-                  <button value={item.id} onClick={e=>removeReview(e)} className='btn btn-sm btn-outline-danger'>❌</button>
-                </li>))): <li className=''>No Orders Yet</li>}
-              </ul> */}
-            </div>
-            <div className='col w-50'>
+            
               <p className='fs-4 text-center'><strong>Reviews</strong></p>
               <ul className='list-group p-3'>
                 {reviewData && reviewData.length >= 1 ? (
                   reviewData.map((item, index) => (
                 <li className='list-group-item mt-1 mb-1' key={index}>
-                  <p className='fs-5 text-center'></p>
-                  <p className='fs-6'>{item.comment}</p>
+                  <p className='fs-4 text-center'>Product: {item.product_title}</p>
+                  <p className='fs-6 text-muted'>{item.comment}</p>
+                  <p className='fs-6'>{getStarRating(item.stars)}</p>
                   <button value={item.id} onClick={e=>removeReview(e)} className='btn btn-sm btn-outline-danger'>❌</button>
                 </li>))): <li className=''>No Reviews Yet</li>}
               </ul>
-            </div>
           </div>
         </div>
       </div>
